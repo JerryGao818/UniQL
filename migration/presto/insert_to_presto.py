@@ -9,9 +9,9 @@ DOCKER_NAMENODE = "namenode"
 DOCKER_HIVE = "hive-server"
 DOCKER_PRESTO = "presto-coordinator"
 
-BIRD_ROOT = '/home/pkuccadm/huwenp/emb/EvoSD/bird/dev_databases'
+BIRD_ROOT = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 HDFS_ROOT_DIR = "/user/hive/warehouse"
-# HDFS_ROOT_DIR = "/home/pkuccadm/huwenp/emb/USBench/NL2SQL_DB_DIR/Hive"
+# HDFS_ROOT_DIR can be set to a local Hive warehouse path if needed.
 
 # DATABASES = ['california_schools']
 DATABASES = ['california_schools', 'card_games', 'european_football_2', 'formula_1', 'student_club', 'thrombosis_prediction', 'toxicology', 'superhero', 'codebase_community', 'debit_card_specializing', 'financial']

@@ -10,7 +10,7 @@ MYSQL_CONFIG = {
     "cursorclass": pymysql.cursors.Cursor
 }
 
-BIRD_ROOT = './Bird_dataset/dev/dev_databases'
+BIRD_ROOT = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 
 DATABASES = ['superhero', 'codebase_community', 'debit_card_specializing', 'financial', 'california_schools', 'card_games', 'european_football_2', 'formula_1', 'student_club', 'thrombosis_prediction', 'toxicology']
 # ===========================================

@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 import re
 from pathlib import Path
 
@@ -188,7 +189,7 @@ def build_results(prompt_items, outputs):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     project_dir = Path(__file__).resolve().parent
-    parser.add_argument("--model", type=str, default=None, help="model name under /data/model/")
+    parser.add_argument("--model", type=str, default=None, help="model name under UNIQL_MODEL_ROOT")
     parser.add_argument("--pretrained_model_name_or_path", type = str, default = None)
     parser.add_argument("--input_file", type = str, default=str(project_dir / "data" / "hive.json"))
     parser.add_argument("--output_file", type = str, default=str(project_dir / "results-human"))
@@ -205,10 +206,10 @@ if __name__ == '__main__':
     opt = parser.parse_args()
     opt.dialect = normalize_dialect(opt.dialect)
     if opt.model:
-        opt.pretrained_model_name_or_path = str(Path("/data/model") / opt.model)
+        opt.pretrained_model_name_or_path = str(Path(os.getenv('UNIQL_MODEL_ROOT', '<MODEL_ROOT>')) / opt.model)
         opt.output_file = str(Path(opt.output_file) / opt.model)
     elif not opt.pretrained_model_name_or_path:
-        opt.pretrained_model_name_or_path = "/data/model/Qwen3-8B"
+        opt.pretrained_model_name_or_path = str(Path(os.getenv('UNIQL_MODEL_ROOT', '<MODEL_ROOT>')) / 'Qwen3-8B')
     print(opt)
     
     questions = load_questions(opt.input_file)

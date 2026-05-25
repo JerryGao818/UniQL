@@ -4,7 +4,7 @@ import pandas as pd
 import clickhouse_connect
 from sqlalchemy import create_engine, MetaData, types
 
-ROOT_DIR = "/data/huwenp/emb/data/ches/cpy_database/dev_databases"
+ROOT_DIR = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 CH_HOST = "localhost"
 CH_PORT = 8124
 CH_USER = "default"

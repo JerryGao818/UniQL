@@ -7,7 +7,7 @@ import time
 DRUID_OVERLORD_URL = "http://localhost:8081/druid/indexer/v1/task"
 DRUID_COORDINATOR_URL = "http://localhost:8081/druid/indexer/v1/task/{task_id}/status"
 
-BIRD_ROOT = '/map-vepfs/huakai/exp/ai4db/data/data/bird/dev_20240627/dev_databases'
+BIRD_ROOT = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 DATABASES = ['california_schools', 'card_games', 'european_football_2', 'formula_1', 'student_club', 'thrombosis_prediction', 'toxicology', 'superhero', 'codebase_community', 'debit_card_specializing', 'financial']
 
 HOST_TEMP_DIR = "/root/ai4db/NL2QL/druid/temp_data"

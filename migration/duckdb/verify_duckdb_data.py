@@ -4,7 +4,7 @@ import os
 
 DUCKDB_FILE = "/data1/databases/duck_db/bird_research.duckdb"
 
-BIRD_ROOT = "/data/huwenp/emb/ches/cpy_database/dev_databases"
+BIRD_ROOT = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 
 DATABASES = [
     'superhero', 'codebase_community', 'debit_card_specializing', 

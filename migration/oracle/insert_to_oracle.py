@@ -10,7 +10,7 @@ DEFAULT_USER_PASS = "Bird123456"
 
 # DATABASES = ['superhero', 'codebase_community', 'debit_card_specializing', 'financial']
 DATABASES = ['california_schools', 'card_games', 'european_football_2', 'formula_1', 'student_club', 'thrombosis_prediction', 'toxicology']
-BIRD_ROOT = './Bird_dataset/dev/dev_databases'
+BIRD_ROOT = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 # ===========================================
 
 def get_admin_connection():

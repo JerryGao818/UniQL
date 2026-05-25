@@ -8,7 +8,7 @@ import time
 DOCKER_NAMENODE = "namenode"
 DOCKER_HIVE = "hive-server"
 
-BIRD_ROOT = './Bird_dataset/dev/dev_databases'
+BIRD_ROOT = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 HDFS_ROOT_DIR = "/user/hive/warehouse"
 
 DATABASES = ['california_schools', 'card_games', 'european_football_2', 'formula_1', 'student_club', 'thrombosis_prediction', 'toxicology', 'superhero', 'codebase_community', 'debit_card_specializing', 'financial']

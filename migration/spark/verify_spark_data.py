@@ -5,7 +5,7 @@ import re
 from pyspark.sql import SparkSession
 
 
-BIRD_ROOT = "/data/Bird_dataset/dev/dev_databases/dev_databases/"
+BIRD_ROOT = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 
 DATABASES = [
     'superhero', 'codebase_community', 'debit_card_specializing',

@@ -6,7 +6,7 @@ from sqlalchemy.schema import Index
 from sqlalchemy.exc import OperationalError
 
 
-ROOT_DIR = "./Bird_dataset/dev/dev_databases"
+ROOT_DIR = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 
 MYSQL_USER = "root"
 MYSQL_PASS = "123456"

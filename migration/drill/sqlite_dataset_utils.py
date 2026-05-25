@@ -28,7 +28,7 @@ def bird_root() -> Path:
     env_root = os.getenv("BIRD_DEV_ROOT")
     if env_root:
         return Path(env_root).resolve()
-    return (repo_root().parent / "Bird_dataset" / "dev").resolve()
+    return Path(os.getenv("UNIQL_BIRD_DEV_ROOT", "<BIRD_DEV_ROOT>")).resolve()
 
 
 def sqlite_db_root() -> Path:

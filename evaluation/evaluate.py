@@ -424,7 +424,7 @@ def safe_model_dir_name(model_name):
 if __name__ == '__main__':
     args_parser = argparse.ArgumentParser()
     args_parser.add_argument('--predicted_sql_path', type=str, required=True, default='')
-    args_parser.add_argument('--db_root_path', type=str, required=False, default='../../Bird_dataset/dev/dev_databases')
+    args_parser.add_argument('--db_root_path', type=str, required=False, default=os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>'))
     args_parser.add_argument('--num_cpus', type=int, default=1)
     args_parser.add_argument('--meta_time_out', type=float, default=120.0)
     args_parser.add_argument('--dialect', type=str, default='sqlite')
@@ -469,8 +469,8 @@ if __name__ == '__main__':
     print("Finished evaluation")
 '''
 python eval.py \
-    --predicted_sql_path /home/baijy24/qlm/results/hive_pred_sql.json \
-    --db_root_path /home/baijy24/bird_bench/dev_20240627/dev_databases \
+    --predicted_sql_path <PREDICTION_FILE> \
+    --db_root_path <BIRD_DEV_DATABASES> \
     --num_cpus 8 \
     --meta_time_out 240 \
     --dialect hive

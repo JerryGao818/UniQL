@@ -3,7 +3,7 @@ import sqlite3
 import json
 import re
 
-DB_ROOT_DIR = '/home/pkuccadm/huwenp/emb/EvoSD/bird/dev_databases'
+DB_ROOT_DIR = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 OUTPUT_FILE = './data/presto_schema.json'
 
 def clean_col_name(name):

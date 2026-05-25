@@ -4,7 +4,7 @@ import pandas as pd
 import duckdb
 from sqlalchemy import create_engine, MetaData, types
 
-ROOT_DIR = "/data/huwenp/emb/ches/cpy_database/dev_databases"
+ROOT_DIR = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 DUCKDB_FILE = "/data1/databases/duck_db/bird_research.duckdb"
 
 def map_sqlalchemy_type_to_duckdb(sqla_column):

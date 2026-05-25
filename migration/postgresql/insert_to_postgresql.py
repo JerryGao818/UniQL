@@ -8,7 +8,7 @@ PG_PORT = "5432"
 PG_USER = "postgres"
 PG_PASS = "123456"
 
-BIRD_ROOT = './Bird_dataset/dev/dev_databases'
+BIRD_ROOT = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 DATABASES = ['california_schools', 'card_games', 'european_football_2', 'formula_1', 'student_club', 'thrombosis_prediction', 'toxicology', 'superhero', 'codebase_community', 'debit_card_specializing', 'financial']
 # ===========================================
 

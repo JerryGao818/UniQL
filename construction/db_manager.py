@@ -14,13 +14,15 @@ class DBManager:
     def __init__(self):
         base_dir = os.path.dirname(os.path.abspath(__file__))
         # Resolve DB root relative to this file, not process cwd.
-        self.root_dir = os.path.abspath(os.path.join(base_dir, DB_ROOT_DIR))
+        if os.path.isabs(DB_ROOT_DIR) or DB_ROOT_DIR.startswith("<"):
+            self.root_dir = DB_ROOT_DIR
+        else:
+            self.root_dir = os.path.abspath(os.path.join(base_dir, DB_ROOT_DIR))
 
         # Fallback roots for different local layouts.
         self._sqlite_root_candidates = [
             self.root_dir,
-            os.path.abspath(os.path.join(base_dir, '../../Bird_dataset/dev/dev_databases')),
-            os.path.abspath(os.path.join(base_dir, '../../Bird_dataset/dev')),
+            os.getenv("UNIQL_SQLITE_SOURCE_ROOT", "<BIRD_DEV_ROOT>"),
         ]
 
     def _resolve_sqlite_db_path(self, db_name):

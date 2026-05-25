@@ -19,7 +19,7 @@ from pyspark.sql.types import (
     BooleanType, TimestampType, BinaryType
 )
 
-BIRD_ROOT = '/data/Bird_dataset/dev/dev_databases/dev_databases/'
+BIRD_ROOT = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 
 DATABASES = [
     'california_schools', 'card_games', 'european_football_2',

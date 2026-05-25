@@ -33,8 +33,8 @@ HIVE_CONFIG = {
 }
 
 # Paths
-INPUT_DATA_PATH = os.getenv("UNIQL_INPUT_DATA_PATH", "../../Bird_dataset/dev/dev.json")
-DB_ROOT_DIR = os.getenv("UNIQL_DB_ROOT_DIR", "../../Bird_dataset/dev/dev_databases")
+INPUT_DATA_PATH = os.getenv("UNIQL_INPUT_DATA_PATH", "<BIRD_DEV_JSON>")
+DB_ROOT_DIR = os.getenv("UNIQL_DB_ROOT_DIR", os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>'))
 DATE_LOG_DIR = os.getenv("UNIQL_LOG_DIR", "./logs")
 RULES_DIR = os.getenv("UNIQL_RULES_DIR", "./rules")
 
