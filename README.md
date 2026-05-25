@@ -1,4 +1,4 @@
-# UniQL-DialectBench
+# UniQL
 
 **UniQL** is a human-verified executable benchmark for cross-dialect text-to-SQL evaluation. UniQL extends the BIRD development split from SQLite to a controlled multi-dialect setting: the same 1,534 natural-language intents are aligned with executable SQL annotations across 16 SQL dialects, yielding 24,544 dialect-specific queries.
 
