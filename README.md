@@ -4,7 +4,7 @@
 
 The artifact contains the minimum code and data needed to inspect the benchmark, run open-weight model inference, evaluate generated SQL under dialect-specific execution protocols, and reproduce the core construction pipeline components used for database migration and SQL translation.
 
-## What Is UniQLvalue
+## What Is UniQL
 
 Most text-to-SQL benchmarks evaluate models on a single SQL dialect, usually SQLite. In practice, SQL engines differ in syntax, built-in functions, type systems, ordering behavior, duplicate semantics, implicit casts, and execution semantics. A query that is correct in SQLite may fail or produce different results in PostgreSQL, Hive, Trino, Druid, Teradata, or other engines.
 
