@@ -1,0 +1,99 @@
+services:
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    platform: linux/amd64
+    container_name: uniql-trino-namenode
+    hostname: namenode
+    volumes:
+      - ./data/hdfs/namenode:/hadoop/dfs/name
+    environment:
+      CLUSTER_NAME: uniql
+      HADOOP_HEAPSIZE: 512
+      JAVA_TOOL_OPTIONS: -Xms256m -Xmx768m
+    env_file:
+      - ./hadoop.env
+    ports:
+      - "9870:9870"
+      - "9000:9000"
+
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    platform: linux/amd64
+    container_name: uniql-trino-datanode
+    hostname: datanode
+    volumes:
+      - ./data/hdfs/datanode:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env
+    environment:
+      SERVICE_PRECONDITION: namenode:9870
+      HADOOP_HEAPSIZE: 512
+      JAVA_TOOL_OPTIONS: -Xms256m -Xmx768m
+    ports:
+      - "9864:9864"
+
+  hive-metastore-postgresql:
+    image: postgres:9.6
+    platform: linux/amd64
+    container_name: uniql-trino-hive-postgres
+    hostname: hive-metastore-postgresql
+    environment:
+      POSTGRES_DB: metastore
+      POSTGRES_USER: hive
+      POSTGRES_PASSWORD: hivepassword
+
+  hive-metastore:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    platform: linux/amd64
+    container_name: uniql-trino-hive-metastore
+    hostname: hive-metastore
+    env_file:
+      - ./hadoop-hive.env
+      - ./hadoop.env
+    command: /opt/hive/bin/hive --service metastore
+    environment:
+      SERVICE_PRECONDITION: hive-metastore-postgresql:5432
+      HADOOP_HEAPSIZE: 512
+      JAVA_TOOL_OPTIONS: -Xms256m -Xmx768m
+    ports:
+      - "9083:9083"
+    depends_on:
+      - hive-metastore-postgresql
+
+  hive-server:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    platform: linux/amd64
+    container_name: uniql-trino-hive-server
+    hostname: hive-server
+    env_file:
+      - ./hadoop-hive.env
+      - ./hadoop.env
+    environment:
+      JAVA_TOOL_OPTIONS: -Xms256m -Xmx1024m
+      HADOOP_HEAPSIZE: 1024
+      HIVE_SITE_CONF_mapreduce_map_memory_mb: "1024"
+      HIVE_SITE_CONF_mapreduce_map_java_opts: -Xmx768m
+      HIVE_SITE_CONF_mapreduce_reduce_memory_mb: "1024"
+      HIVE_SITE_CONF_mapreduce_reduce_java_opts: -Xmx768m
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: jdbc:postgresql://hive-metastore-postgresql/metastore
+      SERVICE_PRECONDITION: hive-metastore:9083
+      HIVE_SITE_CONF_hive_strict_checks_cartesian_product: "false"
+      HIVE_SITE_CONF_hive_mapred_mode: nonstrict
+    ports:
+      - "10000:10000"
+    depends_on:
+      - hive-metastore
+
+  trino:
+    image: trinodb/trino:480
+    container_name: uniql-trino
+    hostname: trino
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: -Xms256m -Xmx1024m -XX:+UseG1GC
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./trino/etc/catalog:/etc/trino/catalog
+    depends_on:
+      - hive-metastore

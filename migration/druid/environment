@@ -1,0 +1,31 @@
+﻿# Druid memory settings
+DRUID_XMX=16g
+DRUID_XMS=16g
+DRUID_MAXDIRECTMEMORYSIZE=16g
+
+druid_generic_useDefaultValueForNull=false
+
+# Metadata storage (must match postgres service in docker-compose.yaml)
+druid_metadata_storage_type=postgresql
+druid_metadata_storage_connector_connectURI=jdbc:postgresql://druid-postgres:5432/druid
+druid_metadata_storage_connector_user=druid
+druid_metadata_storage_connector_password=FoolishPassword
+
+# Zookeeper
+druid_zk_service_host=zookeeper
+druid_zk_paths_base=/druid
+
+# Deep storage
+druid_storage_type=local
+druid_storage_storageDirectory=/opt/shared/segments
+
+# Indexing logs
+druid_indexer_logs_type=file
+druid_indexer_logs_directory=/opt/shared/logs
+
+# Common configurations
+druid_extensions_loadList=["postgresql-metadata-storage","druid-hdfs-storage","druid-kafka-indexing-service","druid-datasketches"]
+
+# Service-specific overrides can be added here if needed
+
+

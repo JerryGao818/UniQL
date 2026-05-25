@@ -1,0 +1,49 @@
+services:
+  fe:
+    image: apache/doris:fe-2.1.11
+    container_name: uniql-doris-fe
+    hostname: doris-fe
+    environment:
+      FE_SERVERS: fe1:172.30.0.2:9010
+      FE_ID: "1"
+    volumes:
+      - ./data/fe/meta:/opt/apache-doris/fe/doris-meta
+      - ./data/fe/log:/opt/apache-doris/fe/log
+    ports:
+      - "8030:8030"
+      - "9010:9010"
+      - "9020:9020"
+      - "9030:9030"
+    networks:
+      doris-net:
+        ipv4_address: 172.30.0.2
+
+  be:
+    image: apache/doris:be-2.1.11
+    container_name: uniql-doris-be
+    hostname: doris-be
+    environment:
+      FE_SERVERS: fe1:172.30.0.2:9010
+      BE_ADDR: 172.30.0.3:9050
+      SKIP_CHECK_ULIMIT: "1"
+    volumes:
+      - ./data/be/storage:/opt/apache-doris/be/storage
+      - ./data/be/log:/opt/apache-doris/be/log
+    depends_on:
+      - fe
+    ports:
+      - "8040:8040"
+      - "8050:8050"
+      - "8060:8060"
+      - "9050:9050"
+      - "9060:9060"
+    networks:
+      doris-net:
+        ipv4_address: 172.30.0.3
+
+networks:
+  doris-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/16

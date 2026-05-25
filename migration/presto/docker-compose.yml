@@ -1,0 +1,98 @@
+services:
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: namenode
+    hostname: namenode
+    volumes:
+      - ./hdfs/namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop.env
+    ports:
+      - "9870:9870"
+      - "9000:9000"
+    security_opt:
+      - apparmor:unconfined
+      - seccomp:unconfined
+
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode
+    volumes:
+      - ./hdfs/datanode:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    ports:
+      - "9864:9864"
+    security_opt:
+      - apparmor:unconfined
+      - seccomp:unconfined
+
+  hive-server:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    container_name: hive-server
+    env_file:
+      - ./hadoop-hive.env
+      - ./hadoop.env
+    environment:
+      JAVA_TOOL_OPTIONS: "-Xmx2048m"
+      HADOOP_HEAPSIZE: 2048
+      HIVE_SITE_CONF_mapreduce_map_memory_mb: "2048"
+      HIVE_SITE_CONF_mapreduce_map_java_opts: "-Xmx1600m"
+      HIVE_SITE_CONF_mapreduce_reduce_memory_mb: "2048"
+      HIVE_SITE_CONF_mapreduce_reduce_java_opts: "-Xmx1600m"
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore-postgresql/metastore"
+      SERVICE_PRECONDITION: "hive-metastore:9083"
+      HIVE_SITE_CONF_hive_strict_checks_cartesian_product: "false"
+      HIVE_SITE_CONF_hive_mapred_mode: "nonstrict"
+    ports:
+      - "10000:10000"
+    depends_on:
+      - hive-metastore
+    security_opt:
+      - apparmor:unconfined
+      - seccomp:unconfined
+
+  hive-metastore:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    container_name: hive-metastore
+    env_file:
+      - ./hadoop-hive.env
+      - ./hadoop.env
+    command: /opt/hive/bin/hive --service metastore
+    environment:
+      SERVICE_PRECONDITION: "hive-metastore-postgresql:5432"
+    ports:
+      - "9083:9083"
+    depends_on:
+      - hive-metastore-postgresql
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+
+  hive-metastore-postgresql:
+    image: postgres:9.6
+    container_name: hive-metastore-postgresql
+    environment:
+      POSTGRES_DB: metastore
+      POSTGRES_USER: hive
+      POSTGRES_PASSWORD: hivepassword
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+
+  presto-coordinator:
+    image: prestodb/presto:latest
+    container_name: presto-coordinator
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./presto-etc/catalog:/opt/presto-server/etc/catalog
+    depends_on:
+      - hive-metastore
+    security_opt:
+      - apparmor:unconfined
+      - seccomp:unconfined

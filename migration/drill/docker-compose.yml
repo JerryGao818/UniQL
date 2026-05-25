@@ -1,0 +1,19 @@
+services:
+  drill:
+    image: apache/drill:1.21.2
+    platform: linux/amd64
+    container_name: uniql-drill
+    hostname: drill
+    restart: unless-stopped
+    entrypoint: ["/bin/sh", "-lc"]
+    command:
+      - |
+        exec tail -f /dev/null | /opt/drill/bin/drill-embedded
+    environment:
+      DRILL_HEAP: 2G
+      DRILL_MAX_DIRECT_MEMORY: 4G
+    ports:
+      - "8047:8047"
+      - "31010:31010"
+    volumes:
+      - ./warehouse:/mnt/bird_warehouse

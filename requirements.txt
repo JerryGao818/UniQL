@@ -1,0 +1,17 @@
+func-timeout
+numpy
+pandas
+sqlglot
+tqdm
+transformers
+vllm
+torch
+pymysql
+psycopg2-binary
+cx-Oracle
+pyhive
+trino
+presto-python-client
+duckdb
+clickhouse-connect
+pyodbc
