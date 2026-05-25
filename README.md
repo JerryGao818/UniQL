@@ -155,6 +155,14 @@ The construction pipeline uses prompt templates in `construction/prompts/` and d
 
 UniQL evaluation requires live database backends for executable accuracy. Some dialects need local Docker services, external database servers, or vendor-specific drivers. The repository includes code and configuration used by the project, but users should adapt connection parameters, credentials, ports, and filesystem paths to their own environments before running migration or evaluation.
 
+## Intended Use and Upstream Artifacts
+
+UniQL is intended for research on text-to-SQL, executable semantic parsing, SQL dialect transfer, and benchmark analysis. The benchmark extends the BIRD development split by preserving the original natural-language questions, evidence, database contents, and SQLite references while adding aligned SQL annotations for additional SQL dialects.
+
+Our use of upstream artifacts is limited to benchmark construction and research evaluation. The derived dialect annotations, schemas, migration scripts, and evaluation code are intended to remain compatible with the original research-oriented access conditions of the upstream data. In particular, derivatives of data obtained for research purposes should be used for research, reproducibility, and non-commercial academic evaluation unless the upstream licenses and access terms explicitly allow broader use.
+
+Users should not treat UniQL as a source of production database content, personally actionable information, or commercial training data without independently verifying that such use is permitted by the upstream datasets and any applicable database, driver, or model licenses. If users redistribute modified versions of UniQL, they should preserve this intended-use notice and document any additional upstream artifacts they incorporate.
+
 ## License
 
 The benchmark artifact contains both source code and benchmark data, which may be subject to different licensing considerations.
