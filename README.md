@@ -155,6 +155,16 @@ The construction pipeline uses prompt templates in `construction/prompts/` and d
 
 UniQL evaluation requires live database backends for executable accuracy. Some dialects need local Docker services, external database servers, or vendor-specific drivers. The repository includes code and configuration used by the project, but users should adapt connection parameters, credentials, ports, and filesystem paths to their own environments before running migration or evaluation.
 
+## License
+
+The benchmark artifact contains both source code and benchmark data, which may be subject to different licensing considerations.
+
+- Code in `inference/`, `evaluation/`, `migration/`, and `construction/` is intended to be released under a permissive open-source license.
+- Benchmark examples, schema metadata, and dialect-specific SQL annotations in `data/` are intended for research use and should be redistributed consistently with the license terms of the underlying BIRD dataset and any other upstream resources.
+- Users are responsible for checking the licenses of external database systems, drivers, model checkpoints, and upstream datasets before redistribution or commercial use.
+
+Before archival release, we recommend adding an explicit repository-level `LICENSE` file and, if needed, separate notices for code and data.
+
 ## Citation
 
 If you use UniQL, please cite the corresponding paper:
