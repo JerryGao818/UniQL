@@ -173,15 +173,4 @@ The benchmark artifact contains both source code and benchmark data, which may b
 
 Before archival release, we recommend adding an explicit repository-level `LICENSE` file and, if needed, separate notices for code and data.
 
-## Citation
 
-If you use UniQL, please cite the corresponding paper:
-
-```bibtex
-@inproceedings{uniql2026,
-  title = {UniQL: Towards Dialect-Universal Benchmarking for Text-to-SQL},
-  author = {Anonymous},
-  booktitle = {Proceedings of EMNLP},
-  year = {2026}
-}
-```
