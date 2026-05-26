@@ -16,6 +16,6 @@ Specific Dialect Rules (Iteratively Refined):
 
 Output Format:
 In your answer, please enclose the translated SQL query in a code block:
-```
+```sql
 -- Your SQL query
 ```
