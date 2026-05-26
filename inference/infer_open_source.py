@@ -227,7 +227,7 @@ if __name__ == '__main__':
     parser.add_argument("--max_input_len", type=int, default=5000, help="reserved input context length")
     parser.add_argument("--max_output_len", type=int, default=25000, help="maximum generation length")
     parser.add_argument("--dry_run", action="store_true", help="validate prompt building and file paths without loading the model")
-    prompt_template_path = project_dir / "template.txt"
+    prompt_template_path = project_dir / "prompts" / "text_to_sql.txt"
     opt = parser.parse_args()
     opt.dialect = normalize_dialect(opt.dialect)
     if opt.model:

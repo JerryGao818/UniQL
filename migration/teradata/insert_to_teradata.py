@@ -213,7 +213,7 @@ def fast_insert(td_cur, td_conn, td_table_name: str, col_names: list, rows: list
                     current = i + len(batch)
                     if current % (total // 10 + 1) == 0 or current == total:
                         pct = current * 100 // total
-                        print(f"[ERROR] {e}")
+                        print("[INFO] Operation status updated.")
 
                 except Exception as e:
                     err_msg = str(e)
@@ -272,7 +272,7 @@ def fast_insert(td_cur, td_conn, td_table_name: str, col_names: list, rows: list
             continue
 
     if saved_errors > 0:
-        print(f"[ERROR] {e}")
+        print("[INFO] Operation status updated.")
 
     return success, failed
 
@@ -300,7 +300,7 @@ def migrate_table(sqlite_cur, td_cur, td_conn, table: str, db_name: str):
                 byte_len = len(cleaned.encode("utf-8", errors="ignore"))
                 max_bytes[i] = max(max_bytes[i], byte_len)
 
-    print(f"[ERROR] {e}")
+    print("[INFO] Operation status updated.")
 
     td_table = safe_name(table)
     col_defs = []
@@ -323,10 +323,10 @@ def migrate_table(sqlite_cur, td_cur, td_conn, table: str, db_name: str):
     sqlite_cur.execute(f'SELECT * FROM "{table}"')
     raw_rows = sqlite_cur.fetchall()
 
-    print(f"[ERROR] {e}")
+    print("[INFO] Operation status updated.")
     rows = [tuple(clean_val(v) for v in row) for row in raw_rows]
 
-    print(f"[ERROR] {e}")
+    print("[INFO] Operation status updated.")
     success, failed = fast_insert(
         td_cur, td_conn, td_table, col_names, rows,
         original_cols=col_names_raw,
@@ -335,7 +335,7 @@ def migrate_table(sqlite_cur, td_cur, td_conn, table: str, db_name: str):
     )
 
     fail_pct = failed / len(rows) * 100 if rows else 0
-    print(f"[ERROR] {e}")
+    print("[INFO] Operation status updated.")
 
     return success, failed
 
@@ -366,7 +366,7 @@ def migrate_database(db_name: str, td_conn):
     sqlite_cur.execute("SELECT name FROM sqlite_master WHERE type='table'")
     tables = [t[0] for t in sqlite_cur.fetchall() if not t[0].startswith("sqlite_")]
 
-    print(f"[ERROR] {e}")
+    print("[INFO] Operation status updated.")
 
     total_success = 0
     total_failed = 0
@@ -378,7 +378,7 @@ def migrate_database(db_name: str, td_conn):
 
     sqlite_conn.close()
 
-    print(f"[ERROR] {e}")
+    print("[INFO] Operation status updated.")
 
     if total_success + total_failed > 0:
         fail_pct = total_failed / (total_success + total_failed) * 100
@@ -391,7 +391,7 @@ def main():
     print("[INFO] Operation status updated.")
     print("=" * 60)
     print(f"Target: {TD_HOST}")
-    print(f"[ERROR] {e}")
+    print("[INFO] Operation status updated.")
     print("[INFO] Operation status updated.")
     print("=" * 60)
 
@@ -408,7 +408,7 @@ def main():
         return
 
     for idx, db in enumerate(DATABASES, 1):
-        print(f"[ERROR] {e}")
+        print("[INFO] Operation status updated.")
         migrate_database(db, conn)
 
     conn.close()

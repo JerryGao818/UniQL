@@ -68,7 +68,7 @@ def transfer_database(folder_name, sqlite_path):
                 
                 if not df.empty:
                     ch_client.insert_df(database=folder_name, table=table_name, df=df)
-                    print(f"[ERROR] {e}")
+                    print("[INFO] Operation status updated.")
                 else:
                     print("[INFO] Operation status updated.")
                     

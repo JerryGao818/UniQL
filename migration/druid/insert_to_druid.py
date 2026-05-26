@@ -26,7 +26,7 @@ def map_sqlite_type_to_druid(sqlite_type):
 
 def wait_for_task(task_id):
     """Migration helper."""
-    print(f"[ERROR] {e}")
+    print("[INFO] Operation status updated.")
     while True:
         try:
             url = DRUID_COORDINATOR_URL.format(task_id=task_id)
@@ -37,7 +37,7 @@ def wait_for_task(task_id):
                 print("[INFO] Operation status updated.")
                 return True
             elif status == 'FAILED':
-                print(f"[ERROR] {e}")
+                print("[INFO] Operation status updated.")
                 return False
             time.sleep(2)
         except Exception as e:
@@ -113,7 +113,7 @@ def ingest_to_druid(datasource, columns_info, rows):
                 os.remove(host_file_path)
             return success
         else:
-            print(f"[ERROR] {e}")
+            print("[INFO] Operation status updated.")
             return False
     except Exception as e:
         print(f"[ERROR] {e}")

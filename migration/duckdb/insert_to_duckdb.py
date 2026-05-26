@@ -5,7 +5,7 @@ import duckdb
 from sqlalchemy import create_engine, MetaData, types
 
 ROOT_DIR = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
-DUCKDB_FILE = "/data1/databases/duck_db/bird_research.duckdb"
+DUCKDB_FILE = os.getenv("UNIQL_DUCKDB_PATH", "<DUCKDB_DATABASE_PATH>")
 
 def map_sqlalchemy_type_to_duckdb(sqla_column):
     t = sqla_column.type
@@ -51,7 +51,7 @@ def transfer_database(con, folder_name, sqlite_path):
                 
                 if not df.empty:
                     con.execute(f"INSERT INTO {full_table_name} SELECT * FROM df")
-                    print(f"[ERROR] {e}")
+                    print("[INFO] Operation status updated.")
                 else:
                     print("Empty")
                     

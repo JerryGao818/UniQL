@@ -8,9 +8,9 @@ from sqlalchemy.exc import OperationalError
 
 ROOT_DIR = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 
-MYSQL_USER = "root"
-MYSQL_PASS = "123456"
-MYSQL_HOST = "localhost"
+MYSQL_USER = os.getenv("UNIQL_MYSQL_USER", "root")
+MYSQL_PASS = os.getenv("UNIQL_MYSQL_PASSWORD", "<MYSQL_PASSWORD>")
+MYSQL_HOST = os.getenv("UNIQL_MYSQL_HOST", "localhost")
 
 def get_mysql_engine_root():
     return create_engine(f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASS}@{MYSQL_HOST}")
@@ -20,7 +20,7 @@ def get_mysql_engine_db(db_name):
         "init_command": "SET SESSION sql_mode='NO_ENGINE_SUBSTITUTION'"
     }
     return create_engine(
-        f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASS}@{MYSQL_HOST}/{db_name}valuecharset=utf8mb4",
+        f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASS}@{MYSQL_HOST}/{db_name}?charset=utf8mb4",
         connect_args=connect_args
     )
 
@@ -112,7 +112,7 @@ def transfer_database(folder_name, sqlite_path):
                     return
 
         for table in metadata.sorted_tables:
-            print(f"[ERROR] {e}")
+            print("[INFO] Operation status updated.")
             try:
                 with sqlite_engine.connect() as sqlite_conn:
                     data_cursor = sqlite_conn.execution_options(stream_results=True).execute(table.select())

@@ -3,10 +3,10 @@ import oracledb
 import os
 from datetime import datetime
 
-ADMIN_USER = "SYSTEM"
-ADMIN_PASS = "123456"
-ORACLE_DSN = "localhost:1521/XE" 
-DEFAULT_USER_PASS = "Bird123456"
+ADMIN_USER = os.getenv("UNIQL_ORACLE_ADMIN_USER", "SYSTEM")
+ADMIN_PASS = os.getenv("UNIQL_ORACLE_ADMIN_PASSWORD", "<ORACLE_ADMIN_PASSWORD>")
+ORACLE_DSN = os.getenv("UNIQL_ORACLE_DSN", "localhost:1521/XE")
+DEFAULT_USER_PASS = os.getenv("UNIQL_ORACLE_USER_PASSWORD", "<ORACLE_PASSWORD>")
 
 # DATABASES = ['superhero', 'codebase_community', 'debit_card_specializing', 'financial']
 DATABASES = ['california_schools', 'card_games', 'european_football_2', 'formula_1', 'student_club', 'thrombosis_prediction', 'toxicology']
@@ -25,7 +25,7 @@ def setup_oracle_user(admin_conn, username):
         cursor.execute('ALTER SESSION SET "_ORACLE_SCRIPT"=true')
         try:
             cursor.execute(f'DROP USER {username} CASCADE')
-            print(f"[ERROR] {e}")
+            print("[INFO] Operation status updated.")
         except oracledb.DatabaseError:
             pass
         cursor.execute(f'CREATE USER {username} IDENTIFIED BY "{DEFAULT_USER_PASS}"')
@@ -123,7 +123,7 @@ def main():
                     max_len = detect_column_max_length(sqlite_cursor, table_name, raw_name)
                     
                     if max_len > 4000:
-                        print(f"[ERROR] {e}")
+                        print("[INFO] Operation status updated.")
                         c_type = 'CLOB'
                     else:
                         c_type = 'VARCHAR2(4000)'

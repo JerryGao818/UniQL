@@ -2,8 +2,8 @@ import sqlite3
 import oracledb
 import os
 
-ORACLE_DSN = "localhost:1521/XE" 
-DEFAULT_USER_PASS = "Bird123456"
+ORACLE_DSN = os.getenv("UNIQL_ORACLE_DSN", "localhost:1521/XE")
+DEFAULT_USER_PASS = os.getenv("UNIQL_ORACLE_USER_PASSWORD", "<ORACLE_PASSWORD>")
 
 BIRD_ROOT = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 DATABASES = ['superhero', 'codebase_community', 'debit_card_specializing', 'financial', 'california_schools', 'card_games', 'european_football_2', 'formula_1', 'student_club', 'thrombosis_prediction', 'toxicology']

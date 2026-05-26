@@ -92,7 +92,7 @@ def check_hive_ready():
         if run_hive_sql("SELECT 1;"):
             print("[INFO] Operation status updated.")
             return True
-        print(f"[ERROR] {e}")
+        print("[INFO] Operation status updated.")
         time.sleep(5)
     return False
 
@@ -104,7 +104,7 @@ def check_presto_ready():
         if run_docker_cmd(cmd, DOCKER_PRESTO):
             print("[INFO] Operation status updated.")
             return True
-        print(f"[ERROR] {e}")
+        print("[INFO] Operation status updated.")
         time.sleep(5)
     return False
 

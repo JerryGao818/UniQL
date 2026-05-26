@@ -113,7 +113,7 @@ def migrate_db(db_name: str):
         sr_cur.execute(f"DROP DATABASE IF EXISTS {safe_db}")
         sr_cur.execute(f"CREATE DATABASE {safe_db}")
         sr_cur.execute(f"USE {safe_db}")
-        print(f"[ERROR] {e}")
+        print("[INFO] Operation status updated.")
     except Exception as e:
         print(f"[ERROR] {e}")
         sqlite_conn.close()
@@ -263,7 +263,7 @@ def migrate_db(db_name: str):
             if (i + BATCH_SIZE) % (BATCH_SIZE * 5) == 0 or i + BATCH_SIZE >= total_rows:
                 print("[INFO] Operation status updated.")
 
-        print(f"[ERROR] {e}")
+        print("[INFO] Operation status updated.")
 
     sqlite_conn.close()
     sr_conn.close()

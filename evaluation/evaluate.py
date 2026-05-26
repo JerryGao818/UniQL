@@ -3,6 +3,7 @@ import sys
 import json
 import argparse
 import sqlite3
+import importlib
 import importlib.util
 import multiprocessing as mp
 import time
@@ -20,14 +21,44 @@ EVAL_PROGRESS_TOTAL = 0
 
 DIALECT_ALIASES = {
     "sqlite": "sqlite",
+    "clickhouse": "clickhouse",
+    "doris": "doris",
+    "drill": "drill",
+    "druid": "druid",
+    "duckdb": "duckdb",
     "mysql": "mysql",
     "oracle": "oracle",
     "postgre": "postgresql",
     "postgresql": "postgresql",
     "hive": "hive",
-    "mssql": "MSSQL",
-    "sqlserver": "MSSQL",
-    "MSSQL": "MSSQL",
+    "mssql": "mssql",
+    "sqlserver": "mssql",
+    "tsql": "mssql",
+    "t-sql": "mssql",
+    "presto": "presto",
+    "spark": "spark",
+    "starrocks": "starrocks",
+    "teradata": "teradata",
+    "trino": "trino",
+}
+
+EVALUATOR_REGISTRY = {
+    "sqlite": ("sqlite_eval", "SQLiteEvaluator"),
+    "clickhouse": ("clickhouse_eval", "ClickHouseEvaluator"),
+    "doris": ("doris_eval", "DorisEvaluator"),
+    "drill": ("drill_eval", "DrillEvaluator"),
+    "druid": ("druid_eval", "DruidEvaluator"),
+    "duckdb": ("duckdb_eval", "DuckDBEvaluator"),
+    "hive": ("hive_eval", "HiveEvaluator"),
+    "mssql": ("mssql_eval", "MSSQLEvaluator"),
+    "mysql": ("mysql_eval", "MySQLEvaluator"),
+    "oracle": ("oracle_eval", "OracleEvaluater"),
+    "postgresql": ("postgre_eval", "PostgreEvaluator"),
+    "presto": ("presto_eval", "PrestoEvaluator"),
+    "spark": ("spark_eval", "SparkEvaluator"),
+    "starrocks": ("starrocks_eval", "StarRocksEvaluator"),
+    "teradata": ("teradata_eval", "TeradataEvaluator"),
+    "trino": ("trino_eval", "TrinoEvaluator"),
 }
 
 
@@ -116,11 +147,21 @@ def normalize_dialect(dialect):
 def validate_runtime(dialect):
     required_modules = {
         "sqlite": [],
+        "clickhouse": ["clickhouse_connect"],
+        "doris": ["pymysql"],
+        "drill": ["requests"],
+        "druid": ["requests"],
+        "duckdb": ["duckdb"],
+        "hive": ["pyhive"],
+        "mssql": ["pymssql"],
         "mysql": ["pymysql"],
         "oracle": ["oracledb"],
         "postgresql": ["psycopg2"],
-        "hive": ["pyhive"],
-        "MSSQL": ["pymssql"],
+        "presto": ["requests"],
+        "spark": [],
+        "starrocks": ["pymysql"],
+        "teradata": ["teradatasql"],
+        "trino": ["requests"],
     }
     missing = [
         module_name for module_name in required_modules[dialect]
@@ -134,50 +175,11 @@ def validate_runtime(dialect):
 
 def execute_sql(predicted_sql, ground_truth, db_path,dialect='sqlite'):
     dialect = normalize_dialect(dialect)
-    if dialect=='sqlite':
-        from sqlite_eval import SQLiteEvaluator
-        res,gt_result,pred_result = SQLiteEvaluator(db_path,ground_truth,predicted_sql).check_result_same()
-    elif dialect=="mysql":
-        from mysql_eval import MySQLEvaluator
-        res,gt_result,pred_result = MySQLEvaluator(db_path,ground_truth,predicted_sql).check_result_same()
-    elif dialect=="oracle":
-        from oracle_eval import OracleEvaluater
-        res,gt_result,pred_result = OracleEvaluater(db_path,ground_truth,predicted_sql).check_result_same()
-    elif dialect=="postgresql":
-        from postgre_eval import PostgreEvaluator
-        res,gt_result,pred_result = PostgreEvaluator(db_path,ground_truth,predicted_sql).check_result_same()
-    elif dialect=="hive":
-        from hive_eval import HiveEvaluator
-        res,gt_result,pred_result = HiveEvaluator(db_path,ground_truth,predicted_sql).check_result_same()
-    elif dialect=="MSSQL":
-        from mssql_eval import MSSQLEvaluator
-        res,gt_result,pred_result = MSSQLEvaluator(db_path,ground_truth,predicted_sql).check_result_same()
+    module_name, class_name = EVALUATOR_REGISTRY[dialect]
+    evaluator_module = importlib.import_module(module_name)
+    evaluator_cls = getattr(evaluator_module, class_name)
+    res, gt_result, pred_result = evaluator_cls(db_path, ground_truth, predicted_sql).check_result_same()
     return res, gt_result,pred_result
-
-# def execute_sql(predicted_sql, ground_truth, db_path,dialect='sqlite'):
-#     start_time = time.time()
-#     conn = sqlite3.connect(db_path)
-#     # Connect to the database
-#     cursor = conn.cursor()
-
-#     # Execute predicted SQL and measure time
-#     pred_start = time.time()
-#     cursor.execute(predicted_sql)
-#     predicted_res = cursor.fetchall()
-#     pred_time = time.time() - pred_start
-
-#     # Execute ground truth SQL and measure time
-#     gt_start = time.time()
-#     cursor.execute(ground_truth)
-#     ground_truth_res = cursor.fetchall()
-#     gt_time = time.time() - gt_start
-
-#     total_time = time.time() - start_time
-#     res = 0
-#     if set(predicted_res) == set(ground_truth_res):
-#         res = 1
-
-#     return res, ground_truth_res,predicted_res
 
 def execute_model(predicted_sql, ground_truth, db_place, idx, meta_time_out,dialect='sqlite'):
     start_timestamp = datetime.now().isoformat()

@@ -3,10 +3,10 @@ import psycopg2
 import os
 
 PG_CONFIG = {
-    "host": "localhost",
-    "port": "5432",
-    "user": "postgres",
-    "password": "123456"
+    "host": os.getenv("UNIQL_POSTGRES_HOST", "localhost"),
+    "port": os.getenv("UNIQL_POSTGRES_PORT", "5432"),
+    "user": os.getenv("UNIQL_POSTGRES_USER", "postgres"),
+    "password": os.getenv("UNIQL_POSTGRES_PASSWORD", "<POSTGRES_PASSWORD>")
 }
 
 BIRD_ROOT = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')

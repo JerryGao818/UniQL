@@ -23,11 +23,9 @@ UniQL-DialectBench/
     schemas/                  # Dialect-specific schema descriptions
   inference/
     infer_open_source.py       # vLLM-based inference for open-weight models
-    infer_open_source_compact.py
-    infer_dinsql_zero_shot.py  # DIN-SQL-style zero-shot prompting baseline
+    prompts/                   # Text-to-SQL prompt template
   evaluation/
     evaluate.py                # Main executable evaluation entry point
-    evaluate_server.py         # Server-side evaluation variant
     *_eval.py                  # Dialect-specific evaluators
   migration/
     clickhouse/
@@ -118,7 +116,7 @@ python inference/infer_open_source.py \
   --dry_run
 ```
 
-The inference scripts preserve `annotation_source` in their prediction outputs so that stratified analysis by construction stage remains possible.
+The inference script preserves `annotation_source` in its prediction outputs so that stratified analysis by construction stage remains possible.
 
 ## Executable Evaluation
 

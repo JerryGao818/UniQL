@@ -96,7 +96,7 @@ def main():
         sqlite_counts = get_sqlite_row_counts(sqlite_file)
 
         if sqlite_counts is None:
-            print(f"[ERROR] {e}")
+            print("[INFO] Operation status updated.")
             continue
 
         spark_db = clean_name(db)

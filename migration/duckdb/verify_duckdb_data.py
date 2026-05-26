@@ -2,7 +2,7 @@ import sqlite3
 import duckdb
 import os
 
-DUCKDB_FILE = "/data1/databases/duck_db/bird_research.duckdb"
+DUCKDB_FILE = os.getenv("UNIQL_DUCKDB_PATH", "<DUCKDB_DATABASE_PATH>")
 
 BIRD_ROOT = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 

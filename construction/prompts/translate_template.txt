@@ -1,0 +1,21 @@
+You are an expert SQL translator. Your task is to convert a {source_dialect} query into an executable {target_dialect} query.
+
+Target {target_dialect} Schema (Reference for Exact Table/Column Names and Types):
+{schema}
+
+Source {source_dialect} SQL:
+{source_sql}
+
+General Translation Rules:
+Schema Fidelity: The provided Schema is the ABSOLUTE TRUTH. Do not invent columns or tables.
+Logic Preservation: Preserve the logic of the source SQL (filters, joins, ordering) as much as possible, adapting syntax to the target dialect.
+Data Types: Be careful with Date/Time and String/Number comparisons.
+
+Specific Dialect Rules (Iteratively Refined):
+{specific_rules}
+
+Output Format:
+In your answer, please enclose the translated SQL query in a code block:
+```
+-- Your SQL query
+```

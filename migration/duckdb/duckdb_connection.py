@@ -2,7 +2,7 @@ import json
 import duckdb
 import os
 
-DUCKDB_PATH = '/data1/databases/duck_db/bird_research.duckdb' 
+DUCKDB_PATH = os.getenv("UNIQL_DUCKDB_PATH", "<DUCKDB_DATABASE_PATH>")
 SCHEMA_OUTPUT_FILE = './duckdb_schema.json'
 
 TARGET_DATABASES = [

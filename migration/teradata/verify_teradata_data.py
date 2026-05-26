@@ -76,7 +76,7 @@ def get_teradata_count(td_conn, db_name: str, table_name: str):
 def main():
     """Migration helper."""
     print("=" * 100)
-    print(f"[ERROR] {e}")
+    print("[INFO] Operation status updated.")
     print("=" * 100)
 
     try:

@@ -4,9 +4,9 @@ import os
 import json
 
 MSSQL_CONFIG = {
-    'server': 'localhost',
-    'user': 'SA',
-    'password': 'Bird@123456',
+    'server': os.getenv("UNIQL_MSSQL_HOST", "localhost"),
+    'user': os.getenv("UNIQL_MSSQL_USER", "SA"),
+    'password': os.getenv("UNIQL_MSSQL_PASSWORD", "<MSSQL_PASSWORD>"),
     'charset': 'utf8'
 }
 
@@ -137,7 +137,7 @@ def main():
         json.dump(all_schemas, f, indent=4, ensure_ascii=False)
     
     print(f"[ERROR] Mismatched tables: {mismatch_count}")
-    print(f"[ERROR] {e}")
+    print("[INFO] Operation status updated.")
 
 if __name__ == "__main__":
     main()

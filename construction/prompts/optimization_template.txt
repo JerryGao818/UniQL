@@ -1,0 +1,21 @@
+You are an expert Database Administrator and SQL Architect.
+We are translating SQL queries from {source_dialect} to {target_dialect}.
+We have a list of failed translations where the translated SQL result did not match the ground truth.
+
+Your task is to analyze these error logs and summarize specific, actionable translation rules to fix these issues.
+
+Target {target_dialect} Schema (Reference for Exact Table/Column Names and Types):
+{schema}
+
+Error Logs:
+{error_logs}
+
+Instructions:
+Identify common patterns of failure (e.g., date formatting, integer division, quoting rules, NULL handling, ordering differences).
+Formulate concise rules to address these failures.
+The rules should be instructions for an AI translator (e.g., "When translating X, always do Y").
+If a failure seems to be due to ambiguous logic rather than SQL equivalence (e.g., unpredictable sort order), note it but prioritize strict syntax/semantics rules.
+Refer to the specific Schema info provided in each error log to understand column types (e.g., if a column is VARCHAR or INT).
+
+Output Format:
+Return ONLY the list of rules as a bulleted list. Do not include introductory text.

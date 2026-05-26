@@ -3,9 +3,9 @@ import pymssql
 import os
 import datetime
 
-MSSQL_HOST = 'localhost'
-MSSQL_USER = 'SA'
-MSSQL_PASS = 'Bird@123456'
+MSSQL_HOST = os.getenv("UNIQL_MSSQL_HOST", "localhost")
+MSSQL_USER = os.getenv("UNIQL_MSSQL_USER", "SA")
+MSSQL_PASS = os.getenv("UNIQL_MSSQL_PASSWORD", "<MSSQL_PASSWORD>")
 
 BIRD_ROOT = os.getenv('UNIQL_BIRD_DB_ROOT', '<BIRD_DEV_DATABASES>')
 DATABASES = ['california_schools', 'card_games', 'european_football_2', 'formula_1', 'student_club', 'thrombosis_prediction', 'toxicology', 'superhero', 'codebase_community', 'debit_card_specializing', 'financial']
@@ -67,7 +67,7 @@ def main():
     if only_dbs_raw:
         wanted = {name.strip() for name in only_dbs_raw.split(",") if name.strip()}
         target_dbs = [db for db in DATABASES if db in wanted]
-        print(f"[ERROR] {e}")
+        print("[INFO] Operation status updated.")
 
     try:
         master_conn = get_mssql_conn(autocommit=True)

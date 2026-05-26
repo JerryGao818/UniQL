@@ -3,9 +3,9 @@ import pymysql
 import os
 
 MYSQL_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "123456",
+    "host": os.getenv("UNIQL_MYSQL_HOST", "localhost"),
+    "user": os.getenv("UNIQL_MYSQL_USER", "root"),
+    "password": os.getenv("UNIQL_MYSQL_PASSWORD", "<MYSQL_PASSWORD>"),
     "charset": "utf8mb4",
     "cursorclass": pymysql.cursors.Cursor
 }
