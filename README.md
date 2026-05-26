@@ -118,6 +118,8 @@ python inference/infer_open_source.py \
 
 The inference script preserves `annotation_source` in its prediction outputs so that stratified analysis by construction stage remains possible.
 
+In our reference setup with 8 NVIDIA A100 40GB GPUs, inference with the largest open-weight model we used, Llama3-70B-Instruct, takes approximately 10 minutes for the 1,534 examples in one dialect split.
+
 ## Executable Evaluation
 
 The main evaluator compares predicted SQL against the dialect-specific reference SQL by executing both queries and comparing their outputs under the UniQL protocol. The protocol is stricter than unordered set comparison: it preserves ordering when order is semantically required and treats duplicate multiplicities conservatively.
