@@ -171,6 +171,6 @@ The benchmark artifact contains both source code and benchmark data, which may b
 - Benchmark examples, schema metadata, and dialect-specific SQL annotations in `data/` are intended for research use and should be redistributed consistently with the license terms of the underlying BIRD dataset and any other upstream resources.
 - Users are responsible for checking the licenses of external database systems, drivers, model checkpoints, and upstream datasets before redistribution or commercial use.
 
-Before archival release, we recommend adding an explicit repository-level `LICENSE` file and, if needed, separate notices for code and data.
+
 
 
