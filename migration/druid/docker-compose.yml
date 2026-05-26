@@ -37,7 +37,7 @@ services:
     volumes:
       - metadata_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=FoolishPassword
+      - POSTGRES_PASSWORD=<DRUID_METADATA_PASSWORD>
       - POSTGRES_USER=druid
       - POSTGRES_DB=druid
 

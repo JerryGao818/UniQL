@@ -33,7 +33,7 @@ DATABASES = [
 
 TD_HOST = "192.168.92.130"
 TD_USER = "dbc"
-TD_PASSWORD = "dbc"
+TD_PASSWORD = os.getenv("UNIQL_TERADATA_PASSWORD", "<TERADATA_PASSWORD>")
 
 # ===========================================
 

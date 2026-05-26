@@ -15,7 +15,7 @@ class TeradataEvaluator:
         self.teradata_pred = teradata_pred
         self.host = "192.168.92.130"
         self.user = "dbc"
-        self.password = "dbc"
+        self.password = os.getenv("UNIQL_TERADATA_PASSWORD", "<TERADATA_PASSWORD>")
 
     def normalize_row(self, row):
         new_row = []
