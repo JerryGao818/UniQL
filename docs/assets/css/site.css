@@ -219,11 +219,24 @@ pre {
 }
 
 .table-wrap {
+  position: relative;
   overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel);
   box-shadow: var(--shadow);
+}
+
+.table-wrap::after {
+  content: "Scroll horizontally for all dialects";
+  position: sticky;
+  left: 0;
+  display: block;
+  padding: 8px 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  background: #fbfcfe;
+  font-size: 12px;
 }
 
 table {
@@ -234,7 +247,7 @@ table {
 
 th,
 td {
-  padding: 12px 14px;
+  padding: 10px 12px;
   border-bottom: 1px solid var(--line);
   text-align: right;
   white-space: nowrap;
@@ -242,7 +255,18 @@ td {
 
 th:first-child,
 td:first-child {
+  width: 58px;
+  text-align: center;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  position: sticky;
+  left: 0;
+  z-index: 2;
   text-align: left;
+  background: inherit;
+  min-width: 210px;
 }
 
 thead th {
@@ -250,7 +274,46 @@ thead th {
   font-size: 13px;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 3;
+}
+
+thead th:nth-child(2) {
+  z-index: 4;
+}
+
+tbody tr {
+  background: var(--panel);
+}
+
+tbody tr:hover {
+  background: #f8fbfc;
+}
+
+.rank-1 {
+  background: #fff7df;
+}
+
+.rank-2 {
+  background: #f4f7fb;
+}
+
+.rank-3 {
+  background: #fff1e8;
+}
+
+.rank-cell {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.avg-cell {
+  color: var(--brand-strong);
+  font-weight: 900;
+  background: rgba(23, 107, 135, 0.08);
+}
+
+.avg-head {
+  color: var(--brand-strong);
 }
 
 .leaderboard-title {

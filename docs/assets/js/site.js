@@ -69,24 +69,30 @@ async function renderLeaderboard(tableId, csvPath) {
 
     tableHead.innerHTML = "";
     const headRow = document.createElement("tr");
-    for (const header of headers) {
+    for (const header of ["Rank", ...headers]) {
       const th = document.createElement("th");
       th.textContent = header;
+      if (header === "Avg.") th.classList.add("avg-head");
+      if (header === "Rank") th.classList.add("rank-head");
       headRow.appendChild(th);
     }
     tableHead.appendChild(headRow);
 
     tableBody.innerHTML = "";
-    for (const row of selected) {
+    selected.forEach((row, rank) => {
       const tr = document.createElement("tr");
-      headers.forEach((header, index) => {
-        const value = row[header] || "--";
-        const cell = document.createElement(index === 0 ? "th" : "td");
+      if (rank < 3) tr.classList.add(`rank-${rank + 1}`);
+      const rowHeaders = ["Rank", ...headers];
+      rowHeaders.forEach((header, index) => {
+        const value = header === "Rank" ? String(rank + 1) : row[header] || "--";
+        const cell = document.createElement(index === 1 ? "th" : "td");
+        if (header === "Avg.") cell.classList.add("avg-cell");
+        if (header === "Rank") cell.classList.add("rank-cell");
         cell.textContent = value || "--";
         tr.appendChild(cell);
       });
       tableBody.appendChild(tr);
-    }
+    });
   } catch (error) {
     tableBody.innerHTML = `<tr><td>Could not load leaderboard data.</td></tr>`;
   }
