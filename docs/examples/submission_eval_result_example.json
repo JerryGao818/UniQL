@@ -7,7 +7,6 @@
     "error": null,
     "predicted_sql": "SELECT ...",
     "ground_truth_sql": "SELECT ...",
-    "db_path": ".../california_schools/california_schools.sqlite",
     "dialect": "mysql",
     "pred_result": [[1.0]],
     "gt_result": [[1.0]]
@@ -20,7 +19,6 @@
     "error": "predicted: mysql Error: ...",
     "predicted_sql": "SELECT ...",
     "ground_truth_sql": "SELECT ...",
-    "db_path": ".../california_schools/california_schools.sqlite",
     "dialect": "mysql",
     "pred_result": [],
     "gt_result": []
