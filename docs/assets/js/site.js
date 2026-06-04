@@ -3,7 +3,7 @@ async function loadLeaderboard() {
   if (!tableBody) return;
 
   try {
-    const response = await fetch("assets/data/hard_256_baseline_results.csv");
+    const response = await fetch("assets/data/clean_256_baseline_results.csv");
     const text = await response.text();
     const rows = parseCsv(text);
     const selected = rows

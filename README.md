@@ -23,7 +23,7 @@ UniQL-DialectBench/
     queries/                  # SQLite source queries and constructed target-dialect task files
     schemas/                  # Dialect-specific schema descriptions
     subsets/
-      hard_256/               # Hard 256-question evaluation subset
+      clean_256/               # Clean 256-question evaluation subset
   inference/
     infer_open_source.py       # vLLM-based inference for open-weight models
     prompts/                   # Text-to-SQL prompt template
@@ -109,9 +109,9 @@ UniQL currently provides two leaderboard tracks:
 | Track | Files | Description |
 |---|---|---|
 | `UniQL-1534` | `data/queries/*.json` | The full aligned benchmark over 1,534 BIRD development questions. |
-| `UniQL-Hard-256` | `data/subsets/hard_256/queries/*.json` | A harder 256-question subset formed by removing 37 high-agreement easy questions from the original-clean subset. |
+| `UniQL-Clean-256` | `data/subsets/clean_256/queries/*.json` | A 256-question clean-annotation subset selected to mitigate known annotation noise in the original BIRD development data. |
 
-`data/subsets/hard_256/question_ids.txt` lists the retained original BIRD question identifiers.
+`data/subsets/clean_256/question_ids.txt` lists the selected original BIRD question identifiers.
 
 ## Installation
 

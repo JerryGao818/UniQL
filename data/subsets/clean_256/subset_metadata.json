@@ -1,0 +1,26 @@
+{
+  "name": "UniQL-Clean-256",
+  "description": "A 256-question clean evaluation subset selected to mitigate known annotation noise in the original BIRD development annotations.",
+  "parent_subset": "BIRD development questions reviewed through publicly released correction metadata",
+  "selection_rule": "We use publicly released BIRD Mini-Dev correction metadata and existing UniQL evaluation traces to select 256 examples whose original annotations are suitable for clean-subset reporting.",
+  "question_count": 256,
+  "question_id_file": "question_ids.txt",
+  "dialects": [
+    "clickhouse",
+    "doris",
+    "drill",
+    "druid",
+    "duckdb",
+    "hive",
+    "mssql",
+    "mysql",
+    "oracle",
+    "postgresql",
+    "presto",
+    "spark",
+    "sqlite",
+    "starrocks",
+    "teradata",
+    "trino"
+  ]
+}

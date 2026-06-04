@@ -18,7 +18,7 @@ body:
       label: Evaluation track
       options:
         - UniQL-1534
-        - UniQL-Hard-256
+        - UniQL-Clean-256
         - Both
     validations:
       required: true

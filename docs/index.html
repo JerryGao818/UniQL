@@ -42,7 +42,7 @@
           <div><strong>16</strong><span>SQL dialects</span></div>
           <div><strong>1,534</strong><span>aligned questions</span></div>
           <div><strong>24,544</strong><span>dialect SQL annotations</span></div>
-          <div><strong>256</strong><span>hard subset questions</span></div>
+          <div><strong>256</strong><span>clean subset questions</span></div>
         </div>
       </section>
     </header>
@@ -79,11 +79,11 @@
       <section id="leaderboard" class="section">
         <div class="section-heading">
           <p class="eyebrow">Leaderboard</p>
-          <h2>Reference results on UniQL-Hard-256</h2>
+          <h2>Reference results on UniQL-Clean-256</h2>
         </div>
         <p class="muted">
-          These scores are recomputed from saved evaluation traces on the hard 256-question subset. The public
-          leaderboard can include both UniQL-1534 and UniQL-Hard-256 tracks.
+          These scores are recomputed from saved evaluation traces on the clean 256-question subset. The public
+          leaderboard includes both the full UniQL-1534 track and the UniQL-Clean-256 track.
         </p>
         <div class="table-wrap">
           <table id="leaderboard-table">
@@ -117,9 +117,9 @@
             <a href="#" data-repo-path="data/queries">data/queries/</a>
           </article>
           <article class="card">
-            <h3>UniQL-Hard-256</h3>
-            <p>A harder clean subset formed by removing 37 high-agreement easy questions from the original-clean set.</p>
-            <a href="#" data-repo-path="data/subsets/hard_256">data/subsets/hard_256/</a>
+            <h3>UniQL-Clean-256</h3>
+            <p>A clean-annotation subset selected in response to known annotation issues in the original BIRD data.</p>
+            <a href="#" data-repo-path="data/subsets/clean_256">data/subsets/clean_256/</a>
           </article>
           <article class="card">
             <h3>Schemas</h3>
@@ -150,7 +150,7 @@
           <div class="info-panel">
             <h3>Tracks</h3>
             <p><strong>UniQL-1534:</strong> full 1,534-question benchmark.</p>
-            <p><strong>UniQL-Hard-256:</strong> hard subset using <code>data/subsets/hard_256/question_ids.txt</code>.</p>
+            <p><strong>UniQL-Clean-256:</strong> clean-annotation subset using <code>data/subsets/clean_256/question_ids.txt</code>.</p>
             <a class="button primary" href="https://github.com/" id="issue-link">Open Submission Issue</a>
           </div>
         </div>
