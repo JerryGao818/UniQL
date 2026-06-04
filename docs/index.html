@@ -13,10 +13,10 @@
   <body>
     <header class="site-header">
       <nav class="nav">
-        <a class="brand" href="#top" aria-label="UniQL home">
-          <img src="assets/img/logo.png" alt="" onerror="this.remove(); document.querySelector('.brand-text').classList.add('show')" />
+        <div class="brand" aria-label="UniQL">
+          <img src="assets/img/logo.png" alt="UniQL logo" />
           <span class="brand-text">UniQL</span>
-        </a>
+        </div>
         <div class="nav-links">
           <a href="#task">Task</a>
           <a href="#leaderboard">Leaderboard</a>
@@ -79,27 +79,28 @@
       <section id="leaderboard" class="section">
         <div class="section-heading">
           <p class="eyebrow">Leaderboard</p>
-          <h2>Reference results on UniQL-Clean-256</h2>
+          <h2>Reference results</h2>
         </div>
         <p class="muted">
-          These scores are recomputed from saved evaluation traces on the clean 256-question subset. The public
-          leaderboard includes both the full UniQL-1534 track and the UniQL-Clean-256 track.
+          The main leaderboard is UniQL-1534, the full 1,534-question aligned benchmark. UniQL-Clean-256 is provided as
+          a supplementary clean-annotation track because prior work has reported annotation noise in the original BIRD
+          benchmark.
+        </p>
+        <h3 class="leaderboard-title">UniQL-1534</h3>
+        <div class="table-wrap">
+          <table id="leaderboard-full">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <h3 class="leaderboard-title secondary">UniQL-Clean-256</h3>
+        <p class="muted">
+          The 256-question subset is selected using publicly released correction metadata and UniQL evaluation artifacts
+          to support reporting on cleaner original annotations.
         </p>
         <div class="table-wrap">
-          <table id="leaderboard-table">
-            <thead>
-              <tr>
-                <th>Model</th>
-                <th>Avg.</th>
-                <th>SQLite</th>
-                <th>MySQL</th>
-                <th>PostgreSQL</th>
-                <th>Oracle</th>
-                <th>Hive</th>
-                <th>Trino</th>
-                <th>Teradata</th>
-              </tr>
-            </thead>
+          <table id="leaderboard-clean">
+            <thead></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -127,6 +128,28 @@
             <a href="#" data-repo-path="data/schemas">data/schemas/</a>
           </article>
         </div>
+      </section>
+
+      <section id="notes" class="section compact">
+        <div class="section-heading">
+          <p class="eyebrow">Annotation Noise</p>
+          <h2>Why include a clean-annotation track?</h2>
+        </div>
+        <p>
+          UniQL keeps the full BIRD development split as the primary track. At the same time, several recent studies
+          have documented annotation noise in BIRD-style text-to-SQL data. We therefore also provide UniQL-Clean-256,
+          a supplementary subset selected to support evaluation on cleaner original annotations.
+        </p>
+        <ul class="refs">
+          <li>
+            Y. Zhu, T. Jin, Y. Choi, et al. <em>ReViSQL: Achieving Human-Level Text-to-SQL</em>. arXiv preprint
+            arXiv:2603.20004, 2026.
+          </li>
+          <li>
+            N. Wretblad, F. Riseby, R. Biswas, et al. <em>Understanding the Effects of Noise in Text-to-SQL: An
+            Examination of the BIRD-Bench Benchmark</em>. ACL 2024 Short Papers, pp. 356-369.
+          </li>
+        </ul>
       </section>
 
       <section id="submit" class="section">

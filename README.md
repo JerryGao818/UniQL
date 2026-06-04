@@ -109,7 +109,7 @@ UniQL currently provides two leaderboard tracks:
 | Track | Files | Description |
 |---|---|---|
 | `UniQL-1534` | `data/queries/*.json` | The full aligned benchmark over 1,534 BIRD development questions. |
-| `UniQL-Clean-256` | `data/subsets/clean_256/queries/*.json` | A 256-question clean-annotation subset selected to mitigate known annotation noise in the original BIRD development data. |
+| `UniQL-Clean-256` | `data/subsets/clean_256/queries/*.json` | A supplementary 256-question clean-annotation subset selected to mitigate known annotation noise in the original BIRD development data. |
 
 `data/subsets/clean_256/question_ids.txt` lists the selected original BIRD question identifiers.
 
