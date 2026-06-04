@@ -60,19 +60,10 @@ pre {
   flex: 0 0 auto;
 }
 
-.brand img {
-  width: 156px;
-  height: 156px;
-  object-fit: contain;
-}
-
 .brand-text {
-  display: none;
-  font-size: 20px;
-}
-
-.brand-text.show {
   display: inline;
+  font-size: 22px;
+  letter-spacing: 0;
 }
 
 .nav-links {
@@ -85,16 +76,25 @@ pre {
 .hero {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 64px 24px 72px;
+  padding: 34px 24px 64px;
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
-  gap: 42px;
-  align-items: end;
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+  gap: 34px;
+  align-items: center;
+}
+
+.hero-logo {
+  display: block;
+  width: min(360px, 58vw);
+  max-height: 210px;
+  object-fit: contain;
+  object-position: left center;
+  margin: 0 0 18px;
 }
 
 .hero h1 {
   margin: 0;
-  font-size: 58px;
+  font-size: 54px;
   line-height: 1.02;
   letter-spacing: 0;
 }
@@ -144,6 +144,7 @@ pre {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  align-self: center;
 }
 
 .hero-stats div,
