@@ -1,0 +1,26 @@
+{
+  "name": "UniQL-Hard-256",
+  "description": "A harder 256-question subset of the original-clean BIRD Mini-Dev subset. It removes the 37 questions with the highest aggregate correctness across saved UniQL model-dialect traces.",
+  "parent_subset": "original-clean BIRD Mini-Dev subset (293 questions)",
+  "selection_rule": "Retain the 256 questions left after removing the 37 highest aggregate-correctness question_ids across all saved model x dialect evaluation traces.",
+  "question_count": 256,
+  "question_id_file": "question_ids.txt",
+  "dialects": [
+    "clickhouse",
+    "doris",
+    "drill",
+    "druid",
+    "duckdb",
+    "hive",
+    "mssql",
+    "mysql",
+    "oracle",
+    "postgresql",
+    "presto",
+    "spark",
+    "sqlite",
+    "starrocks",
+    "teradata",
+    "trino"
+  ]
+}

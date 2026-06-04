@@ -1,0 +1,28 @@
+[
+  {
+    "sql_idx": 0,
+    "res": true,
+    "start_timestamp": "2026-06-04T12:00:00",
+    "timeout": false,
+    "error": null,
+    "predicted_sql": "SELECT ...",
+    "ground_truth_sql": "SELECT ...",
+    "db_path": ".../california_schools/california_schools.sqlite",
+    "dialect": "mysql",
+    "pred_result": [[1.0]],
+    "gt_result": [[1.0]]
+  },
+  {
+    "sql_idx": 1,
+    "res": false,
+    "start_timestamp": "2026-06-04T12:00:02",
+    "timeout": false,
+    "error": "predicted: mysql Error: ...",
+    "predicted_sql": "SELECT ...",
+    "ground_truth_sql": "SELECT ...",
+    "db_path": ".../california_schools/california_schools.sqlite",
+    "dialect": "mysql",
+    "pred_result": [],
+    "gt_result": []
+  }
+]

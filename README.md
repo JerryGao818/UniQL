@@ -18,9 +18,12 @@ Supported dialects:
 
 ```text
 UniQL-DialectBench/
+  docs/                      # GitHub Pages leaderboard website
   data/
     queries/                  # SQLite source queries and constructed target-dialect task files
     schemas/                  # Dialect-specific schema descriptions
+    subsets/
+      hard_256/               # Hard 256-question evaluation subset
   inference/
     infer_open_source.py       # vLLM-based inference for open-weight models
     prompts/                   # Text-to-SQL prompt template
@@ -54,6 +57,27 @@ UniQL-DialectBench/
     rules/
 ```
 
+## Leaderboard Website
+
+This repository includes a static GitHub Pages site under `docs/`. The site introduces the task, lists the two
+evaluation tracks, documents the submission format, and provides a leaderboard submission template.
+
+To publish it on GitHub Pages, push the repository to GitHub, then enable Pages from:
+
+```text
+Settings -> Pages -> Build and deployment -> Deploy from a branch
+Branch: main
+Folder: /docs
+```
+
+Place the project logo at:
+
+```text
+docs/assets/img/logo.png
+```
+
+The page will use that file automatically.
+
 ## Data Format
 
 Each file under `data/queries/` is a list of examples for one SQL dialect. The important fields are:
@@ -77,6 +101,17 @@ For constructed target dialects, `annotation_source` can take:
 | `LLM-retry` | Produced after bounded self-reflection with execution feedback. |
 | `LLM-rule` | Produced after iterative rule evolution/refinement. |
 | `human` | Human validated or human rewritten. |
+
+## Evaluation Tracks
+
+UniQL currently provides two leaderboard tracks:
+
+| Track | Files | Description |
+|---|---|---|
+| `UniQL-1534` | `data/queries/*.json` | The full aligned benchmark over 1,534 BIRD development questions. |
+| `UniQL-Hard-256` | `data/subsets/hard_256/queries/*.json` | A harder 256-question subset formed by removing 37 high-agreement easy questions from the original-clean subset. |
+
+`data/subsets/hard_256/question_ids.txt` lists the retained original BIRD question identifiers.
 
 ## Installation
 

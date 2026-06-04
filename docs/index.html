@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UniQL Leaderboard</title>
+    <meta
+      name="description"
+      content="UniQL is a cross-dialect text-to-SQL benchmark with aligned executable SQL annotations across 16 SQL dialects."
+    />
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand" href="#top" aria-label="UniQL home">
+          <img src="assets/img/logo.png" alt="" onerror="this.remove(); document.querySelector('.brand-text').classList.add('show')" />
+          <span class="brand-text">UniQL</span>
+        </a>
+        <div class="nav-links">
+          <a href="#task">Task</a>
+          <a href="#leaderboard">Leaderboard</a>
+          <a href="#data">Data</a>
+          <a href="#submit">Submit</a>
+          <a href="#format">Format</a>
+        </div>
+      </nav>
+      <section id="top" class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Cross-dialect Text-to-SQL Evaluation</p>
+          <h1>UniQL Leaderboard</h1>
+          <p>
+            UniQL evaluates whether language models can generate executable, dialect-specific SQL for the same
+            natural-language intents across 16 SQL engines.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#submit">Submit Results</a>
+            <a class="button" href="#data">Download Data</a>
+          </div>
+        </div>
+        <div class="hero-stats" aria-label="Benchmark statistics">
+          <div><strong>16</strong><span>SQL dialects</span></div>
+          <div><strong>1,534</strong><span>aligned questions</span></div>
+          <div><strong>24,544</strong><span>dialect SQL annotations</span></div>
+          <div><strong>256</strong><span>hard subset questions</span></div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section id="task" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Task</p>
+          <h2>One intent, many SQL dialects</h2>
+        </div>
+        <div class="grid two">
+          <div>
+            <p>
+              Most text-to-SQL benchmarks evaluate SQLite only. UniQL keeps questions, schemas, and database contents
+              aligned while expanding each example to ClickHouse, Doris, Drill, Druid, DuckDB, Hive, MySQL, Oracle,
+              PostgreSQL, Presto, Spark, SQLite, StarRocks, Teradata, Trino, and T-SQL.
+            </p>
+            <p>
+              Models receive the target dialect, schema, natural-language question, and optional evidence. They must
+              output one executable SQL query for the requested engine.
+            </p>
+          </div>
+          <div class="info-panel">
+            <h3>Metric</h3>
+            <p>
+              We report execution accuracy. Predicted and reference SQL are executed on the same target database and
+              compared under the UniQL protocol, preserving order when semantically required and duplicate
+              multiplicities for unordered outputs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="leaderboard" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Leaderboard</p>
+          <h2>Reference results on UniQL-Hard-256</h2>
+        </div>
+        <p class="muted">
+          These scores are recomputed from saved evaluation traces on the hard 256-question subset. The public
+          leaderboard can include both UniQL-1534 and UniQL-Hard-256 tracks.
+        </p>
+        <div class="table-wrap">
+          <table id="leaderboard-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Avg.</th>
+                <th>SQLite</th>
+                <th>MySQL</th>
+                <th>PostgreSQL</th>
+                <th>Oracle</th>
+                <th>Hive</th>
+                <th>Trino</th>
+                <th>Teradata</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="data" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Data</p>
+          <h2>Two evaluation tracks</h2>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>UniQL-1534</h3>
+            <p>The standard aligned benchmark over the full 1,534-question BIRD development split.</p>
+            <a href="#" data-repo-path="data/queries">data/queries/</a>
+          </article>
+          <article class="card">
+            <h3>UniQL-Hard-256</h3>
+            <p>A harder clean subset formed by removing 37 high-agreement easy questions from the original-clean set.</p>
+            <a href="#" data-repo-path="data/subsets/hard_256">data/subsets/hard_256/</a>
+          </article>
+          <article class="card">
+            <h3>Schemas</h3>
+            <p>Dialect-specific schema descriptions used for prompt construction and model inference.</p>
+            <a href="#" data-repo-path="data/schemas">data/schemas/</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="submit" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Submit</p>
+          <h2>Leaderboard submission package</h2>
+        </div>
+        <div class="grid two">
+          <div>
+            <ol class="steps">
+              <li>Run inference for each dialect using the UniQL prompt and data files.</li>
+              <li>Run <code>evaluation/evaluate.py</code> to produce one evaluation-result JSON per dialect.</li>
+              <li>Package your files in a zip with <code>metadata.json</code> and the result JSON files.</li>
+              <li>Open a GitHub issue using the leaderboard submission template and attach or link the package.</li>
+            </ol>
+            <p class="muted">
+              The maintainers recompute aggregate, difficulty, and construction-source metrics from the submitted JSON
+              files before updating the leaderboard.
+            </p>
+          </div>
+          <div class="info-panel">
+            <h3>Tracks</h3>
+            <p><strong>UniQL-1534:</strong> full 1,534-question benchmark.</p>
+            <p><strong>UniQL-Hard-256:</strong> hard subset using <code>data/subsets/hard_256/question_ids.txt</code>.</p>
+            <a class="button primary" href="https://github.com/" id="issue-link">Open Submission Issue</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="format" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Format</p>
+          <h2>Evaluation-result JSON</h2>
+        </div>
+        <p>
+          Submit the JSON files produced by <code>evaluation/evaluate.py</code>. Each file is a JSON array. The required
+          fields for leaderboard aggregation are <code>sql_idx</code> or <code>question_id</code>, and <code>res</code>.
+          We recommend preserving the full evaluator output for auditability.
+        </p>
+        <pre><code>[
+  {
+    "sql_idx": 0,
+    "res": true,
+    "timeout": false,
+    "error": null,
+    "predicted_sql": "SELECT ...",
+    "ground_truth_sql": "SELECT ...",
+    "db_path": ".../california_schools.sqlite",
+    "dialect": "mysql"
+  }
+]</code></pre>
+
+        <div class="validator">
+          <h3>Local format check</h3>
+          <p class="muted">This browser-side checker does not upload your file. It only verifies the basic JSON shape.</p>
+          <input type="file" id="json-file" accept="application/json,.json" />
+          <output id="validator-output">Choose an evaluation JSON file.</output>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>UniQL DialectBench</span>
+      <span>Research use only. See repository README for data and licensing notes.</span>
+    </footer>
+
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>

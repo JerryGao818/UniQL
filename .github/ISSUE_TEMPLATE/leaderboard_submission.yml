@@ -1,0 +1,49 @@
+name: Leaderboard submission
+description: Submit UniQL evaluation-result JSON files for leaderboard review.
+title: "[Leaderboard] <model name> on <track>"
+labels:
+  - leaderboard
+body:
+  - type: input
+    id: model
+    attributes:
+      label: Model name
+      description: Public model name to display on the leaderboard.
+      placeholder: ExampleSQL-7B
+    validations:
+      required: true
+  - type: dropdown
+    id: track
+    attributes:
+      label: Evaluation track
+      options:
+        - UniQL-1534
+        - UniQL-Hard-256
+        - Both
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Inference setup
+      description: Include decoding settings, prompt changes, model checkpoint, and whether any task-specific training was used.
+      placeholder: Temperature 0, single generation, no task-specific training.
+    validations:
+      required: true
+  - type: textarea
+    id: results
+    attributes:
+      label: Result files
+      description: Link to a zip/archive containing metadata.json and one evaluation-result JSON per submitted dialect.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: The submitted JSON files are produced by UniQL evaluation or preserve the same per-example result format.
+          required: true
+        - label: I agree that maintainers may recompute aggregate metrics before posting the result.
+          required: true

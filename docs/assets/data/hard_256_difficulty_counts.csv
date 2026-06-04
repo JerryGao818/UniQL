@@ -1,0 +1,17 @@
+Dialect,simple,moderate,challenging,total
+ClickHouse,74,127,55,256
+Doris,74,127,55,256
+Drill,74,127,55,256
+Druid,74,127,55,256
+DuckDB,74,127,55,256
+Hive,74,127,55,256
+MySQL,74,127,55,256
+Oracle,74,127,55,256
+PostgreSQL,74,127,55,256
+Presto,74,127,55,256
+Spark,74,127,55,256
+SQLite,74,127,55,256
+StarRocks,74,127,55,256
+T-SQL,74,127,55,256
+Teradata,74,127,55,256
+Trino,74,127,55,256
