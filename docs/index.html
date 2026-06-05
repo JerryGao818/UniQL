@@ -11,185 +11,170 @@
     <link rel="stylesheet" href="assets/css/site.css" />
   </head>
   <body>
-    <header class="site-header">
-      <nav class="nav">
-        <div class="brand" aria-label="UniQL">
-          <span class="brand-text">UniQL</span>
-        </div>
-        <div class="nav-links">
-          <a href="#task">Task</a>
-          <a href="#leaderboard">Leaderboard</a>
-          <a href="#data">Data</a>
-          <a href="#submit">Submit</a>
-          <a href="#format">Format</a>
-        </div>
-      </nav>
-      <section id="top" class="hero">
-        <div class="hero-copy">
-          <img class="hero-logo" src="assets/img/logo.png" alt="UniQL logo" />
-          <p class="eyebrow">Cross-dialect Text-to-SQL Evaluation</p>
-          <h1>UniQL Leaderboard</h1>
-          <p>
-            UniQL evaluates whether language models can generate executable, dialect-specific SQL for the same
-            natural-language intents across 16 SQL engines.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#submit">Submit Results</a>
-            <a class="button" href="#data">Download Data</a>
+    <header class="masthead" id="header-color">
+      <div class="top-logo-bar">
+        <span>UniQL</span>
+        <span>DialectBench</span>
+        <span>Text-to-SQL</span>
+      </div>
+      <div class="container">
+        <div class="site-heading flex-box">
+          <div class="logo-column">
+            <img id="logo-img" src="assets/img/logo.png" alt="UniQL logo" />
+          </div>
+          <div class="title-column">
+            <h1 id="bird-title">UniQL</h1>
+            <span class="subheading" id="caption">A Benchmark for Cross-Dialect Text-to-SQL Evaluation</span>
           </div>
         </div>
-        <div class="hero-stats" aria-label="Benchmark statistics">
-          <div><strong>16</strong><span>SQL dialects</span></div>
-          <div><strong>1,534</strong><span>aligned questions</span></div>
-          <div><strong>24,544</strong><span>dialect SQL annotations</span></div>
-          <div><strong>256</strong><span>clean subset questions</span></div>
-        </div>
-      </section>
+      </div>
     </header>
 
-    <main>
-      <section id="task" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Task</p>
-          <h2>One intent, many SQL dialects</h2>
-        </div>
-        <div class="grid two">
-          <div>
-            <p>
-              Most text-to-SQL benchmarks evaluate SQLite only. UniQL keeps questions, schemas, and database contents
-              aligned while expanding each example to ClickHouse, Doris, Drill, Druid, DuckDB, Hive, MySQL, Oracle,
-              PostgreSQL, Presto, Spark, SQLite, StarRocks, Teradata, Trino, and T-SQL.
-            </p>
-            <p>
-              Models receive the target dialect, schema, natural-language question, and optional evidence. They must
-              output one executable SQL query for the requested engine.
-            </p>
-          </div>
-          <div class="info-panel">
-            <h3>Metric</h3>
-            <p>
-              We report execution accuracy. Predicted and reference SQL are executed on the same target database and
-              compared under the UniQL protocol, preserving order when semantically required and duplicate
-              multiplicities for unordered outputs.
-            </p>
-          </div>
-        </div>
-      </section>
+    <main class="container" id="main">
+      <div class="row">
+        <div class="col-left">
+          <div class="list-group">
+            <div class="list-group-item" id="introduction">
+              <h4>About UniQL</h4>
+              <p>
+                UniQL evaluates whether language models can generate executable, dialect-specific SQL for the same
+                natural-language intent. It extends the
+                <a href="https://bird-bench.github.io/">BIRD</a> development split from SQLite to a controlled
+                multi-dialect setting where questions, schemas, database contents, and SQL annotations are aligned
+                across engines.
+              </p>
+              <p>
+                UniQL-Full contains <b>1,534</b> questions and <b>24,544</b> executable SQL annotations over <b>16</b> SQL
+                dialects: SQLite, ClickHouse, Doris, Drill, Druid, DuckDB, Hive, MySQL, Oracle, PostgreSQL, Presto,
+                Spark, StarRocks, Teradata, Trino, and T-SQL.
+              </p>
+              <p>
+                UniQL-Minidev contains <b>256</b> cleanly annotated questions selected from UniQL-Full based on existing
+                studies of annotation quality in BIRD-style text-to-SQL data.
+              </p>
+              <div class="example-panel" aria-label="UniQL example">
+                <img src="assets/img/example.png" alt="UniQL example" />
+              </div>
+              <div id="button-group">
+                <div class="button-row">
+                  <a href="#leaderboard"><button type="button" class="btn btn-g">Leaderboard</button></a>
+                </div>
+                <div class="button-row">
+                  <a href="assets/downloads/uniql_1534_with_schemas.zip" download>
+                    <button type="button" class="btn btn-a">UniQL-Full Set</button>
+                  </a>
+                </div>
+                <div class="button-row">
+                  <a href="assets/downloads/uniql_clean_256_with_schemas.zip" download>
+                    <button type="button" class="btn btn-d">UniQL-Minidev Set</button>
+                  </a>
+                </div>
+                <div class="button-row">
+                  <a href="https://bird-bench.oss-cn-beijing.aliyuncs.com/dev.zip" download>
+                    <button type="button" class="btn btn-e">BIRD Dev Set</button>
+                  </a>
+                </div>
+                <div class="button-row">
+                  <a data-repo-path="evaluation"><button type="button" class="btn btn-a">Evaluation Code</button></a>
+                </div>
+                <div class="button-row" id="button-row-b">
+                  <div class="btn-round">
+                    <a href="#submission"><button type="button" class="btn btn-b">Submission</button></a>
+                  </div>
+                  <div class="btn-round">
+                    <a data-repo-path=""><button type="button" class="btn btn-b">GitHub</button></a>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-      <section id="leaderboard" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Leaderboard</p>
-          <h2>Reference results</h2>
-        </div>
-        <p class="muted">
-          The main leaderboard is UniQL-1534, the full 1,534-question aligned benchmark. UniQL-Clean-256 is provided as
-          a supplementary clean-annotation track because prior work has reported annotation noise in the original BIRD
-          benchmark.
-        </p>
-        <h3 class="leaderboard-title">UniQL-1534</h3>
-        <div class="table-wrap">
-          <table id="leaderboard-full">
-            <thead></thead>
-            <tbody></tbody>
-          </table>
-        </div>
-        <h3 class="leaderboard-title secondary">UniQL-Clean-256</h3>
-        <p class="muted">
-          The 256-question subset is selected using publicly released correction metadata and UniQL evaluation artifacts
-          to support reporting on cleaner original annotations.
-        </p>
-        <div class="table-wrap">
-          <table id="leaderboard-clean">
-            <thead></thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </section>
+            <div class="list-group-item" id="news">
+              <h4>News</h4>
+              <div class="scroll-container">
+                <ul>
+                  <li>
+                    <span class="date-chip"><strong>Jun. 2026:</strong></span>
+                    We release the UniQL leaderboard website with two evaluation tracks: UniQL-Full and UniQL-Minidev.
+                  </li>
+                  <li>
+                    <span class="date-chip"><strong>Jun. 2026:</strong></span>
+                    UniQL-Minidev is added as a supplementary clean-annotation subset selected in response to known
+                    annotation issues in BIRD-style text-to-SQL data.
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-      <section id="data" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Data</p>
-          <h2>Two evaluation tracks</h2>
-        </div>
-        <div class="cards">
-          <article class="card">
-            <h3>UniQL-1534</h3>
-            <p>The standard aligned benchmark over the full 1,534-question BIRD development split.</p>
-            <a href="#" data-repo-path="data/queries">data/queries/</a>
-          </article>
-          <article class="card">
-            <h3>UniQL-Clean-256</h3>
-            <p>A clean-annotation subset selected in response to known annotation issues in the original BIRD data.</p>
-            <a href="#" data-repo-path="data/subsets/clean_256">data/subsets/clean_256/</a>
-          </article>
-          <article class="card">
-            <h3>Schemas</h3>
-            <p>Dialect-specific schema descriptions used for prompt construction and model inference.</p>
-            <a href="#" data-repo-path="data/schemas">data/schemas/</a>
-          </article>
-        </div>
-      </section>
+            <div class="list-group-item" id="illustration">
+              <h4>Surprise from UniQL</h4>
+              <p>
+                <b>1. One intent, many SQL engines:</b> each question is evaluated across 16 SQL dialects, making
+                dialect transfer and dialect-specific SQL generation directly comparable.
+              </p>
+              <p>
+                <b>2. Executable evaluation:</b> predicted and reference SQL are executed on the same target database
+                engine and compared under the UniQL protocol.
+              </p>
+              <p>
+                <b>3. Clean-annotation reporting:</b> UniQL-Minidev supports reporting on selected original BIRD
+                questions in light of recent studies on BIRD annotation noise.
+              </p>
+            </div>
 
-      <section id="notes" class="section compact">
-        <div class="section-heading">
-          <p class="eyebrow">Annotation Noise</p>
-          <h2>Why include a clean-annotation track?</h2>
-        </div>
-        <p>
-          UniQL keeps the full BIRD development split as the primary track. At the same time, several recent studies
-          have documented annotation noise in BIRD-style text-to-SQL data. We therefore also provide UniQL-Clean-256,
-          a supplementary subset selected to support evaluation on cleaner original annotations.
-        </p>
-        <ul class="refs">
-          <li>
-            Y. Zhu, T. Jin, Y. Choi, et al. <em>ReViSQL: Achieving Human-Level Text-to-SQL</em>. arXiv preprint
-            arXiv:2603.20004, 2026.
-          </li>
-          <li>
-            N. Wretblad, F. Riseby, R. Biswas, et al. <em>Understanding the Effects of Noise in Text-to-SQL: An
-            Examination of the BIRD-Bench Benchmark</em>. ACL 2024 Short Papers, pp. 356-369.
-          </li>
-        </ul>
-      </section>
+            <div class="list-group-item" id="data">
+              <h4>Data</h4>
+              <p>
+                <b>Overall Leaderboard</b> uses the UniQL-Full benchmark. <b>UniQL-Minidev</b> is a supplementary
+                clean-annotation track selected from original BIRD development questions. UniQL download packages
+                include SQL/query files and dialect schemas; please download the original database files from the BIRD
+                Dev Set when needed.
+              </p>
+              <ul>
+                <li>
+                  <a href="assets/downloads/uniql_1534_with_schemas.zip" download>UniQL-Full Set</a>: full benchmark
+                  files with dialect-specific schemas.
+                </li>
+                <li>
+                  <a href="assets/downloads/uniql_clean_256_with_schemas.zip" download>UniQL-Minidev Set</a>: selected
+                  minidev files with dialect-specific schemas.
+                </li>
+                <li>
+                  <a href="https://bird-bench.oss-cn-beijing.aliyuncs.com/dev.zip" download>BIRD Dev Set</a>: original
+                  BIRD development databases and related source files.
+                </li>
+              </ul>
+            </div>
 
-      <section id="submit" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Submit</p>
-          <h2>Leaderboard submission package</h2>
-        </div>
-        <div class="grid two">
-          <div>
-            <ol class="steps">
-              <li>Run inference for each dialect using the UniQL prompt and data files.</li>
-              <li>Run <code>evaluation/evaluate.py</code> to produce one evaluation-result JSON per dialect.</li>
-              <li>Package your files in a zip with <code>metadata.json</code> and the result JSON files.</li>
-              <li>Open a GitHub issue using the leaderboard submission template and attach or link the package.</li>
-            </ol>
-            <p class="muted">
-              The maintainers recompute aggregate, difficulty, and construction-source metrics from the submitted JSON
-              files before updating the leaderboard.
-            </p>
-          </div>
-          <div class="info-panel">
-            <h3>Tracks</h3>
-            <p><strong>UniQL-1534:</strong> full 1,534-question benchmark.</p>
-            <p><strong>UniQL-Clean-256:</strong> clean-annotation subset using <code>data/subsets/clean_256/question_ids.txt</code>.</p>
-            <a class="button primary" href="https://github.com/" id="issue-link">Open Submission Issue</a>
-          </div>
-        </div>
-      </section>
+            <div class="list-group-item" id="submission">
+              <h4>Submission</h4>
+              <p>
+                Please submit one evaluation-result JSON file per dialect. The maintainers recompute aggregate,
+                difficulty, and construction-source metrics before updating the leaderboard.
+              </p>
+              <p>
+                Partial submissions are welcome and will be recorded on the leaderboard. Only submissions covering all
+                16 SQL dialects are included in the average-accuracy ranking.
+              </p>
+              <ol>
+                <li>Run inference for each dialect using the UniQL prompt and selected data track.</li>
+                <li>Run <code>evaluation/evaluate.py</code> to produce one evaluation-result JSON per dialect.</li>
+                <li>Package your files in a zip with <code>metadata.json</code> and the result JSON files.</li>
+                <li>Open a GitHub issue using the leaderboard submission template and attach or link the package.</li>
+              </ol>
+              <div class="button-row">
+                <a href="https://github.com/" id="issue-link">
+                  <button type="button" class="btn btn-a">Submission Guidelines</button>
+                </a>
+              </div>
+            </div>
 
-      <section id="format" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Format</p>
-          <h2>Evaluation-result JSON</h2>
-        </div>
-        <p>
-          Submit the JSON files produced by <code>evaluation/evaluate.py</code>. Each file is a JSON array. The required
-          fields for leaderboard aggregation are <code>sql_idx</code> or <code>question_id</code>, and <code>res</code>.
-          We recommend preserving the full evaluator output for auditability.
-        </p>
-        <pre><code>[
+            <div class="list-group-item" id="format">
+              <h4>Submission Format</h4>
+              <p>
+                Submit the JSON files produced by <code>evaluation/evaluate.py</code>. Required fields for leaderboard
+                aggregation are <code>sql_idx</code> or <code>question_id</code>, and <code>res</code>.
+              </p>
+              <pre><code>[
   {
     "sql_idx": 0,
     "res": true,
@@ -200,19 +185,58 @@
     "dialect": "mysql"
   }
 ]</code></pre>
+              <div class="validator">
+                <h5>Local format check</h5>
+                <p>This browser-side checker does not upload your file. It only verifies the basic JSON shape.</p>
+                <input type="file" id="json-file" accept="application/json,.json" />
+                <output id="validator-output">Choose an evaluation JSON file.</output>
+              </div>
+            </div>
 
-        <div class="validator">
-          <h3>Local format check</h3>
-          <p class="muted">This browser-side checker does not upload your file. It only verifies the basic JSON shape.</p>
-          <input type="file" id="json-file" accept="application/json,.json" />
-          <output id="validator-output">Choose an evaluation JSON file.</output>
+            <div class="list-group-item" id="citation">
+              <h4>Citation</h4>
+              <p>If you find UniQL useful, please cite our paper.</p>
+              <pre class="bibtex-placeholder"><code>@inproceedings{uniql2026,
+  title = {UniQL: A Benchmark for Cross-Dialect Text-to-SQL Evaluation},
+  author = {TODO},
+  booktitle = {TODO},
+  year = {2026}
+}</code></pre>
+            </div>
+
+          </div>
         </div>
-      </section>
+
+        <div class="col-right" id="leaderboard">
+          <div class="btn-group">
+            <button class="btn btn-f active tab" type="button" data-target="panel-overall">UniQL-Full</button>
+            <button class="btn btn-f tab" type="button" data-target="panel-clean">UniQL-Minidev</button>
+          </div>
+
+          <div id="panel-overall" class="tab-panel active">
+            <div class="card card-outline-secondary">
+              <div class="card-header">Leaderboard - Execution Accuracy (EX)</div>
+              <p class="leaderboard-note">Overall Leaderboard: UniQL-Full across all 16 SQL dialects.</p>
+              <div class="table-wrapper">
+                <table class="table" id="leaderboard-full"><thead></thead><tbody></tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <div id="panel-clean" class="tab-panel">
+            <div class="card card-outline-secondary">
+              <div class="card-header">Leaderboard - Execution Accuracy (EX)</div>
+              <div class="table-wrapper">
+                <table class="table" id="leaderboard-clean"><thead></thead><tbody></tbody></table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer class="footer">
-      <span>UniQL DialectBench</span>
-      <span>Research use only. See repository README for data and licensing notes.</span>
+      UniQL DialectBench. Research use only. See repository README for data and licensing notes.
     </footer>
 
     <script src="assets/js/site.js"></script>

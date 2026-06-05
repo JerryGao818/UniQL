@@ -30,11 +30,11 @@ DeepSeek-v4-flash,42.58,42.97,40.62,24.22,46.88,52.73,51.17,55.86,45.31,44.53,51
 };
 
 async function loadLeaderboard() {
-  await renderLeaderboard("leaderboard-full", "assets/data/full_1534_baseline_results.csv");
-  await renderLeaderboard("leaderboard-clean", "assets/data/clean_256_baseline_results.csv");
+  await renderLeaderboard("leaderboard-full", "assets/data/full_1534_baseline_results.csv", "UniQL-Full");
+  await renderLeaderboard("leaderboard-clean", "assets/data/clean_256_baseline_results.csv", "UniQL-Minidev");
 }
 
-async function renderLeaderboard(tableId, csvPath) {
+async function renderLeaderboard(tableId, csvPath, trackName) {
   const table = document.querySelector(`#${tableId}`);
   const tableHead = table?.querySelector("thead");
   const tableBody = table?.querySelector("tbody");
@@ -74,6 +74,7 @@ async function renderLeaderboard(tableId, csvPath) {
       th.textContent = header;
       if (header === "Avg.") th.classList.add("avg-head");
       if (header === "Rank") th.classList.add("rank-head");
+      if (header === "Model") th.classList.add("model-head");
       headRow.appendChild(th);
     }
     tableHead.appendChild(headRow);
@@ -84,11 +85,11 @@ async function renderLeaderboard(tableId, csvPath) {
       if (rank < 3) tr.classList.add(`rank-${rank + 1}`);
       const rowHeaders = ["Rank", ...headers];
       rowHeaders.forEach((header, index) => {
-        const value = header === "Rank" ? String(rank + 1) : row[header] || "--";
         const cell = document.createElement(index === 1 ? "th" : "td");
         if (header === "Avg.") cell.classList.add("avg-cell");
         if (header === "Rank") cell.classList.add("rank-cell");
-        cell.textContent = value || "--";
+        if (header === "Model") cell.classList.add("model-cell");
+        fillLeaderboardCell(cell, row, header, rank, trackName);
         tr.appendChild(cell);
       });
       tableBody.appendChild(tr);
@@ -96,6 +97,28 @@ async function renderLeaderboard(tableId, csvPath) {
   } catch (error) {
     tableBody.innerHTML = `<tr><td>Could not load leaderboard data.</td></tr>`;
   }
+}
+
+function fillLeaderboardCell(cell, row, header, rank, trackName) {
+  if (header === "Rank") {
+    cell.textContent = String(rank + 1);
+    return;
+  }
+
+  const main = document.createElement("span");
+  main.className = "cell-main";
+  main.textContent = row[header] || "--";
+  cell.appendChild(main);
+
+  const detail = document.createElement("span");
+  detail.className = "cell-detail";
+  detail.textContent = getLeaderboardCellDetail(row, header, trackName) || "\u00a0";
+  cell.appendChild(detail);
+}
+
+function getLeaderboardCellDetail(row, header, trackName) {
+  // Keep this hook for future per-cell notes, such as test date, metric, or submitted dialect count.
+  return "";
 }
 
 async function loadCsvText(csvPath) {
@@ -198,6 +221,19 @@ function setupRepoLinks() {
   }
 }
 
+function setupTabs() {
+  const tabs = document.querySelectorAll(".tab[data-target]");
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const target = tab.getAttribute("data-target");
+      tabs.forEach((item) => item.classList.toggle("active", item === tab));
+      document.querySelectorAll(".tab-panel").forEach((panel) => {
+        panel.classList.toggle("active", panel.id === target);
+      });
+    });
+  });
+}
+
 function inferGitHubRepo() {
   if (!window.location.hostname.endsWith("github.io")) return "";
   const owner = window.location.hostname.replace(".github.io", "");
@@ -209,3 +245,4 @@ loadLeaderboard();
 setupValidator();
 setupIssueLink();
 setupRepoLinks();
+setupTabs();
