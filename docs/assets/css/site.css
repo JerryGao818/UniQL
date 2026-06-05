@@ -262,6 +262,10 @@ pre {
   background-color: #25445c;
 }
 
+.btn-pill {
+  border-radius: 50px;
+}
+
 .btn-b {
   background-color: #22736f;
   border-radius: 50px;
