@@ -68,16 +68,16 @@ pre {
   justify-content: center;
   width: 58px;
   height: 58px;
-  padding: 7px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 6px;
-  background: #fff;
-  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
 }
 
 .institution-logo:hover {
   text-decoration: none;
-  filter: brightness(0.96);
+  filter: brightness(1.08);
 }
 
 .institution-logo img {
@@ -88,10 +88,8 @@ pre {
 }
 
 .institution-logo-hku img {
-  width: 410%;
-  max-width: none;
-  object-fit: cover;
-  object-position: left center;
+  object-fit: contain;
+  object-position: center;
 }
 
 .institution-logo-buaa img {
