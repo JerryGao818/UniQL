@@ -66,11 +66,13 @@ pre {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 48px;
-  padding: 8px 12px;
+  width: 58px;
+  height: 58px;
+  padding: 7px;
   border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 4px;
+  border-radius: 6px;
   background: #fff;
+  overflow: hidden;
 }
 
 .institution-logo:hover {
@@ -80,17 +82,20 @@ pre {
 
 .institution-logo img {
   display: block;
-  max-width: 100%;
-  max-height: 34px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
-.institution-logo-buaa {
-  width: 220px;
+.institution-logo-hku img {
+  width: 410%;
+  max-width: none;
+  object-fit: cover;
+  object-position: left center;
 }
 
-.institution-logo-hku {
-  width: 190px;
+.institution-logo-buaa img {
+  object-fit: contain;
 }
 
 .site-heading {
@@ -575,11 +580,6 @@ output {
   .top-logo-bar {
     flex-wrap: wrap;
     justify-content: center;
-  }
-
-  .institution-logo-buaa,
-  .institution-logo-hku {
-    width: min(100%, 260px);
   }
 
 }
