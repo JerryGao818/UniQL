@@ -56,18 +56,41 @@ pre {
   padding: 16px 18px;
   background-color: #253f49;
   color: #dbe9ea;
+  display: flex;
+  align-items: center;
+  gap: 16px;
   text-align: left;
 }
 
-.top-logo-bar span {
-  display: inline-flex;
+.institution-logo {
+  display: flex;
   align-items: center;
-  height: 38px;
-  margin-right: 18px;
-  padding: 0 14px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 3px;
-  font-weight: 700;
+  justify-content: center;
+  height: 48px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 4px;
+  background: #fff;
+}
+
+.institution-logo:hover {
+  text-decoration: none;
+  filter: brightness(0.96);
+}
+
+.institution-logo img {
+  display: block;
+  max-width: 100%;
+  max-height: 34px;
+  object-fit: contain;
+}
+
+.institution-logo-buaa {
+  width: 220px;
+}
+
+.institution-logo-hku {
+  width: 190px;
 }
 
 .site-heading {
@@ -181,7 +204,17 @@ pre {
 #main h5,
 #main h6 {
   margin: 5px 0;
-  font-weight: 600;
+  font-weight: 700;
+}
+
+#main h4 {
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+#main h5 {
+  font-size: 15px;
+  line-height: 1.25;
 }
 
 .list-group-item p {
@@ -537,6 +570,16 @@ output {
 
   .button-row {
     width: 100%;
+  }
+
+  .top-logo-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .institution-logo-buaa,
+  .institution-logo-hku {
+    width: min(100%, 260px);
   }
 
 }
