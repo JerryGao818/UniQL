@@ -198,7 +198,20 @@ Our use of upstream artifacts is limited to benchmark construction and research 
 
 Users should not treat UniQL as a source of production database content, personally actionable information, or commercial training data without independently verifying that such use is permitted by the upstream datasets and any applicable database, driver, or model licenses. If users redistribute modified versions of UniQL, they should preserve this intended-use notice and document any additional upstream artifacts they incorporate.
 
+## Citation
 
+If you find UniQL useful, please cite our paper.
+
+```bibtex
+@misc{gao2026uniql,
+  title = {UniQL: Towards Dialect-Universal Benchmarking for Text-to-SQL},
+  author = {Jianling Gao and Chongyang Tao and Jiayuan Bai and Liu Yang and Xuanguang Pan and Jinrui Liu and Shihao Xing and Xiaohan Xu and Jie Liang and Shuai Ma},
+  year = {2026},
+  eprint = {2606.08018},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.CL}
+}
+```
 
 ## License
 
