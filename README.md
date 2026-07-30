@@ -57,27 +57,6 @@ UniQL-DialectBench/
     rules/
 ```
 
-## Leaderboard Website
-
-This repository includes a static GitHub Pages site under `docs/`. The site introduces the task, lists the two
-evaluation tracks, documents the submission format, and provides a leaderboard submission template.
-
-To publish it on GitHub Pages, push the repository to GitHub, then enable Pages from:
-
-```text
-Settings -> Pages -> Build and deployment -> Deploy from a branch
-Branch: main
-Folder: /docs
-```
-
-Place the project logo at:
-
-```text
-docs/assets/img/logo.png
-```
-
-The page will use that file automatically.
-
 ## Data Format
 
 Each file under `data/queries/` is a list of examples for one SQL dialect. The important fields are:
