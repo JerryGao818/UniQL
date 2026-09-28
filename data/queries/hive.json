@@ -6945,8 +6945,8 @@
     "question": "Provide the text of the latest 10 comments to the post with the title 'Analysing wind data with R' and the display name of the user who left it.",
     "evidence": "the latest comment refers to MAX(CreationDate);",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT T3.Text, T1.DisplayName FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId INNER JOIN comments AS T3 ON T2.Id = T3.PostId WHERE T2.Title = 'Analysing wind data with R' ORDER BY T1.CreationDate DESC LIMIT 10",
-    "SQL-Hive": "SELECT text, displayname FROM (SELECT T3.text AS text, T1.displayname AS displayname, ROW_NUMBER() OVER (ORDER BY T1.creationdate DESC) AS rn FROM users T1 INNER JOIN posts T2 ON T1.id = T2.owneruserid INNER JOIN comments T3 ON T2.id = T3.postid WHERE T2.title = 'Analysing wind data with R') sub WHERE rn <= 10",
+    "SQL-sqlite": "SELECT T3.Text, COALESCE(T4.DisplayName, T3.UserDisplayName) AS DisplayName FROM posts AS T2 INNER JOIN comments AS T3 ON T2.Id = T3.PostId LEFT JOIN users AS T4 ON T3.UserId = T4.Id WHERE T2.Title = 'Analysing wind data with R' ORDER BY T3.CreationDate DESC, T3.Id DESC LIMIT 10",
+    "SQL-Hive": "SELECT text, displayname FROM (SELECT T3.text AS text, COALESCE(T4.displayname, T3.userdisplayname) AS displayname, ROW_NUMBER() OVER (ORDER BY T3.creationdate DESC, T3.id DESC) AS rn FROM posts T2 INNER JOIN comments T3 ON T2.id = T3.postid LEFT JOIN users T4 ON T3.userid = T4.id WHERE T2.title = 'Analysing wind data with R') sub WHERE rn <= 10 ORDER BY rn",
     "annotation_source": "LLM-retry"
   },
   {
