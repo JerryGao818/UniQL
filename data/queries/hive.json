@@ -6946,7 +6946,7 @@
     "evidence": "the latest comment refers to MAX(CreationDate);",
     "difficulty": "moderate",
     "SQL-sqlite": "SELECT T3.Text, COALESCE(T4.DisplayName, T3.UserDisplayName) AS DisplayName FROM posts AS T2 INNER JOIN comments AS T3 ON T2.Id = T3.PostId LEFT JOIN users AS T4 ON T3.UserId = T4.Id WHERE T2.Title = 'Analysing wind data with R' ORDER BY T3.CreationDate DESC, T3.Id DESC LIMIT 10",
-    "SQL-Hive": "SELECT text, displayname FROM (SELECT T3.text AS text, COALESCE(T4.displayname, T3.userdisplayname) AS displayname, ROW_NUMBER() OVER (ORDER BY T3.creationdate DESC, T3.id DESC) AS rn FROM posts T2 INNER JOIN comments T3 ON T2.id = T3.postid LEFT JOIN users T4 ON T3.userid = T4.id WHERE T2.title = 'Analysing wind data with R') sub WHERE rn <= 10 ORDER BY rn",
+    "SQL-Hive": "SELECT text, displayname FROM (SELECT text, displayname, rn FROM (SELECT T3.text AS text, COALESCE(T4.displayname, T3.userdisplayname) AS displayname, ROW_NUMBER() OVER (ORDER BY T3.creationdate DESC, T3.id DESC) AS rn FROM posts T2 INNER JOIN comments T3 ON T2.id = T3.postid LEFT JOIN users T4 ON T3.userid = T4.id WHERE T2.title = 'Analysing wind data with R') sub WHERE rn <= 10 ORDER BY rn) ordered",
     "annotation_source": "LLM-retry"
   },
   {
