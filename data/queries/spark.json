@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "question_id": 0,
     "db_id": "california_schools",
@@ -4972,11 +4972,11 @@
   {
     "question_id": 497,
     "db_id": "card_games",
-    "question": "List the expansion type of the set \"Huiti猫me 茅dition\".",
-    "evidence": "the set \"Huiti猫me 茅dition\" refers to translation = 'Huiti猫me 茅dition'; expansion type refers to type",
+    "question": "List the expansion type of the set \"Huitième édition\".",
+    "evidence": "the set \"Huitième édition\" refers to translation = 'Huitième édition'; expansion type refers to type",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT type FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE translation = 'Huiti猫me 茅dition' )",
-    "SQL-Spark": "SELECT type FROM sets WHERE code IN (SELECT setCode FROM set_translations WHERE translation = 'Huiti猫me 茅dition')",
+    "SQL-sqlite": "SELECT type FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE translation = 'Huitième édition' )",
+    "SQL-Spark": "SELECT type FROM sets WHERE code IN (SELECT setCode FROM set_translations WHERE translation = 'Huitième édition')",
     "annotation_source": "glot"
   },
   {
@@ -5022,11 +5022,11 @@
   {
     "question_id": 502,
     "db_id": "card_games",
-    "question": "What is the release date for the set \"Ola de fr铆o\"?",
-    "evidence": "release date is the date of card set being released; set \"Ola de fr铆o\" refers to translation = 'Ola de fr铆o'",
+    "question": "What is the release date for the set \"Ola de frío\"?",
+    "evidence": "release date is the date of card set being released; set \"Ola de frío\" refers to translation = 'Ola de frío'",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT T1.releaseDate FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation = 'Ola de fr铆o'",
-    "SQL-Spark": "SELECT date_format(T1.releaseDate,'yyyy-MM-dd') AS releaseDate FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation = 'Ola de fr铆o'",
+    "SQL-sqlite": "SELECT T1.releaseDate FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation = 'Ola de frío'",
+    "SQL-Spark": "SELECT date_format(T1.releaseDate,'yyyy-MM-dd') AS releaseDate FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation = 'Ola de frío'",
     "annotation_source": "LLM-retry"
   },
   {
@@ -5162,11 +5162,11 @@
   {
     "question_id": 516,
     "db_id": "card_games",
-    "question": "How many cards did Volkan Ba脟碌a illustrated whose foreign language is in French?",
-    "evidence": "Volkan Ba脟碌a refers to artist = 'Volkan Ba堑a'; foreign language is in French refers to language = 'French'",
+    "question": "How many cards did Volkan BaÇµa illustrated whose foreign language is in French?",
+    "evidence": "Volkan BaÇµa refers to artist = 'Volkan Baǵa'; foreign language is in French refers to language = 'French'",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT COUNT(T3.id) FROM ( SELECT T1.id FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T2.uuid = T1.uuid WHERE T1.artist = 'Volkan Ba堑a' AND T2.language = 'French' GROUP BY T1.id ) AS T3",
-    "SQL-Spark": "SELECT COUNT(T3.id) FROM (SELECT T1.id FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T2.uuid = T1.uuid WHERE T1.artist = 'Volkan Ba堑a' AND T2.language = 'French' GROUP BY T1.id) AS T3",
+    "SQL-sqlite": "SELECT COUNT(T3.id) FROM ( SELECT T1.id FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T2.uuid = T1.uuid WHERE T1.artist = 'Volkan Baǵa' AND T2.language = 'French' GROUP BY T1.id ) AS T3",
+    "SQL-Spark": "SELECT COUNT(T3.id) FROM (SELECT T1.id FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T2.uuid = T1.uuid WHERE T1.artist = 'Volkan Baǵa' AND T2.language = 'French' GROUP BY T1.id) AS T3",
     "annotation_source": "LLM-0shot"
   },
   {
@@ -6233,7 +6233,7 @@
     "question_id": 623,
     "db_id": "codebase_community",
     "question": "How many elders obtained the \"Supporter\" badge?",
-    "evidence": "\"Supporter\" is the Name of badge;聽 elders refers to Age > 65",
+    "evidence": "\"Supporter\" is the Name of badge;  elders refers to Age > 65",
     "difficulty": "simple",
     "SQL-sqlite": "SELECT COUNT(T1.Id) FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T1.Age > 65 AND T2.Name = 'Supporter'",
     "SQL-Spark": "SELECT COUNT(T1.Id) FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T1.Age > 65 AND T2.Name = 'Supporter'",
@@ -6945,8 +6945,8 @@
     "question": "Provide the text of the latest 10 comments to the post with the title 'Analysing wind data with R' and the display name of the user who left it.",
     "evidence": "the latest comment refers to MAX(CreationDate);",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT T3.Text, T1.DisplayName FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId INNER JOIN comments AS T3 ON T2.Id = T3.PostId WHERE T2.Title = 'Analysing wind data with R' ORDER BY T1.CreationDate DESC LIMIT 10",
-    "SQL-Spark": "SELECT T3.Text, T1.DisplayName FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId INNER JOIN comments AS T3 ON T2.Id = T3.PostId WHERE T2.Title = 'Analysing wind data with R' ORDER BY T1.CreationDate DESC LIMIT 10",
+    "SQL-sqlite": "SELECT T3.Text, COALESCE(T4.DisplayName, T3.UserDisplayName) AS DisplayName FROM posts AS T2 INNER JOIN comments AS T3 ON T2.Id = T3.PostId LEFT JOIN users AS T4 ON T3.UserId = T4.Id WHERE T2.Title = 'Analysing wind data with R' ORDER BY T3.CreationDate DESC, T3.Id DESC LIMIT 10",
+    "SQL-Spark": "SELECT `c`.`Text`, COALESCE(`u`.`DisplayName`, `c`.`UserDisplayName`) AS `DisplayName` FROM `posts` AS `p` JOIN `comments` AS `c` ON `p`.`Id` = `c`.`PostId` LEFT JOIN `users` AS `u` ON `c`.`UserId` = `u`.`Id` WHERE `p`.`Title` = 'Analysing wind data with R' ORDER BY `c`.`CreationDate` DESC, `c`.`Id` DESC LIMIT 10",
     "annotation_source": "glot"
   },
   {
@@ -10045,8 +10045,8 @@
     "question": "How many wins was achieved by the oldest racer? Indicate his/her full name.",
     "evidence": "oldest racer refers to MIN(dob); full name refers to forename, surname.",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT SUM(T1.wins),T2.forename, T2.surname FROM driverStandings AS T1 INNER JOIN drivers AS T2 on T1.driverId = T2.driverId ORDER BY T2.dob ASC LIMIT 1",
-    "SQL-Spark": "SELECT SUM(T1.wins), T2.forename, T2.surname FROM driverStandings AS T1 INNER JOIN drivers AS T2 ON T1.driverId = T2.driverId ORDER BY T2.dob ASC LIMIT 1",
+    "SQL-sqlite": "SELECT COALESCE(w.wins, 0) AS wins, d.forename, d.surname FROM (SELECT driverId, forename, surname, dob FROM drivers WHERE dob IS NOT NULL ORDER BY dob ASC, driverId ASC LIMIT 1) d LEFT JOIN (SELECT driverId, COUNT(*) AS wins FROM results WHERE positionOrder = 1 GROUP BY driverId) w ON d.driverId = w.driverId",
+    "SQL-Spark": "WITH oldest AS (SELECT driverId, forename, surname FROM drivers WHERE dob IS NOT NULL ORDER BY dob ASC, driverId ASC LIMIT 1) SELECT COUNT(R.resultId) AS wins, O.forename, O.surname FROM oldest AS O LEFT JOIN results AS R ON R.driverId = O.driverId AND R.positionOrder = 1 GROUP BY O.driverId, O.forename, O.surname",
     "annotation_source": "human"
   },
   {
@@ -10953,7 +10953,7 @@
     "question_id": 1095,
     "db_id": "european_football_2",
     "question": "How much is the average build up play speed of the Heart of Midlothian team?",
-    "evidence": "Heart of Midlothian refers to team_long_name = 'Heart of Midlothian'; average build up play speed refers to聽 AVG(buildUpPlaySpeed)",
+    "evidence": "Heart of Midlothian refers to team_long_name = 'Heart of Midlothian'; average build up play speed refers to  AVG(buildUpPlaySpeed)",
     "difficulty": "moderate",
     "SQL-sqlite": "SELECT CAST(SUM(t2.buildUpPlaySpeed) AS REAL) / COUNT(t2.id) FROM Team AS t1 INNER JOIN Team_Attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t1.team_long_name = 'Heart of Midlothian'",
     "SQL-Spark": "SELECT CAST(SUM(t2.buildUpPlaySpeed) AS FLOAT) / COUNT(t2.id) FROM Team AS t1 INNER JOIN Team_Attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t1.team_long_name = 'Heart of Midlothian'",
@@ -11093,7 +11093,7 @@
     "question_id": 1109,
     "db_id": "european_football_2",
     "question": "How was the build up play dribbling class for \"LEI\" on 2015/9/10?",
-    "evidence": "\"LEI\" refers to team_short_name = 'LEI'; on 2015/9/10 refers to聽 date = '2015-09-10 00:00:00'",
+    "evidence": "\"LEI\" refers to team_short_name = 'LEI'; on 2015/9/10 refers to  date = '2015-09-10 00:00:00'",
     "difficulty": "moderate",
     "SQL-sqlite": "SELECT t2.buildUpPlayDribblingClass FROM Team AS t1 INNER JOIN Team_Attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t1.team_short_name = 'LEI' AND SUBSTR(t2.`date`, 1, 10) = '2015-09-10'",
     "SQL-Spark": "SELECT t2.buildUpPlayDribblingClass FROM Team AS t1 INNER JOIN Team_Attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t1.team_short_name = 'LEI' AND SUBSTRING(t2.`date`, 1, 10) = '2015-09-10'",
@@ -11422,8 +11422,8 @@
   {
     "question_id": 1142,
     "db_id": "european_football_2",
-    "question": "In the 2015鈥?016 season, how many games were played in the Italian Serie A league?",
-    "evidence": "In the 2015鈥?016 season refers to season = '2015/2016'",
+    "question": "In the 2015–2016 season, how many games were played in the Italian Serie A league?",
+    "evidence": "In the 2015–2016 season refers to season = '2015/2016'",
     "difficulty": "simple",
     "SQL-sqlite": "SELECT COUNT(t2.id) FROM League AS t1 INNER JOIN Match AS t2 ON t1.id = t2.league_id WHERE t1.name = 'Italy Serie A' AND t2.season = '2015/2016'",
     "SQL-Spark": "SELECT COUNT(t2.id) FROM League AS t1 INNER JOIN Match AS t2 ON t1.id = t2.league_id WHERE t1.name = 'Italy Serie A' AND t2.season = '2015/2016'",
@@ -11493,7 +11493,7 @@
     "question_id": 1149,
     "db_id": "thrombosis_prediction",
     "question": "Are there more in-patient or outpatient who were male? What is the deviation in percentage?",
-    "evidence": "male refers to SEX = 'M'; in-patient refers to Admission = '+'; outpatient refers to Admission = '-'; percentage = DIVIDE(COUNT(ID) where SEX = 'M' and Admission = '+', COUNT(ID) where SEX聽 = 'M' and Admission = '-')",
+    "evidence": "male refers to SEX = 'M'; in-patient refers to Admission = '+'; outpatient refers to Admission = '-'; percentage = DIVIDE(COUNT(ID) where SEX = 'M' and Admission = '+', COUNT(ID) where SEX  = 'M' and Admission = '-')",
     "difficulty": "moderate",
     "SQL-sqlite": "SELECT CAST(SUM(CASE WHEN Admission = '+' THEN 1 ELSE 0 END) AS REAL) * 100 / SUM(CASE WHEN Admission = '-' THEN 1 ELSE 0 END) FROM Patient WHERE SEX = 'M'",
     "SQL-Spark": "SELECT CAST(SUM(CASE WHEN Admission = '+' THEN 1 ELSE 0 END) AS FLOAT) * 100 / SUM(CASE WHEN Admission = '-' THEN 1 ELSE 0 END) FROM Patient WHERE SEX = 'M'",
@@ -11903,7 +11903,7 @@
     "question_id": 1190,
     "db_id": "thrombosis_prediction",
     "question": "What percentage of patients with a proteinuria level within the normal range have a uric acid level below the normal range?",
-    "evidence": "proteinuria level within the normal range refers to `U-PRO` > 0 AND `U-PRO` < 30; uric acid level below the normal range refers to UA < = 6.5; calculation = MULTIPLY(DIVIDE(UA < = 6.5, `U-PRO` > 0 AND `U-PRO` < 30)锛?00)",
+    "evidence": "proteinuria level within the normal range refers to `U-PRO` > 0 AND `U-PRO` < 30; uric acid level below the normal range refers to UA < = 6.5; calculation = MULTIPLY(DIVIDE(UA < = 6.5, `U-PRO` > 0 AND `U-PRO` < 30)，100)",
     "difficulty": "challenging",
     "SQL-sqlite": "SELECT CAST(SUM(CASE WHEN UA <= 6.5 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(ID) FROM Laboratory WHERE `U-PRO` > 0 AND `U-PRO` < 30",
     "SQL-Spark": "SELECT CAST(SUM(CASE WHEN UA <= 6.5 THEN 1 ELSE 0 END) AS DOUBLE) * 100 / COUNT(ID) FROM (SELECT ID, UA, CAST(regexp_extract(`U-PRO`, '^[\\s]*([+-]?\\d*\\.?\\d+)', 1) AS DOUBLE) AS upro_num FROM Laboratory) t WHERE upro_num > 0 AND upro_num < 30",
@@ -14822,7 +14822,7 @@
   {
     "question_id": 1482,
     "db_id": "debit_card_specializing",
-    "question": "Which of the three segments鈥擲ME, LAM and KAM鈥攈as the biggest and lowest percentage increases in consumption paid in EUR between 2012 and 2013?",
+    "question": "Which of the three segments—SME, LAM and KAM—has the biggest and lowest percentage increases in consumption paid in EUR between 2012 and 2013?",
     "evidence": "Increase or Decrease = consumption for 2013 - consumption for 2012; Percentage of Increase = (Increase or Decrease / consumption for 2013) * 100%; The first 4 strings of the Date values in the yearmonth table can represent year",
     "difficulty": "challenging",
     "SQL-sqlite": "SELECT CAST((SUM(IIF(T1.Segment = 'SME' AND T2.Date LIKE '2013%', T2.Consumption, 0)) - SUM(IIF(T1.Segment = 'SME' AND T2.Date LIKE '2012%', T2.Consumption, 0))) AS FLOAT) * 100 / SUM(IIF(T1.Segment = 'SME' AND T2.Date LIKE '2012%', T2.Consumption, 0)), CAST(SUM(IIF(T1.Segment = 'LAM' AND T2.Date LIKE '2013%', T2.Consumption, 0)) - SUM(IIF(T1.Segment = 'LAM' AND T2.Date LIKE '2012%', T2.Consumption, 0)) AS FLOAT) * 100 / SUM(IIF(T1.Segment = 'LAM' AND T2.Date LIKE '2012%', T2.Consumption, 0)) , CAST(SUM(IIF(T1.Segment = 'KAM' AND T2.Date LIKE '2013%', T2.Consumption, 0)) - SUM(IIF(T1.Segment = 'KAM' AND T2.Date LIKE '2012%', T2.Consumption, 0)) AS FLOAT) * 100 / SUM(IIF(T1.Segment = 'KAM' AND T2.Date LIKE '2012%', T2.Consumption, 0)) FROM customers AS T1 INNER JOIN yearmonth AS T2 ON T1.CustomerID = T2.CustomerID",
@@ -15340,5 +15340,3 @@
     "annotation_source": "LLM-retry"
   }
 ]
-
-

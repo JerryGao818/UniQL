@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "question_id": 0,
     "db_id": "california_schools",
@@ -4894,11 +4894,11 @@
   {
     "question_id": 497,
     "db_id": "card_games",
-    "question": "List the expansion type of the set \"Huiti猫me 茅dition\".",
+    "question": "List the expansion type of the set \"Huitième édition\".",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT type FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE translation = 'Huiti猫me 茅dition' )",
-    "SQL-Drill": "SELECT `type` FROM dfs.bird.`card_games/sets` WHERE `code` IN (SELECT `setcode` FROM dfs.bird.`card_games/set_translations` WHERE `translation` = 'Huiti猫me 茅dition')",
-    "evidence": "the set \"Huiti猫me 茅dition\" refers to translation = 'Huiti猫me 茅dition'; expansion type refers to type",
+    "SQL-sqlite": "SELECT type FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE translation = 'Huitième édition' )",
+    "SQL-Drill": "SELECT `type` FROM dfs.bird.`card_games/sets` WHERE `code` IN (SELECT `setcode` FROM dfs.bird.`card_games/set_translations` WHERE `translation` = 'Huitième édition')",
+    "evidence": "the set \"Huitième édition\" refers to translation = 'Huitième édition'; expansion type refers to type",
     "annotation_source": "glot"
   },
   {
@@ -4944,11 +4944,11 @@
   {
     "question_id": 502,
     "db_id": "card_games",
-    "question": "What is the release date for the set \"Ola de fr铆o\"?",
+    "question": "What is the release date for the set \"Ola de frío\"?",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT T1.releaseDate FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation = 'Ola de fr铆o'",
-    "SQL-Drill": "SELECT T1.`releasedate` FROM dfs.bird.`card_games/sets` AS T1 INNER JOIN dfs.bird.`card_games/set_translations` AS T2 ON T2.`setcode` = T1.`code` WHERE T2.`translation` = 'Ola de fr铆o'",
-    "evidence": "release date is the date of card set being released; set \"Ola de fr铆o\" refers to translation = 'Ola de fr铆o'",
+    "SQL-sqlite": "SELECT T1.releaseDate FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation = 'Ola de frío'",
+    "SQL-Drill": "SELECT T1.`releasedate` FROM dfs.bird.`card_games/sets` AS T1 INNER JOIN dfs.bird.`card_games/set_translations` AS T2 ON T2.`setcode` = T1.`code` WHERE T2.`translation` = 'Ola de frío'",
+    "evidence": "release date is the date of card set being released; set \"Ola de frío\" refers to translation = 'Ola de frío'",
     "annotation_source": "glot"
   },
   {
@@ -5084,11 +5084,11 @@
   {
     "question_id": 516,
     "db_id": "card_games",
-    "question": "How many cards did Volkan Ba脟碌a illustrated whose foreign language is in French?",
+    "question": "How many cards did Volkan BaÇµa illustrated whose foreign language is in French?",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT COUNT(T3.id) FROM ( SELECT T1.id FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T2.uuid = T1.uuid WHERE T1.artist = 'Volkan Ba堑a' AND T2.language = 'French' GROUP BY T1.id ) AS T3",
-    "SQL-Drill": "SELECT COUNT(T3.`id`) FROM (SELECT T1.`id` FROM dfs.bird.`card_games/cards` AS T1 INNER JOIN dfs.bird.`card_games/foreign_data` AS T2 ON T2.`uuid` = T1.`uuid` WHERE T1.`artist` = 'Volkan Ba堑a' AND T2.`language` = 'French' GROUP BY T1.`id`) AS T3",
-    "evidence": "Volkan Ba脟碌a refers to artist = 'Volkan Ba堑a'; foreign language is in French refers to language = 'French'",
+    "SQL-sqlite": "SELECT COUNT(T3.id) FROM ( SELECT T1.id FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T2.uuid = T1.uuid WHERE T1.artist = 'Volkan Baǵa' AND T2.language = 'French' GROUP BY T1.id ) AS T3",
+    "SQL-Drill": "SELECT COUNT(T3.`id`) FROM (SELECT T1.`id` FROM dfs.bird.`card_games/cards` AS T1 INNER JOIN dfs.bird.`card_games/foreign_data` AS T2 ON T2.`uuid` = T1.`uuid` WHERE T1.`artist` = 'Volkan Baǵa' AND T2.`language` = 'French' GROUP BY T1.`id`) AS T3",
+    "evidence": "Volkan BaÇµa refers to artist = 'Volkan Baǵa'; foreign language is in French refers to language = 'French'",
     "annotation_source": "glot"
   },
   {
@@ -6152,7 +6152,7 @@
     "difficulty": "simple",
     "SQL-sqlite": "SELECT COUNT(T1.Id) FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T1.Age > 65 AND T2.Name = 'Supporter'",
     "SQL-Drill": "SELECT COUNT(T1.`id`) FROM dfs.bird.`codebase_community/users` AS T1 INNER JOIN dfs.bird.`codebase_community/badges` AS T2 ON T1.`id` = T2.`userid` WHERE T1.`age` > 65 AND T2.`name` = 'Supporter'",
-    "evidence": "\"Supporter\" is the Name of badge;聽 elders refers to Age > 65",
+    "evidence": "\"Supporter\" is the Name of badge;  elders refers to Age > 65",
     "annotation_source": "glot"
   },
   {
@@ -6311,7 +6311,7 @@
     "question": "Based on posts posted by Community, calculate the percentage of posts that use the R language.",
     "difficulty": "challenging",
     "SQL-sqlite": "SELECT CAST(SUM(IIF(T3.TagName = 'r', 1, 0)) AS REAL) * 100 / COUNT(T1.Id) FROM users AS T1 INNER JOIN postHistory AS T2 ON T1.Id = T2.UserId INNER JOIN tags AS T3 ON T3.ExcerptPostId = T2.PostId WHERE T1.DisplayName = 'Community'",
-    "SQL-Drill": "SELECT CAST(SUM(`IF`(T3.`tagname` = 'r', 1, 0)) AS FLOAT) * 100 / NULLIF(COUNT(T1.`id`), 0) FROM dfs.bird.`codebase_community/users` AS T1 INNER JOIN dfs.bird.`codebase_community/posthistory` AS T2 ON T1.`id` = T2.`userid` INNER JOIN dfs.bird.`codebase_community/tags` AS T3 ON T3.`excerptpostid` = T2.`postid` WHERE T1.`displayname` = 'Community'",
+    "SQL-Drill": "SELECT CAST(SUM(CASE WHEN T3.`tagname` = 'r' THEN 1 ELSE 0 END) AS FLOAT) * 100 / NULLIF(COUNT(T1.`id`), 0) FROM dfs.bird.`codebase_community/users` AS T1 INNER JOIN dfs.bird.`codebase_community/posthistory` AS T2 ON T1.`id` = T2.`userid` INNER JOIN dfs.bird.`codebase_community/tags` AS T3 ON T3.`excerptpostid` = T2.`postid` WHERE T1.`displayname` = 'Community'",
     "evidence": "DIVIDE(COUNT(PostId WHERE TagName = 'r')), (COUNT(PostId WHERE DisplayName = 'Community')) as percentage; R language refers to tagname = 'r'",
     "annotation_source": "glot"
   },
@@ -6858,8 +6858,8 @@
     "db_id": "codebase_community",
     "question": "Provide the text of the latest 10 comments to the post with the title 'Analysing wind data with R' and the display name of the user who left it.",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT T3.Text, T1.DisplayName FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId INNER JOIN comments AS T3 ON T2.Id = T3.PostId WHERE T2.Title = 'Analysing wind data with R' ORDER BY T1.CreationDate DESC LIMIT 10",
-    "SQL-Drill": "SELECT T3.`text`, T1.`displayname` FROM dfs.bird.`codebase_community/users` AS T1 INNER JOIN dfs.bird.`codebase_community/posts` AS T2 ON T1.`id` = T2.`owneruserid` INNER JOIN dfs.bird.`codebase_community/comments` AS T3 ON T2.`id` = T3.`postid` WHERE T2.`title` = 'Analysing wind data with R' ORDER BY T1.`creationdate` DESC LIMIT 10",
+    "SQL-sqlite": "SELECT T3.Text, COALESCE(T4.DisplayName, T3.UserDisplayName) AS DisplayName FROM posts AS T2 INNER JOIN comments AS T3 ON T2.Id = T3.PostId LEFT JOIN users AS T4 ON T3.UserId = T4.Id WHERE T2.Title = 'Analysing wind data with R' ORDER BY T3.CreationDate DESC, T3.Id DESC LIMIT 10",
+    "SQL-Drill": "SELECT c.text, COALESCE(u.displayname, c.Userdisplayname) AS displayname FROM dfs.bird.`codebase_community/posts` p JOIN dfs.bird.`codebase_community/comments` c ON p.id = c.postid LEFT JOIN dfs.bird.`codebase_community/users` u ON c.userid = u.id WHERE p.title = 'Analysing wind data with R' ORDER BY c.creationdate DESC, c.id DESC LIMIT 10",
     "evidence": "the latest comment refers to MAX(CreationDate);",
     "annotation_source": "glot"
   },
@@ -9929,8 +9929,8 @@
     "db_id": "formula_1",
     "question": "How many wins was achieved by the oldest racer? Indicate his/her full name.",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT SUM(T1.wins),T2.forename, T2.surname FROM driverStandings AS T1 INNER JOIN drivers AS T2 on T1.driverId = T2.driverId ORDER BY T2.dob ASC LIMIT 1",
-    "SQL-Drill": "SELECT SUM(ds.wins), d.forename, d.surname FROM driverstandings ds JOIN drivers d ON ds.driverid = d.driverid WHERE d.dob IS NOT NULL GROUP BY d.driverid, d.forename, d.surname, d.dob ORDER BY d.dob ASC, d.driverid ASC LIMIT 1",
+    "SQL-sqlite": "SELECT COALESCE(w.wins, 0) AS wins, d.forename, d.surname FROM (SELECT driverId, forename, surname, dob FROM drivers WHERE dob IS NOT NULL ORDER BY dob ASC, driverId ASC LIMIT 1) d LEFT JOIN (SELECT driverId, COUNT(*) AS wins FROM results WHERE positionOrder = 1 GROUP BY driverId) w ON d.driverId = w.driverId",
+    "SQL-Drill": "SELECT COALESCE(w.wins, 0) AS wins, d.forename, d.surname FROM (SELECT driverid, forename, surname, dob FROM drivers WHERE dob IS NOT NULL ORDER BY dob ASC, driverid ASC LIMIT 1) d LEFT JOIN (SELECT driverid, COUNT(*) AS wins FROM results WHERE positionorder = 1 GROUP BY driverid) w ON d.driverid = w.driverid",
     "evidence": "oldest racer refers to MIN(dob); full name refers to forename, surname.",
     "annotation_source": "human"
   },
@@ -10836,7 +10836,7 @@
     "difficulty": "moderate",
     "SQL-sqlite": "SELECT CAST(SUM(t2.buildUpPlaySpeed) AS REAL) / COUNT(t2.id) FROM Team AS t1 INNER JOIN Team_Attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t1.team_long_name = 'Heart of Midlothian'",
     "SQL-Drill": "SELECT CAST(SUM(t2.`buildupplayspeed`) AS FLOAT) / NULLIF(COUNT(t2.`id`), 0) FROM dfs.bird.`european_football_2/team` AS t1 INNER JOIN dfs.bird.`european_football_2/team_attributes` AS t2 ON t1.`team_api_id` = t2.`team_api_id` WHERE t1.`team_long_name` = 'Heart of Midlothian'",
-    "evidence": "Heart of Midlothian refers to team_long_name = 'Heart of Midlothian'; average build up play speed refers to聽 AVG(buildUpPlaySpeed)",
+    "evidence": "Heart of Midlothian refers to team_long_name = 'Heart of Midlothian'; average build up play speed refers to  AVG(buildUpPlaySpeed)",
     "annotation_source": "glot"
   },
   {
@@ -10976,7 +10976,7 @@
     "difficulty": "moderate",
     "SQL-sqlite": "SELECT t2.buildUpPlayDribblingClass FROM Team AS t1 INNER JOIN Team_Attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t1.team_short_name = 'LEI' AND SUBSTR(t2.`date`, 1, 10) = '2015-09-10'",
     "SQL-Drill": "SELECT t2.`buildupplaydribblingclass` FROM dfs.bird.`european_football_2/team` AS t1 INNER JOIN dfs.bird.`european_football_2/team_attributes` AS t2 ON t1.`team_api_id` = t2.`team_api_id` WHERE t1.`team_short_name` = 'LEI' AND SUBSTRING(t2.`date_col`, 1, 10) = '2015-09-10'",
-    "evidence": "\"LEI\" refers to team_short_name = 'LEI'; on 2015/9/10 refers to聽 date = '2015-09-10 00:00:00'",
+    "evidence": "\"LEI\" refers to team_short_name = 'LEI'; on 2015/9/10 refers to  date = '2015-09-10 00:00:00'",
     "annotation_source": "glot"
   },
   {
@@ -11301,11 +11301,11 @@
   {
     "question_id": 1142,
     "db_id": "european_football_2",
-    "question": "In the 2015鈥?016 season, how many games were played in the Italian Serie A league?",
+    "question": "In the 2015–2016 season, how many games were played in the Italian Serie A league?",
     "difficulty": "simple",
     "SQL-sqlite": "SELECT COUNT(t2.id) FROM League AS t1 INNER JOIN Match AS t2 ON t1.id = t2.league_id WHERE t1.name = 'Italy Serie A' AND t2.season = '2015/2016'",
     "SQL-Drill": "SELECT COUNT(t2.`id`) FROM dfs.bird.`european_football_2/league` AS t1 INNER JOIN dfs.bird.`european_football_2/match` AS t2 ON t1.`id` = t2.`league_id` WHERE t1.`name` = 'Italy Serie A' AND t2.`season` = '2015/2016'",
-    "evidence": "In the 2015鈥?016 season refers to season = '2015/2016'",
+    "evidence": "In the 2015–2016 season refers to season = '2015/2016'",
     "annotation_source": "glot"
   },
   {
@@ -11375,7 +11375,7 @@
     "difficulty": "moderate",
     "SQL-sqlite": "SELECT CAST(SUM(CASE WHEN Admission = '+' THEN 1 ELSE 0 END) AS REAL) * 100 / SUM(CASE WHEN Admission = '-' THEN 1 ELSE 0 END) FROM Patient WHERE SEX = 'M'",
     "SQL-Drill": "SELECT CAST(SUM(CASE WHEN `admission` = '+' THEN 1 ELSE 0 END) AS FLOAT) * 100 / NULLIF(SUM(CASE WHEN `admission` = '-' THEN 1 ELSE 0 END), 0) FROM dfs.bird.`thrombosis_prediction/patient` WHERE `sex` = 'M'",
-    "evidence": "male refers to SEX = 'M'; in-patient refers to Admission = '+'; outpatient refers to Admission = '-'; percentage = DIVIDE(COUNT(ID) where SEX = 'M' and Admission = '+', COUNT(ID) where SEX聽 = 'M' and Admission = '-')",
+    "evidence": "male refers to SEX = 'M'; in-patient refers to Admission = '+'; outpatient refers to Admission = '-'; percentage = DIVIDE(COUNT(ID) where SEX = 'M' and Admission = '+', COUNT(ID) where SEX  = 'M' and Admission = '-')",
     "annotation_source": "glot"
   },
   {
@@ -11784,7 +11784,7 @@
     "difficulty": "challenging",
     "SQL-sqlite": "SELECT CAST(SUM(CASE WHEN UA <= 6.5 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(ID) FROM Laboratory WHERE `U-PRO` > 0 AND `U-PRO` < 30",
     "SQL-Drill": "SELECT CAST(SUM(CASE WHEN ua <= 6.5 THEN 1 ELSE 0 END) AS DOUBLE) * 100.0 / NULLIF(COUNT(id),0) FROM laboratory WHERE TRIM(u_pro) IN ('1','2','3','4')",
-    "evidence": "proteinuria level within the normal range refers to `U-PRO` > 0 AND `U-PRO` < 30; uric acid level below the normal range refers to UA < = 6.5; calculation = MULTIPLY(DIVIDE(UA < = 6.5, `U-PRO` > 0 AND `U-PRO` < 30)锛?00)",
+    "evidence": "proteinuria level within the normal range refers to `U-PRO` > 0 AND `U-PRO` < 30; uric acid level below the normal range refers to UA < = 6.5; calculation = MULTIPLY(DIVIDE(UA < = 6.5, `U-PRO` > 0 AND `U-PRO` < 30)，100)",
     "annotation_source": "human"
   },
   {
@@ -14685,7 +14685,7 @@
   {
     "question_id": 1482,
     "db_id": "debit_card_specializing",
-    "question": "Which of the three segments鈥擲ME, LAM and KAM鈥攈as the biggest and lowest percentage increases in consumption paid in EUR between 2012 and 2013?",
+    "question": "Which of the three segments—SME, LAM and KAM—has the biggest and lowest percentage increases in consumption paid in EUR between 2012 and 2013?",
     "difficulty": "challenging",
     "SQL-sqlite": "SELECT CAST((SUM(IIF(T1.Segment = 'SME' AND T2.Date LIKE '2013%', T2.Consumption, 0)) - SUM(IIF(T1.Segment = 'SME' AND T2.Date LIKE '2012%', T2.Consumption, 0))) AS FLOAT) * 100 / SUM(IIF(T1.Segment = 'SME' AND T2.Date LIKE '2012%', T2.Consumption, 0)), CAST(SUM(IIF(T1.Segment = 'LAM' AND T2.Date LIKE '2013%', T2.Consumption, 0)) - SUM(IIF(T1.Segment = 'LAM' AND T2.Date LIKE '2012%', T2.Consumption, 0)) AS FLOAT) * 100 / SUM(IIF(T1.Segment = 'LAM' AND T2.Date LIKE '2012%', T2.Consumption, 0)) , CAST(SUM(IIF(T1.Segment = 'KAM' AND T2.Date LIKE '2013%', T2.Consumption, 0)) - SUM(IIF(T1.Segment = 'KAM' AND T2.Date LIKE '2012%', T2.Consumption, 0)) AS FLOAT) * 100 / SUM(IIF(T1.Segment = 'KAM' AND T2.Date LIKE '2012%', T2.Consumption, 0)) FROM customers AS T1 INNER JOIN yearmonth AS T2 ON T1.CustomerID = T2.CustomerID",
     "SQL-Drill": "SELECT CAST((SUM(`IF`(T1.`segment` = 'SME' AND T2.`date_col` LIKE '2013%', T2.`consumption`, 0)) - SUM(`IF`(T1.`segment` = 'SME' AND T2.`date_col` LIKE '2012%', T2.`consumption`, 0))) AS FLOAT) * 100 / NULLIF(SUM(`IF`(T1.`segment` = 'SME' AND T2.`date_col` LIKE '2012%', T2.`consumption`, 0)), 0), CAST(SUM(`IF`(T1.`segment` = 'LAM' AND T2.`date_col` LIKE '2013%', T2.`consumption`, 0)) - SUM(`IF`(T1.`segment` = 'LAM' AND T2.`date_col` LIKE '2012%', T2.`consumption`, 0)) AS FLOAT) * 100 / NULLIF(SUM(`IF`(T1.`segment` = 'LAM' AND T2.`date_col` LIKE '2012%', T2.`consumption`, 0)), 0), CAST(SUM(`IF`(T1.`segment` = 'KAM' AND T2.`date_col` LIKE '2013%', T2.`consumption`, 0)) - SUM(`IF`(T1.`segment` = 'KAM' AND T2.`date_col` LIKE '2012%', T2.`consumption`, 0)) AS FLOAT) * 100 / NULLIF(SUM(`IF`(T1.`segment` = 'KAM' AND T2.`date_col` LIKE '2012%', T2.`consumption`, 0)), 0) FROM dfs.bird.`debit_card_specializing/customers` AS T1 INNER JOIN dfs.bird.`debit_card_specializing/yearmonth` AS T2 ON T1.`customerid` = T2.`customerid`",
@@ -14718,7 +14718,7 @@
     "question": "How much more was customer 7 consuming in April 2013 than customer 5?",
     "difficulty": "simple",
     "SQL-sqlite": "SELECT SUM(IIF(CustomerID = 7, Consumption, 0)) - SUM(IIF(CustomerID = 5, Consumption, 0)) FROM yearmonth WHERE Date = '201304'",
-    "SQL-Drill": "SELECT SUM(`IF`(`customerid` = 7, `consumption`, 0)) - SUM(`IF`(`customerid` = 5, `consumption`, 0)) FROM dfs.bird.`debit_card_specializing/yearmonth` WHERE `date_col` = '201304'",
+    "SQL-Drill": "SELECT SUM(CASE WHEN `customerid` = 7 THEN `consumption` ELSE 0 END) - SUM(CASE WHEN `customerid` = 5 THEN `consumption` ELSE 0 END) FROM dfs.bird.`debit_card_specializing/yearmonth` WHERE `date_col` = '201304'",
     "evidence": "April 2013 refers to 201304 in the yearmonth.date",
     "annotation_source": "glot"
   },
@@ -14796,7 +14796,7 @@
     "question": "In February 2012, what percentage of customers consumed more than 528.3?",
     "difficulty": "simple",
     "SQL-sqlite": "SELECT CAST(SUM(IIF(Consumption > 528.3, 1, 0)) AS FLOAT) * 100 / COUNT(CustomerID) FROM yearmonth WHERE Date = '201202'",
-    "SQL-Drill": "SELECT CAST(SUM(`IF`(`consumption` > 528.3, 1, 0)) AS FLOAT) * 100 / NULLIF(COUNT(`customerid`), 0) FROM dfs.bird.`debit_card_specializing/yearmonth` WHERE `date_col` = '201202'",
+    "SQL-Drill": "SELECT CAST(SUM(CASE WHEN `consumption` > 528.3 THEN 1 ELSE 0 END) AS FLOAT) * 100 / NULLIF(COUNT(`customerid`), 0) FROM dfs.bird.`debit_card_specializing/yearmonth` WHERE `date_col` = '201202'",
     "evidence": "February 2012 refers to '201202' in yearmonth.date; The first 4 strings of the Date values in the yearmonth table can represent year; The 5th and 6th string of the date can refer to month.",
     "annotation_source": "glot"
   },
@@ -15192,5 +15192,3 @@
     "annotation_source": "glot"
   }
 ]
-
-

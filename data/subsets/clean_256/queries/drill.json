@@ -2445,7 +2445,7 @@
     "question": "In February 2012, what percentage of customers consumed more than 528.3?",
     "difficulty": "simple",
     "SQL-sqlite": "SELECT CAST(SUM(IIF(Consumption > 528.3, 1, 0)) AS FLOAT) * 100 / COUNT(CustomerID) FROM yearmonth WHERE Date = '201202'",
-    "SQL-Drill": "SELECT CAST(SUM(`IF`(`consumption` > 528.3, 1, 0)) AS FLOAT) * 100 / NULLIF(COUNT(`customerid`), 0) FROM dfs.bird.`debit_card_specializing/yearmonth` WHERE `date_col` = '201202'",
+    "SQL-Drill": "SELECT CAST(SUM(CASE WHEN `consumption` > 528.3 THEN 1 ELSE 0 END) AS FLOAT) * 100 / NULLIF(COUNT(`customerid`), 0) FROM dfs.bird.`debit_card_specializing/yearmonth` WHERE `date_col` = '201202'",
     "evidence": "February 2012 refers to '201202' in yearmonth.date; The first 4 strings of the Date values in the yearmonth table can represent year; The 5th and 6th string of the date can refer to month.",
     "annotation_source": "glot"
   },

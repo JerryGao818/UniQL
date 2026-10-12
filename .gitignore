@@ -10,3 +10,9 @@ logs/
 *.log
 *.sqlite
 *.db
+
+# Generated SFT artifacts
+sft/artifacts/
+sft/returned_predictions/
+sft/adapters/
+sft/checkpoints/
