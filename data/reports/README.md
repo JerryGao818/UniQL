@@ -14,3 +14,5 @@ Scores are percentages. `Avg.` is the unweighted mean across the 16 dialects, co
 Druid question 520 uses the native-verified reference returning the original SQLite single-row answer (`Anna Pavleeva`, `gladiator`). Saved model prediction outputs were rescored against this reference; model predictions and aggregate correct counts are unchanged.
 
 Question 694 uses the verified comment-author reference. Saved prediction outputs were rescored against that reference in all 16 dialects; the full baseline summaries include these updated outcomes. The unchanged Clean-256 selection does not contain this question.
+
+Question 1021 now follows the updated official BIRD reference and returns `player_name, height`, in that order. Existing saved predictions were rescored using the original dialect-specific EX comparators and verified native reference values; see `gold_1021_revision.json` for evidence and score-count changes. Clean-256 does not contain this question and is unchanged.

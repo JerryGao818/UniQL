@@ -10215,8 +10215,8 @@
     "question": "What is the height of the tallest player? Indicate his name.",
     "evidence": "tallest player refers to MAX(height);",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT player_name FROM Player ORDER BY height DESC LIMIT 1",
-    "SQL-Hive": "SELECT player_name FROM (SELECT player_name, ROW_NUMBER() OVER (ORDER BY height DESC, id ASC) AS rn FROM player) sub WHERE rn = 1",
+    "SQL-sqlite": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1",
+    "SQL-Hive": "SELECT player_name, height FROM (SELECT player_name, height, ROW_NUMBER() OVER (ORDER BY height DESC, id ASC) AS rn FROM player) sub WHERE rn = 1",
     "annotation_source": "LLM-rule"
   },
   {

@@ -10215,8 +10215,8 @@
     "question": "What is the height of the tallest player? Indicate his name.",
     "evidence": "tallest player refers to MAX(height);",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT player_name FROM Player ORDER BY height DESC LIMIT 1",
-    "SQL-Oracle": "SELECT player_name FROM Player ORDER BY height DESC NULLS LAST FETCH FIRST 1 ROWS ONLY",
+    "SQL-sqlite": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1",
+    "SQL-Oracle": "SELECT player_name, height FROM Player ORDER BY height DESC NULLS LAST FETCH FIRST 1 ROWS ONLY",
     "annotation_source": "glot"
   },
   {
