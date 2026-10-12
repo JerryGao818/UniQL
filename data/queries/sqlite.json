@@ -8173,7 +8173,7 @@
     "question": "What is the height of the tallest player? Indicate his name.",
     "evidence": "tallest player refers to MAX(height);",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT player_name FROM Player ORDER BY height DESC LIMIT 1"
+    "SQL-sqlite": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1"
   },
   {
     "question_id": 1022,

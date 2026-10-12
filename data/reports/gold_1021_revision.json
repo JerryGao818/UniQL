@@ -1,0 +1,478 @@
+{
+  "question_id": 1021,
+  "date": "2026-10-13",
+  "official_source": "https://huggingface.co/datasets/birdsql/bird_sql_dev_20251106/raw/main/data/dev_20251106-00000-of-00001.json",
+  "official_question": {
+    "question_id": 1021,
+    "db_id": "european_football_2",
+    "question": "What is the height of the tallest player? Indicate his name.",
+    "evidence": "tallest player refers to MAX(height); height is measured in centimeters",
+    "SQL": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1",
+    "difficulty": "simple"
+  },
+  "previous_projection": [
+    "player_name"
+  ],
+  "corrected_projection": [
+    "player_name",
+    "height"
+  ],
+  "sqlite_reference_result": [
+    [
+      "Kristof van Hout",
+      208.28
+    ]
+  ],
+  "maximum_ties": 1,
+  "verification": "Each native SQL was parsed and replayed on SQLite after restoring source table names. Expected native values were cross-checked against direct-column saved query outputs.",
+  "rescoring": "Existing predictions and native execution outputs were preserved. Only question 1021 was rescored using each dialect evaluator's existing EX comparison. Native database queries were not rerun.",
+  "clickhouse_execution_groups": "Main-experiment saved outputs yield 208.28; all four matched SFT runs yield 208. Their respective reference values are used for offline rescoring.",
+  "clean_256_contains_question": false,
+  "dialects": {
+    "clickhouse": {
+      "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1",
+      "target_height_schema": "- `height` (Nullable(Float64))",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208.28
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 10,
+        "sft": 4
+      }
+    },
+    "doris": {
+      "gold_sql": "SELECT `player_name`, `height` FROM `player` ORDER BY `height` DESC LIMIT 1",
+      "target_height_schema": "height bigint,",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 11,
+        "sft": 4
+      }
+    },
+    "drill": {
+      "gold_sql": "SELECT `player_name`, `height` FROM dfs.bird.`european_football_2/player` ORDER BY `height` DESC LIMIT 1",
+      "target_height_schema": "- `height` (INTEGER)",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 8,
+        "sft": 4
+      }
+    },
+    "druid": {
+      "gold_sql": "SELECT p.\"player_name\", p.\"height\" \nFROM \"bird_european_football_2_player\" AS p \nJOIN (\n  SELECT MAX(\"height\") AS \"max_height\" \n  FROM \"bird_european_football_2_player\"\n) AS m \nON p.\"height\" = m.\"max_height\" \nLIMIT 1",
+      "target_height_schema": "- height (BIGINT)",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 8,
+        "sft": 2
+      }
+    },
+    "duckdb": {
+      "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1",
+      "target_height_schema": "- \"height\" (DOUBLE)",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208.28
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208.28
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 11,
+        "sft": 4
+      }
+    },
+    "hive": {
+      "gold_sql": "SELECT player_name, height FROM (SELECT player_name, height, ROW_NUMBER() OVER (ORDER BY height DESC, id ASC) AS rn FROM player) sub WHERE rn = 1",
+      "target_height_schema": "- `height` (INT)",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 11,
+        "sft": 4
+      }
+    },
+    "mysql": {
+      "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1",
+      "target_height_schema": "- height (INT)",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 10,
+        "sft": 4
+      }
+    },
+    "oracle": {
+      "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC NULLS LAST FETCH FIRST 1 ROWS ONLY",
+      "target_height_schema": "- HEIGHT (NUMBER)",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208.28
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208.28
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 12,
+        "sft": 3
+      }
+    },
+    "postgresql": {
+      "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC NULLS LAST LIMIT 1",
+      "target_height_schema": "- height (INT)",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 13,
+        "sft": 4
+      }
+    },
+    "presto": {
+      "gold_sql": "SELECT \"player_name\", \"height\" FROM \"player\" ORDER BY \"height\" DESC LIMIT 1",
+      "target_height_schema": "- `height` (INTEGER)",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            "208"
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            "208"
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 11,
+        "sft": 3
+      }
+    },
+    "spark": {
+      "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1",
+      "target_height_schema": "- `height` (DOUBLE)",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            "208.28"
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            "208.28"
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 11,
+        "sft": 3
+      }
+    },
+    "sqlite": {
+      "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1",
+      "target_height_schema": "- height (INTEGER)",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208.28
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208.28
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 11,
+        "sft": 4
+      }
+    },
+    "starrocks": {
+      "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1",
+      "target_height_schema": "- `height` (BIGINT)",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 11,
+        "sft": 4
+      }
+    },
+    "mssql": {
+      "gold_sql": "SELECT TOP 1 player_name, height FROM Player ORDER BY height DESC",
+      "target_height_schema": "- `height` (INT)",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 9,
+        "sft": 2
+      }
+    },
+    "teradata": {
+      "gold_sql": "SELECT TOP 1 player_name, height FROM Player ORDER BY height DESC",
+      "target_height_schema": "- `height` (BIGINT)",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 11,
+        "sft": 2
+      }
+    },
+    "trino": {
+      "gold_sql": "SELECT \"player_name\", \"height\" FROM \"player\" ORDER BY \"height\" DESC LIMIT 1",
+      "target_height_schema": "height integer,",
+      "expected_results_by_execution_group": {
+        "main": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "sft": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ]
+      },
+      "native_saved_output_witness_counts": {
+        "main": 11,
+        "sft": 4
+      }
+    }
+  },
+  "main_models": {
+    "claude-sonnet-4-5": {
+      "previous_correct_pairs": 13199,
+      "corrected_correct_pairs": 13204,
+      "denominator_pairs": 24544,
+      "question_1021_previous_correct_dialects": 0,
+      "question_1021_corrected_correct_dialects": 5
+    },
+    "deepseek-chat": {
+      "previous_correct_pairs": 11594,
+      "corrected_correct_pairs": 11608,
+      "denominator_pairs": 24544,
+      "question_1021_previous_correct_dialects": 0,
+      "question_1021_corrected_correct_dialects": 14
+    },
+    "deepseek-coder-v2-lite-16b": {
+      "previous_correct_pairs": 7411,
+      "corrected_correct_pairs": 7416,
+      "denominator_pairs": 24544,
+      "question_1021_previous_correct_dialects": 0,
+      "question_1021_corrected_correct_dialects": 5
+    },
+    "gemini-2.5-pro": {
+      "previous_correct_pairs": 12662,
+      "corrected_correct_pairs": 12664,
+      "denominator_pairs": 24544,
+      "question_1021_previous_correct_dialects": 0,
+      "question_1021_corrected_correct_dialects": 2
+    },
+    "gpt-3.5-turbo": {
+      "previous_correct_pairs": 8620,
+      "corrected_correct_pairs": 8630,
+      "denominator_pairs": 24544,
+      "question_1021_previous_correct_dialects": 0,
+      "question_1021_corrected_correct_dialects": 10
+    },
+    "gpt-5-mini": {
+      "previous_correct_pairs": 12196,
+      "corrected_correct_pairs": 12212,
+      "denominator_pairs": 24544,
+      "question_1021_previous_correct_dialects": 0,
+      "question_1021_corrected_correct_dialects": 16
+    },
+    "gpt-5.1-codex": {
+      "previous_correct_pairs": 12359,
+      "corrected_correct_pairs": 12375,
+      "denominator_pairs": 24544,
+      "question_1021_previous_correct_dialects": 0,
+      "question_1021_corrected_correct_dialects": 16
+    },
+    "Llama-3-70B-Instruct": {
+      "previous_correct_pairs": 9513,
+      "corrected_correct_pairs": 9526,
+      "denominator_pairs": 24544,
+      "question_1021_previous_correct_dialects": 0,
+      "question_1021_corrected_correct_dialects": 13
+    },
+    "Llama-3-8B-Instruct": {
+      "previous_correct_pairs": 5221,
+      "corrected_correct_pairs": 5223,
+      "denominator_pairs": 24544,
+      "question_1021_previous_correct_dialects": 0,
+      "question_1021_corrected_correct_dialects": 2
+    },
+    "Qwen3-1.7B": {
+      "previous_correct_pairs": 7882,
+      "corrected_correct_pairs": 7881,
+      "denominator_pairs": 24544,
+      "question_1021_previous_correct_dialects": 5,
+      "question_1021_corrected_correct_dialects": 4
+    },
+    "Qwen3-32B": {
+      "previous_correct_pairs": 11587,
+      "corrected_correct_pairs": 11603,
+      "denominator_pairs": 24544,
+      "question_1021_previous_correct_dialects": 0,
+      "question_1021_corrected_correct_dialects": 16
+    },
+    "Qwen3-4B": {
+      "previous_correct_pairs": 10261,
+      "corrected_correct_pairs": 10275,
+      "denominator_pairs": 24544,
+      "question_1021_previous_correct_dialects": 0,
+      "question_1021_corrected_correct_dialects": 14
+    },
+    "Qwen3-8B": {
+      "previous_correct_pairs": 10843,
+      "corrected_correct_pairs": 10859,
+      "denominator_pairs": 24544,
+      "question_1021_previous_correct_dialects": 0,
+      "question_1021_corrected_correct_dialects": 16
+    }
+  }
+}
