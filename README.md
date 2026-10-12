@@ -27,6 +27,7 @@ UniQL-DialectBench/
   inference/
     infer_open_source.py       # vLLM-based inference for open-weight models
     prompts/                   # Text-to-SQL prompt template
+  sft/                        # Intent-disjoint LoRA training and transfer experiment
   evaluation/
     evaluate.py                # Main executable evaluation entry point
     *_eval.py                  # Dialect-specific evaluators
@@ -149,6 +150,12 @@ python evaluation/evaluate.py \
 ```
 
 Dialect-specific evaluators live in `evaluation/*_eval.py`. They handle connection details, query execution, and result normalization for each database system.
+
+## Supervised Fine-Tuning and Transfer
+
+The [`sft/`](sft/README.md) directory provides the Qwen3-8B LoRA experiment with a fixed intent-disjoint split: 1,227 training intents and 307 test intents (seed 42). It includes SQLite-only, Balanced-16, and Full-16 supervision, together with a matched base-model inference protocol. See the SFT README for data preparation, training, inference, and executable evaluation.
+
+Reference annotations in both the full benchmark and Clean-256 subset incorporate the latest reviewed corrections. The published `annotation_source` labels retain the same five-stage vocabulary.
 
 ## Database Migration and Construction
 

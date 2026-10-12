@@ -1,0 +1,62 @@
+{
+  "experiment_id": "uniql-qwen3-8b-sft-80-20-v1",
+  "split_seed": 42,
+  "train_size": 1227,
+  "test_size": 307,
+  "base_model": "Qwen3-8B",
+  "all_dialects": [
+    "sqlite",
+    "clickhouse",
+    "doris",
+    "drill",
+    "druid",
+    "duckdb",
+    "hive",
+    "mysql",
+    "oracle",
+    "postgresql",
+    "presto",
+    "spark",
+    "starrocks",
+    "mssql",
+    "teradata",
+    "trino"
+  ],
+  "training_variants": {
+    "sqlite_only": "One SQLite target for every training intent (1227 rows).",
+    "joint_balanced": "One dialect-balanced target for every training intent (1227 rows).",
+    "joint16_full": "All 16 dialect targets for every training intent (19632 rows)."
+  },
+  "training": {
+    "method": "fp16 LoRA SFT with reduced GradScaler initial scale on V100",
+    "epochs": 3,
+    "learning_rate": 0.0001,
+    "warmup_ratio": 0.03,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "max_sequence_length": 4096,
+    "per_device_batch_size": 1,
+    "gradient_accumulation_steps": 16,
+    "precision": "fp16",
+    "fp16_initial_scale": 256,
+    "enable_thinking": false,
+    "loss": "assistant_only"
+  },
+  "epoch_selection": {
+    "status": "frozen_before held-out inference",
+    "selected_epochs": 3,
+    "pilot_variant": "joint_balanced",
+    "pilot_epochs": 5,
+    "pilot_seed": 42,
+    "criterion": "First conservative point with both mean and tail training loss near 0.1; epochs 4-5 were treated as near-zero memorization rather than selected by minimum training loss.",
+    "report": "README.md#protocol"
+  },
+  "inference": {
+    "temperature": 0.0,
+    "max_new_tokens": 768,
+    "max_model_length": 4096,
+    "precision": "fp16",
+    "enable_thinking": false
+  }
+}
