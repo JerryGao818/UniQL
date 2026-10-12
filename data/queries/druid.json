@@ -5205,7 +5205,7 @@
     "question": "Who is the illustrator that illustrated the least amount of cards? List the format of play of the cards that he/she illustrated.",
     "evidence": "format of the cards refers to format; illustrator refers to artist; the least amount of cards refers to MIN(artist)",
     "difficulty": "moderate",
-    "SQL-druid": "SELECT sub.\"artist\", l.\"format\"\nFROM (\n  SELECT c.\"artist\", c.\"uuid\"\n  FROM \"bird_card_games_cards\" AS c\n  WHERE c.\"uuid\" IN (SELECT DISTINCT \"uuid\" FROM \"bird_card_games_legalities\")\n    AND c.\"artist\" IS NOT NULL\n  GROUP BY c.\"artist\", c.\"uuid\"\n  ORDER BY (SELECT COUNT(\"id\") FROM \"bird_card_games_cards\" AS c2 WHERE c2.\"artist\" = c.\"artist\") ASC\n  LIMIT 1\n) AS sub\nINNER JOIN \"bird_card_games_legalities\" AS l ON sub.\"uuid\" = l.\"uuid\"\nLIMIT 1",
+    "SQL-druid": "SELECT c.\"artist\", l.\"format\"\nFROM \"bird_card_games_cards\" AS c\nINNER JOIN \"bird_card_games_legalities\" AS l ON c.\"uuid\" = l.\"uuid\"\nINNER JOIN (\n  SELECT c2.\"artist\", COUNT(c2.\"id\") AS cnt\n  FROM \"bird_card_games_cards\" AS c2\n  INNER JOIN \"bird_card_games_legalities\" AS l2 ON c2.\"uuid\" = l2.\"uuid\"\n  WHERE c2.\"artist\" IS NOT NULL\n  GROUP BY c2.\"artist\"\n) AS ac ON c.\"artist\" = ac.\"artist\"\nORDER BY ac.cnt ASC\nLIMIT 1",
     "SQL-sqlite": "SELECT T1.artist, T2.format FROM cards AS T1 INNER JOIN legalities AS T2 ON T2.uuid = T1.uuid GROUP BY T1.artist ORDER BY COUNT(T1.id) ASC LIMIT 1",
     "annotation_source": "human"
   },
