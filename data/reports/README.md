@@ -12,3 +12,5 @@ The two CSV files summarize the existing model execution traces with these refer
 Scores are percentages. `Avg.` is the unweighted mean across the 16 dialects, computed before rounding individual scores; `Avg. N` is the number of dialects. These inference-only baselines use their original evaluation protocol and should not be used as the matched base for the direct-SQL SFT experiment. The SFT package generates its own matched base predictions on the held-out 307 intents.
 
 Druid question 520 uses the native-verified reference returning the original SQLite single-row answer (`Anna Pavleeva`, `gladiator`). Saved model prediction outputs were rescored against this reference; model predictions and aggregate correct counts are unchanged.
+
+Question 694 uses the verified comment-author reference. Saved prediction outputs were rescored against that reference in all 16 dialects; the full baseline summaries include these updated outcomes. The unchanged Clean-256 selection does not contain this question.
