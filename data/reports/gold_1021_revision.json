@@ -25,7 +25,7 @@
   ],
   "maximum_ties": 1,
   "verification": "Each native SQL was parsed and replayed on SQLite after restoring source table names. Expected native values were cross-checked against direct-column saved query outputs.",
-  "rescoring": "Existing predictions and native execution outputs were preserved. Only question 1021 was rescored using each dialect evaluator's existing EX comparison. Native database queries were not rerun.",
+  "rescoring": "Existing predictions and native execution outputs were preserved. Only question 1021 was rescored using each dialect evaluator's existing EX comparison and the reference for its execution snapshot. This rescoring used saved outputs; subsequent native gold-only execution is recorded separately below.",
   "clickhouse_execution_groups": "Main-experiment saved outputs yield 208.28; all four matched SFT runs yield 208. Their respective reference values are used for offline rescoring.",
   "clean_256_contains_question": false,
   "dialects": {
@@ -474,5 +474,201 @@
       "question_1021_previous_correct_dialects": 0,
       "question_1021_corrected_correct_dialects": 16
     }
+  },
+  "subsequent_native_verification": {
+    "date": "2026-10-13",
+    "scope": "Execute the current question 1021 gold without dialect translation on existing databases; no model predictions were rerun.",
+    "passed_dialects": [
+      "presto",
+      "clickhouse",
+      "druid",
+      "duckdb",
+      "doris",
+      "drill",
+      "hive",
+      "mysql",
+      "oracle",
+      "postgresql",
+      "sqlite",
+      "mssql",
+      "trino"
+    ],
+    "not_executed": [
+      "spark",
+      "starrocks",
+      "teradata"
+    ],
+    "results": {
+      "presto": {
+        "gold_sql": "SELECT \"player_name\", \"height\" FROM \"player\" ORDER BY \"height\" DESC LIMIT 1",
+        "returned_rows": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "matches_historical_reference_by_group": {
+          "main": true,
+          "sft": true
+        }
+      },
+      "clickhouse": {
+        "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1",
+        "returned_rows": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "matches_historical_reference_by_group": {
+          "main": false,
+          "sft": true
+        }
+      },
+      "druid": {
+        "gold_sql": "SELECT p.\"player_name\", p.\"height\" \nFROM \"bird_european_football_2_player\" AS p \nJOIN (\n  SELECT MAX(\"height\") AS \"max_height\" \n  FROM \"bird_european_football_2_player\"\n) AS m \nON p.\"height\" = m.\"max_height\" \nLIMIT 1",
+        "returned_rows": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "matches_historical_reference_by_group": {
+          "main": true,
+          "sft": true
+        }
+      },
+      "duckdb": {
+        "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1",
+        "returned_rows": [
+          [
+            "Kristof van Hout",
+            208.28
+          ]
+        ],
+        "matches_historical_reference_by_group": {
+          "main": true,
+          "sft": true
+        }
+      },
+      "doris": {
+        "gold_sql": "SELECT `player_name`, `height` FROM `player` ORDER BY `height` DESC LIMIT 1",
+        "returned_rows": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "matches_historical_reference_by_group": {
+          "main": true,
+          "sft": true
+        }
+      },
+      "drill": {
+        "gold_sql": "SELECT `player_name`, `height` FROM dfs.bird.`european_football_2/player` ORDER BY `height` DESC LIMIT 1",
+        "returned_rows": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "matches_historical_reference_by_group": {
+          "main": true,
+          "sft": true
+        }
+      },
+      "hive": {
+        "gold_sql": "SELECT player_name, height FROM (SELECT player_name, height, ROW_NUMBER() OVER (ORDER BY height DESC, id ASC) AS rn FROM player) sub WHERE rn = 1",
+        "returned_rows": [
+          [
+            "Kristof van Hout",
+            "208"
+          ]
+        ],
+        "matches_historical_reference_by_group": {
+          "main": true,
+          "sft": true
+        }
+      },
+      "mysql": {
+        "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1",
+        "returned_rows": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "matches_historical_reference_by_group": {
+          "main": true,
+          "sft": true
+        }
+      },
+      "oracle": {
+        "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC NULLS LAST FETCH FIRST 1 ROWS ONLY",
+        "returned_rows": [
+          [
+            "Kristof van Hout",
+            208.28
+          ]
+        ],
+        "matches_historical_reference_by_group": {
+          "main": true,
+          "sft": true
+        }
+      },
+      "postgresql": {
+        "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC NULLS LAST LIMIT 1",
+        "returned_rows": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "matches_historical_reference_by_group": {
+          "main": true,
+          "sft": true
+        }
+      },
+      "sqlite": {
+        "gold_sql": "SELECT player_name, height FROM Player ORDER BY height DESC LIMIT 1",
+        "returned_rows": [
+          [
+            "Kristof van Hout",
+            208.28
+          ]
+        ],
+        "matches_historical_reference_by_group": {
+          "main": true,
+          "sft": true
+        }
+      },
+      "mssql": {
+        "gold_sql": "SELECT TOP 1 player_name, height FROM Player ORDER BY height DESC",
+        "returned_rows": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "matches_historical_reference_by_group": {
+          "main": true,
+          "sft": true
+        }
+      },
+      "trino": {
+        "gold_sql": "SELECT \"player_name\", \"height\" FROM \"player\" ORDER BY \"height\" DESC LIMIT 1",
+        "returned_rows": [
+          [
+            "Kristof van Hout",
+            208
+          ]
+        ],
+        "matches_historical_reference_by_group": {
+          "main": true,
+          "sft": true
+        }
+      }
+    },
+    "clickhouse_note": "The available ClickHouse database stores height as Nullable(Int64) and returns 208, matching the SFT snapshot. Main-experiment saved native outputs return 208.28; their historical reference remains 208.28. The current run does not revalidate the unavailable historical main database snapshot."
   }
 }
