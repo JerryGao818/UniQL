@@ -13,7 +13,8 @@ Qwen3-32B,49.80,47.26,46.61,33.90,50.00,52.02,52.09,44.20,48.57,47.85,49.28,53.4
 Llama-3-8B-Inst,20.80,23.99,18.45,16.56,22.29,22.29,22.10,18.32,22.49,22.23,23.66,23.73,24.19,21.19,15.45,22.75,21.28,16
 Llama-3-70B-Inst,40.22,40.16,37.87,26.92,41.79,42.70,43.81,35.14,40.22,38.07,42.96,42.31,42.63,40.61,26.47,39.11,38.81,16
 DeepSeek-Coder-16B,32.53,31.10,32.20,21.38,32.86,34.94,36.64,28.23,31.94,12.84,34.42,35.14,34.88,31.75,20.01,32.59,30.22,16
-DeepSeek-v4-flash,48.11,46.94,46.35,34.29,49.09,52.87,52.67,43.22,48.57,49.09,51.69,53.46,50.26,51.50,30.96,47.65,47.29,16`,
+DeepSeek-v4-flash,48.11,46.94,46.35,34.29,49.09,52.87,52.67,43.22,48.57,49.09,51.69,53.46,50.26,51.50,30.96,47.65,47.29,16
+schemagate,,,,,,,,64.47,,,,,,,,,,1`,
   "assets/data/clean_256_baseline_results.csv": String.raw`Model,ClickHouse,Doris,Drill,Druid,DuckDB,Hive,MySQL,Oracle,PostgreSQL,Presto,Spark,SQLite,StarRocks,T-SQL,Teradata,Trino,Avg.,Avg. N
 GPT-3.5-Turbo,25.39,29.69,19.92,13.28,28.12,27.34,31.64,21.48,28.91,24.22,30.86,32.42,32.42,28.52,14.06,25.78,25.88,16
 GPT-5-mini,51.17,49.22,46.88,32.03,55.08,56.64,56.25,48.05,52.34,49.22,53.52,54.30,50.78,55.47,31.64,49.22,49.49,16
@@ -33,6 +34,12 @@ DeepSeek-v4-flash,42.58,42.97,40.62,24.22,46.88,52.73,51.17,41.41,45.31,44.53,51
 async function loadLeaderboard() {
   await renderLeaderboard("leaderboard-full", "assets/data/full_1534_baseline_results.csv", "UniQL-Full");
   await renderLeaderboard("leaderboard-clean", "assets/data/clean_256_baseline_results.csv", "UniQL-Minidev");
+}
+
+// Rows without a 16-dialect average (single-dialect submissions) sort after ranked rows.
+function avgOrLast(row) {
+  const value = Number.parseFloat(row["Avg."]);
+  return Number.isNaN(value) ? -1 : value;
 }
 
 async function renderLeaderboard(tableId, csvPath, trackName) {
@@ -66,7 +73,7 @@ async function renderLeaderboard(tableId, csvPath, trackName) {
     ];
     const selected = rows
       .filter((row) => row.Model)
-      .sort((a, b) => Number.parseFloat(b["Avg."]) - Number.parseFloat(a["Avg."]));
+      .sort((a, b) => avgOrLast(b) - avgOrLast(a));
 
     tableHead.innerHTML = "";
     const headRow = document.createElement("tr");
