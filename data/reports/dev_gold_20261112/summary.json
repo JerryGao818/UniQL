@@ -47,9 +47,10 @@
         "passed": 1521,
         "passed_tie_equivalent": 13
       },
-      "engine_version": null,
+      "engine_version": "23.0.0.0.0",
       "cleanup_complete": true,
-      "model_calls": 0
+      "model_calls": 0,
+      "binding_only_SQL_shape_equal": 1301
     },
     "duckdb": {
       "status": "native_verified_and_published",
@@ -89,6 +90,11 @@
       "engine_version": "8.0.46",
       "cleanup_complete": true,
       "model_calls": 0
+    },
+    "sqlite": {
+      "status": "reviewed_reference_repairs_published",
+      "source_SQL_changed": 26,
+      "reference_execution": "Native SQLite results used by target validation; inherited evidence checked by SQL AST and SHA."
     },
     "clickhouse": {
       "status": "original_public_file_preserved_pending_native_validation",

@@ -2,14 +2,16 @@
 
 Oracle's 1,534 public gold queries now use the exact quoted table and column names in the updated schema. All 1,534 pass native Oracle reference validation (1,521 directly and 13 with reviewed tie-equivalence evidence). This includes questions 514, 1123, 1125 and 1263, previously failing with `ORA-01791`.
 
+After normalizing identifier case and quoting, 1,301 Oracle SQL ASTs retain the previous query shape. The remaining changes include Oracle syntax/type compatibility and audited reference repairs; changing all 1,534 SQL strings does not mean discarding all previous query logic.
+
 The original UniQL question IDs, questions, evidence and difficulty fields are retained. We adopt 26 individually reviewed reference repairs after checking the latest official BIRD dev SQL and available correction material. We do not replace the original tasks with the broader wording/output revisions in newer BIRD releases. The audit does not claim to resolve every BIRD annotation issue.
 
 | Published dialect | Native validation | Target SQL changed |
 | --- | --- | --- |
 | Oracle | 1,534 / 1,534 | 1,534, primarily identifier binding |
-| DuckDB | 26 / 26 | See `summary.json` |
-| PostgreSQL | 26 / 26 | See `summary.json` |
-| MySQL | 26 / 26 | See `summary.json` |
+| DuckDB | 26 / 26 | 25 |
+| PostgreSQL | 26 / 26 | 21 |
+| MySQL | 26 / 26 | 23 |
 | SQLite | Reference execution for the repaired queries | 26 |
 
 The other 11 target dialects retain their original published files while their scoped candidates await native validation. Correct existing translations are preserved. The preliminary whole-release drafts are excluded from this release.
