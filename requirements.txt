@@ -1,7 +1,7 @@
 func-timeout
 numpy
 pandas
-sqlglot
+sqlglot==30.23.0
 tqdm
 transformers
 vllm
@@ -10,7 +10,7 @@ requests
 python-dateutil
 pymysql
 psycopg2-binary
-oracledb
+oracledb>=3.4.1
 pyhive
 trino
 presto-python-client

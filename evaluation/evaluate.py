@@ -92,6 +92,8 @@ def short_text(text, max_len=500):
 
 
 def result_error_message(result):
+    if isinstance(result, dict) and result.get("__uniql_execution_error__") is True:
+        return result.get("message") or "Database execution failed"
     if isinstance(result, str) and " Error:" in result:
         return result
     if isinstance(result, (list, tuple)) and len(result) == 1:
@@ -155,7 +157,7 @@ def validate_runtime(dialect):
         "hive": ["pyhive"],
         "mssql": ["pymssql"],
         "mysql": ["pymysql"],
-        "oracle": ["oracledb"],
+        "oracle": ["oracledb", "sqlglot"],
         "postgresql": ["psycopg2"],
         "presto": ["requests"],
         "spark": [],
@@ -173,23 +175,53 @@ def validate_runtime(dialect):
         )
 
 
-def execute_sql(predicted_sql, ground_truth, db_path,dialect='sqlite'):
+def execute_sql(predicted_sql, ground_truth, db_path, dialect='sqlite', *,
+                grading_method=None, query_timeout=120, total_timeout=None,
+                return_evaluation=False):
     dialect = normalize_dialect(dialect)
     module_name, class_name = EVALUATOR_REGISTRY[dialect]
-    evaluator_module = importlib.import_module(module_name)
+    evaluator_module = (importlib.import_module('.' + module_name, __package__)
+                        if __package__ else importlib.import_module(module_name))
     evaluator_cls = getattr(evaluator_module, class_name)
-    res, gt_result, pred_result = evaluator_cls(db_path, ground_truth, predicted_sql).check_result_same()
-    return res, gt_result,pred_result
+    if dialect == 'oracle':
+        evaluator = evaluator_cls(db_path, ground_truth, predicted_sql,
+                                  grading_method=grading_method,
+                                  query_timeout=query_timeout, total_timeout=total_timeout)
+    else:
+        evaluator = evaluator_cls(db_path, ground_truth, predicted_sql)
+    res, gt_result, pred_result = evaluator.check_result_same()
+    if return_evaluation:
+        return res, gt_result, pred_result, getattr(evaluator, 'last_evaluation', None)
+    return res, gt_result, pred_result
 
-def execute_model(predicted_sql, ground_truth, db_place, idx, meta_time_out,dialect='sqlite'):
+
+def execute_model(predicted_sql, ground_truth, db_place, idx, meta_time_out,
+                  dialect='sqlite', grading_method=None):
     start_timestamp = datetime.now().isoformat()
+    evaluation = None
     try:
-        res, gt_result,pred_result = func_timeout(meta_time_out, execute_sql,
-                                                           args=(predicted_sql, ground_truth, db_place,dialect))
-        timeout = False
+        if normalize_dialect(dialect) == 'oracle':
+            # The adapter owns cancellation and the pair-wide budget. An outer
+            # func_timeout thread must not abandon its native cleanup lifecycle.
+            res, gt_result, pred_result, evaluation = execute_sql(
+                predicted_sql, ground_truth, db_place, dialect,
+                grading_method=grading_method, query_timeout=min(meta_time_out, 120),
+                total_timeout=meta_time_out, return_evaluation=True)
+            timeout = (evaluation.get('pair_timeout') is True or
+                       any(evaluation[side].get('timeout') is True for side in ('gt', 'pred')))
+            db_errors = []
+            for side, value in (('ground_truth', gt_result), ('predicted', pred_result)):
+                if isinstance(value, dict) and value.get('__uniql_execution_error__') is True:
+                    db_errors.append(f'{side}: {value.get("message") or "Oracle execution failed"}')
+        else:
+            res, gt_result, pred_result = func_timeout(
+                meta_time_out, execute_sql,
+                args=(predicted_sql, ground_truth, db_place, dialect))
+            timeout = False
+            db_errors = collect_db_errors(gt_result, pred_result)
         error = None
-        db_errors = collect_db_errors(gt_result, pred_result)
         if db_errors:
+            res = 0
             error = " | ".join(db_errors)
     except KeyboardInterrupt:
         sys.exit(0)
@@ -221,6 +253,19 @@ def execute_model(predicted_sql, ground_truth, db_place, idx, meta_time_out,dial
         'pred_result': pred_result,
         'gt_result': gt_result
     }
+    if evaluation is not None:
+        result['evaluation'] = evaluation
+        result['comparison_version'] = evaluation['comparison_policy']['version']
+        result['comparison_policy'] = evaluation['comparison_policy']
+        result['typed_results'] = evaluation['typed_results']
+        result['result_encoding'] = {
+            'authoritative': 'typed_results',
+            'legacy_fields': 'gt_result/pred_result are compatibility previews; json_safe may lose precision',
+        }
+        if evaluation['comparison'].get('reason') in (
+                'comparison_error', 'typed_evidence_encoding_failed', 'pair_budget_exhausted'):
+            result['res'] = 0
+            result['error'] = result['error'] or evaluation['comparison']['reason']
     return result
 
 
@@ -245,13 +290,17 @@ def package_sqls(sql_path:str, db_root_path, dev_path=None):
             "difficulty": sql_str.get("difficulty", ""),
             "annotation_source": sql_str.get("annotation_source", "unknown"),
             "db_id": db_name,
+            "grading_method": sql_str.get("grading_method"),
         })
     print(f"load data total {len(pred_sqls)} from {sql_path}")
     print(f"load gt sql total {len(gt_sqls)} from {sql_path}")
     return pred_sqls, gt_sqls, db_path_list, metadata
 
 
-def run_sqls_parallel(sqls, db_places, num_cpus=1, meta_time_out=120.0,dialect='sqlite'):
+def run_sqls_parallel(sqls, db_places, num_cpus=1, meta_time_out=120.0,
+                      dialect='sqlite', metadata=None):
+    if len(sqls) != len(db_places) or metadata is not None and len(metadata) != len(sqls):
+        raise ValueError('SQL, database and metadata coverage must agree')
     global EVAL_PROGRESS_DONE, EVAL_PROGRESS_TOTAL
     EVAL_PROGRESS_DONE = 0
     EVAL_PROGRESS_TOTAL = len(sqls)
@@ -259,7 +308,10 @@ def run_sqls_parallel(sqls, db_places, num_cpus=1, meta_time_out=120.0,dialect='
     pool = mp.Pool(processes=num_cpus)
     for i, sql_pair in enumerate(sqls):
         predicted_sql, ground_truth = sql_pair
-        pool.apply_async(execute_model, args=(predicted_sql, ground_truth, db_places[i], i, meta_time_out,dialect),
+        grading_method = metadata[i].get('grading_method') if metadata is not None else None
+        pool.apply_async(execute_model,
+                         args=(predicted_sql, ground_truth, db_places[i], i,
+                               meta_time_out, dialect, grading_method),
                          callback=result_callback)
     pool.close()
     pool.join()
@@ -445,7 +497,8 @@ if __name__ == '__main__':
 
     query_pairs = list(zip(pred_queries, gt_queries))
     assert len(query_pairs) == len(pred_queries) == len(gt_queries)
-    run_sqls_parallel(query_pairs, db_places=db_paths, num_cpus=args.num_cpus, meta_time_out=args.meta_time_out,dialect=args.dialect)
+    run_sqls_parallel(query_pairs, db_places=db_paths, num_cpus=args.num_cpus,
+                      meta_time_out=args.meta_time_out, dialect=args.dialect, metadata=metadata)
     exec_result = sort_results(exec_result)
     
     # Save timing results to JSONg

@@ -1,0 +1,256 @@
+{
+  "version": "uniql-dev-gold-20261112-scoped-v1",
+  "baseline_commit": "e69c6b319ee670c66dc0b17a3024694d421c6aa7",
+  "question_policy": "retain all original UniQL question/evidence/difficulty fields",
+  "repaired_qids": [
+    342,
+    484,
+    514,
+    642,
+    893,
+    988,
+    1006,
+    1011,
+    1024,
+    1027,
+    1041,
+    1135,
+    1164,
+    1188,
+    1190,
+    1202,
+    1209,
+    1234,
+    1243,
+    1260,
+    1261,
+    1276,
+    1277,
+    1282,
+    1309,
+    1456
+  ],
+  "reference_repair_count": 26,
+  "Oracle_binding_scope": 1534,
+  "clean_subset_qids_affected_by_reference_repairs": [
+    484,
+    988,
+    1135
+  ],
+  "dialects": {
+    "oracle": {
+      "status": "native_verified_and_published",
+      "validated_questions": 1534,
+      "target_SQL_changed": 1534,
+      "target_SQL_preserved": 0,
+      "counts": {
+        "passed": 1521,
+        "passed_tie_equivalent": 13
+      },
+      "engine_version": "23.0.0.0.0",
+      "cleanup_complete": true,
+      "model_calls": 0,
+      "binding_only_SQL_shape_equal": 1301
+    },
+    "duckdb": {
+      "status": "native_verified_and_published",
+      "validated_questions": 26,
+      "target_SQL_changed": 25,
+      "target_SQL_preserved": 1509,
+      "counts": {
+        "passed": 23,
+        "passed_tie_equivalent": 3
+      },
+      "engine_version": "1.4.5",
+      "cleanup_complete": true,
+      "model_calls": 0
+    },
+    "postgresql": {
+      "status": "native_verified_and_published",
+      "validated_questions": 26,
+      "target_SQL_changed": 21,
+      "target_SQL_preserved": 1513,
+      "counts": {
+        "passed": 22,
+        "passed_tie_equivalent": 4
+      },
+      "engine_version": "PostgreSQL 16.15 (Debian 16.15-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+      "cleanup_complete": true,
+      "model_calls": 0
+    },
+    "mysql": {
+      "status": "native_verified_and_published",
+      "validated_questions": 26,
+      "target_SQL_changed": 23,
+      "target_SQL_preserved": 1511,
+      "counts": {
+        "passed": 22,
+        "passed_tie_equivalent": 4
+      },
+      "engine_version": "8.0.46",
+      "cleanup_complete": true,
+      "model_calls": 0
+    },
+    "sqlite": {
+      "status": "reviewed_reference_repairs_published",
+      "source_SQL_changed": 26,
+      "reference_execution": "Native SQLite results used by target validation; inherited evidence checked by SQL AST and SHA."
+    },
+    "clickhouse": {
+      "status": "original_public_file_preserved_pending_native_validation",
+      "target_SQL_changed": 0,
+      "published_reference_updates": 0
+    },
+    "doris": {
+      "status": "original_public_file_preserved_pending_native_validation",
+      "target_SQL_changed": 0,
+      "published_reference_updates": 0
+    },
+    "drill": {
+      "status": "original_public_file_preserved_pending_native_validation",
+      "target_SQL_changed": 0,
+      "published_reference_updates": 0
+    },
+    "druid": {
+      "status": "original_public_file_preserved_pending_native_validation",
+      "target_SQL_changed": 0,
+      "published_reference_updates": 0
+    },
+    "hive": {
+      "status": "original_public_file_preserved_pending_native_validation",
+      "target_SQL_changed": 0,
+      "published_reference_updates": 0
+    },
+    "mssql": {
+      "status": "original_public_file_preserved_pending_native_validation",
+      "target_SQL_changed": 0,
+      "published_reference_updates": 0
+    },
+    "presto": {
+      "status": "original_public_file_preserved_pending_native_validation",
+      "target_SQL_changed": 0,
+      "published_reference_updates": 0
+    },
+    "spark": {
+      "status": "original_public_file_preserved_pending_native_validation",
+      "target_SQL_changed": 0,
+      "published_reference_updates": 0
+    },
+    "starrocks": {
+      "status": "original_public_file_preserved_pending_native_validation",
+      "target_SQL_changed": 0,
+      "published_reference_updates": 0
+    },
+    "teradata": {
+      "status": "original_public_file_preserved_pending_native_validation",
+      "target_SQL_changed": 0,
+      "published_reference_updates": 0
+    },
+    "trino": {
+      "status": "original_public_file_preserved_pending_native_validation",
+      "target_SQL_changed": 0,
+      "published_reference_updates": 0
+    }
+  },
+  "pending_native_dialects": [
+    "clickhouse",
+    "doris",
+    "drill",
+    "druid",
+    "hive",
+    "mssql",
+    "presto",
+    "spark",
+    "starrocks",
+    "teradata",
+    "trino"
+  ],
+  "all_16_dialects_updated": false,
+  "new_model_calls": 0,
+  "comparison": {
+    "policy": "oracle-ex-bag-finite-float-v1",
+    "official_BIRD_score": false,
+    "ties": "manual SQL review plus full eligible multiset, exact source sort keys and selection-boundary proof; q1209 ID is only a deterministic tie-breaker, Birthday is the requested key"
+  },
+  "sources": {
+    "california_schools": {
+      "sha256": "986817d793479801ed55133e55aa27e335422c0cd3866b54a3d6317b7c5f09c1",
+      "tables": 3,
+      "rows": 29941
+    },
+    "card_games": {
+      "sha256": "c98bdb57fe7474da798b407785544b9af0daaad5d61fd21e2a73309493bc1227",
+      "tables": 6,
+      "rows": 803445
+    },
+    "codebase_community": {
+      "sha256": "92101be6d2a9f6adceea59d38f6d1c556087f9eea1432432a21268cb1348036d",
+      "tables": 8,
+      "rows": 740646
+    },
+    "debit_card_specializing": {
+      "sha256": "b3d149ad05746dbbe5116e229e17e18f09c39db43cf117d9ef3441753608b691",
+      "tables": 5,
+      "rows": 423050
+    },
+    "european_football_2": {
+      "sha256": "e4d361dbeec6591a4b315877c0c481da05c8ff5a3d389b34d6e17b6f15bee4e0",
+      "tables": 7,
+      "rows": 222796
+    },
+    "financial": {
+      "sha256": "d15d89cdb068a202b6f2b99342af44dffc1d52545b39ceaf62efdc0ba570101e",
+      "tables": 8,
+      "rows": 1079680
+    },
+    "formula_1": {
+      "sha256": "17185981cd747f6cdc374cb02a6096db3130e6ec2ddc582fe1686a28fb4c4c8a",
+      "tables": 13,
+      "rows": 514287
+    },
+    "student_club": {
+      "sha256": "eb89bcfe97eefa386a27904ec5aa15159811a7eac894ec659a36e48fa9f76b77",
+      "tables": 8,
+      "rows": 42511
+    },
+    "superhero": {
+      "sha256": "75e94a2c3236ee3bb2c01fb97a1c4b4c1c269bcefd4eab1d04be323d2d0825b1",
+      "tables": 10,
+      "rows": 10614
+    },
+    "thrombosis_prediction": {
+      "sha256": "e7e16d74b4731b4b8d33fdbe8c29cd5622620788ce8d1f335631f65fc7cf1db9",
+      "tables": 3,
+      "rows": 15952
+    },
+    "toxicology": {
+      "sha256": "f5fa7f21af1ad878ff8fef1b0582b8cb2d7ed63dbac65ff16d2ba05667650c5b",
+      "tables": 4,
+      "rows": 49813
+    }
+  },
+  "release_file_sha256": {
+    "data/queries/oracle.json": "1bd6204736a7d440da0e5469ca7ef7d49b5ec24479d5680689e54c995f17a7e6",
+    "data/queries/duckdb.json": "c03cacea0b62fa3af83a784ae98df5c8eaba8263e7cd93db54a9dd6d0d04a782",
+    "data/queries/postgresql.json": "34f960bc3c8b93cb57d490a94a32c56c9ea51e8b152de28f8ce20867e3ca5290",
+    "data/queries/mysql.json": "cb826c212a5925f99d44183cc04dec9b426408d5593ec30ddafde4f5aaf42299",
+    "data/subsets/clean_256/queries/sqlite.json": "5da937e4ec6063b4c6a76947f67d84e62b3485f8129ab002f812b6e5c326fbcb",
+    "data/subsets/clean_256/queries/oracle.json": "f9378bb4d442cd86ee45740bc29da1199f1174e2648cce6656f0c0e4dbd77902",
+    "data/subsets/clean_256/queries/duckdb.json": "eaaecb1682b95e39e49677062c4adf9cf3cf83942b67b2ebe19aa708531eb6fd",
+    "data/subsets/clean_256/queries/postgresql.json": "975dc3cde59b4ba96a06f8032dea5f2dbc4f7017008747069e4453592f801b37",
+    "data/subsets/clean_256/queries/mysql.json": "bbed5a9b01e27757fc65042b2fe0983dbbb01839bbeed71dc470cff53c16607e",
+    "data/schemas/oracle_schema.json": "0fc8d53338d773139e1bdd34944d5ff9e5a5766a3658f9d99b3d593a2740819a",
+    "data/schemas/oracle_storage.json": "b2912e84db489ae785af3f1ee0ae390e88ec3fb7d89cd991b3fde6c00c8e86a5",
+    "evaluation/oracle_eval.py": "9145ae6f487d23603ad5994418b9498770ef72977a15deb5993aa2fb072dacd1",
+    "evaluation/oracle_ex.py": "c902300d7d997f7c391725bbaa42d9437d861cda5812f5b3485d40cae6f688c1",
+    "evaluation/evaluate.py": "783b8bcf84d4bbfc4dc20416e2340b3b02e5cd8a1f8847c5a14371adc137509c",
+    "migration/oracle/loader_native.py": "2ef67673dc27411c3efcbfd0afffd7481ca17d4def4a7f66afddad12df9d77da",
+    "migration/oracle/insert_to_oracle.py": "f6bf8fd88849373f1d5e9754e1e737c3e731900e6bf6244f14ca2ce7eeaaae16"
+  },
+  "limits": [
+    "Historical model predictions and baseline scores have not been rerun or rescored.",
+    "This scoped audit does not claim to resolve every BIRD annotation issue.",
+    "RF comparisons remove censoring symbols and compare boundary values, following the reviewed official policy; true underlying values may be unknown.",
+    "U-PRO uses SQLite numeric-prefix conversion, including +1(30) -> 1 and +2(100) -> 2."
+  ]
+}
