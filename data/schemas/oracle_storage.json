@@ -1,0 +1,6171 @@
+{
+  "version": "oracle-original-names-native-storage-v1",
+  "databases": {
+    "california_schools": {
+      "source_sha256": "986817d793479801ed55133e55aa27e335422c0cd3866b54a3d6317b7c5f09c1",
+      "tables": [
+        {
+          "name": "frpm",
+          "target_name": "frpm",
+          "rows": 9986,
+          "columns": [
+            {
+              "name": "CDSCode",
+              "target_name": "CDSCode",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "Academic Year",
+              "target_name": "Academic Year",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "County Code",
+              "target_name": "County Code",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "District Code",
+              "target_name": "District Code",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "School Code",
+              "target_name": "School Code",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "County Name",
+              "target_name": "County Name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "District Name",
+              "target_name": "District Name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "School Name",
+              "target_name": "School Name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "District Type",
+              "target_name": "District Type",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "School Type",
+              "target_name": "School Type",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Educational Option Type",
+              "target_name": "Educational Option Type",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "NSLP Provision Status",
+              "target_name": "NSLP Provision Status",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Charter School (Y/N)",
+              "target_name": "Charter School (Y/N)",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Charter School Number",
+              "target_name": "Charter School Number",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Charter Funding Type",
+              "target_name": "Charter Funding Type",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "IRC",
+              "target_name": "IRC",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Low Grade",
+              "target_name": "Low Grade",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "High Grade",
+              "target_name": "High Grade",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Enrollment (K-12)",
+              "target_name": "Enrollment (K-12)",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "Free Meal Count (K-12)",
+              "target_name": "Free Meal Count (K-12)",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "Percent (%) Eligible Free (K-12)",
+              "target_name": "Percent (%) Eligible Free (K-12)",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "FRPM Count (K-12)",
+              "target_name": "FRPM Count (K-12)",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "Percent (%) Eligible FRPM (K-12)",
+              "target_name": "Percent (%) Eligible FRPM (K-12)",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "Enrollment (Ages 5-17)",
+              "target_name": "Enrollment (Ages 5-17)",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "Free Meal Count (Ages 5-17)",
+              "target_name": "Free Meal Count (Ages 5-17)",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "Percent (%) Eligible Free (Ages 5-17)",
+              "target_name": "Percent (%) Eligible Free (Ages 5-17)",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "FRPM Count (Ages 5-17)",
+              "target_name": "FRPM Count (Ages 5-17)",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "Percent (%) Eligible FRPM (Ages 5-17)",
+              "target_name": "Percent (%) Eligible FRPM (Ages 5-17)",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "2013-14 CALPADS Fall 1 Certification Status",
+              "target_name": "2013-14 CALPADS Fall 1 Certification Status",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "satscores",
+          "target_name": "satscores",
+          "rows": 2269,
+          "columns": [
+            {
+              "name": "cds",
+              "target_name": "cds",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "rtype",
+              "target_name": "rtype",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "sname",
+              "target_name": "sname",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "dname",
+              "target_name": "dname",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "cname",
+              "target_name": "cname",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "enroll12",
+              "target_name": "enroll12",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "NumTstTakr",
+              "target_name": "NumTstTakr",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "AvgScrRead",
+              "target_name": "AvgScrRead",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "AvgScrMath",
+              "target_name": "AvgScrMath",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "AvgScrWrite",
+              "target_name": "AvgScrWrite",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "NumGE1500",
+              "target_name": "NumGE1500",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "schools",
+          "target_name": "schools",
+          "rows": 17686,
+          "columns": [
+            {
+              "name": "CDSCode",
+              "target_name": "CDSCode",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "NCESDist",
+              "target_name": "NCESDist",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "NCESSchool",
+              "target_name": "NCESSchool",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "StatusType",
+              "target_name": "StatusType",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "County",
+              "target_name": "County",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "District",
+              "target_name": "District",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "School",
+              "target_name": "School",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Street",
+              "target_name": "Street",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "StreetAbr",
+              "target_name": "StreetAbr",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "City",
+              "target_name": "City",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Zip",
+              "target_name": "Zip",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "State",
+              "target_name": "State",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "MailStreet",
+              "target_name": "MailStreet",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "MailStrAbr",
+              "target_name": "MailStrAbr",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "MailCity",
+              "target_name": "MailCity",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "MailZip",
+              "target_name": "MailZip",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "MailState",
+              "target_name": "MailState",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Phone",
+              "target_name": "Phone",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Ext",
+              "target_name": "Ext",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Website",
+              "target_name": "Website",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "OpenDate",
+              "target_name": "OpenDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "ClosedDate",
+              "target_name": "ClosedDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Charter",
+              "target_name": "Charter",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "CharterNum",
+              "target_name": "CharterNum",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "FundingType",
+              "target_name": "FundingType",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "DOC",
+              "target_name": "DOC",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "DOCType",
+              "target_name": "DOCType",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "SOC",
+              "target_name": "SOC",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "SOCType",
+              "target_name": "SOCType",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "EdOpsCode",
+              "target_name": "EdOpsCode",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "EdOpsName",
+              "target_name": "EdOpsName",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "EILCode",
+              "target_name": "EILCode",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "EILName",
+              "target_name": "EILName",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "GSoffered",
+              "target_name": "GSoffered",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "GSserved",
+              "target_name": "GSserved",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Virtual",
+              "target_name": "Virtual",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Magnet",
+              "target_name": "Magnet",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Latitude",
+              "target_name": "Latitude",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "Longitude",
+              "target_name": "Longitude",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "AdmFName1",
+              "target_name": "AdmFName1",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "AdmLName1",
+              "target_name": "AdmLName1",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "AdmEmail1",
+              "target_name": "AdmEmail1",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "AdmFName2",
+              "target_name": "AdmFName2",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "AdmLName2",
+              "target_name": "AdmLName2",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "AdmEmail2",
+              "target_name": "AdmEmail2",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "AdmFName3",
+              "target_name": "AdmFName3",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "AdmLName3",
+              "target_name": "AdmLName3",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "AdmEmail3",
+              "target_name": "AdmEmail3",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "LastUpdate",
+              "target_name": "LastUpdate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        }
+      ]
+    },
+    "card_games": {
+      "source_sha256": "c98bdb57fe7474da798b407785544b9af0daaad5d61fd21e2a73309493bc1227",
+      "tables": [
+        {
+          "name": "cards",
+          "target_name": "cards",
+          "rows": 56822,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "artist",
+              "target_name": "artist",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "asciiName",
+              "target_name": "asciiName",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "availability",
+              "target_name": "availability",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "borderColor",
+              "target_name": "borderColor",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "cardKingdomFoilId",
+              "target_name": "cardKingdomFoilId",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "cardKingdomId",
+              "target_name": "cardKingdomId",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "colorIdentity",
+              "target_name": "colorIdentity",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "colorIndicator",
+              "target_name": "colorIndicator",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "colors",
+              "target_name": "colors",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "convertedManaCost",
+              "target_name": "convertedManaCost",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "duelDeck",
+              "target_name": "duelDeck",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "edhrecRank",
+              "target_name": "edhrecRank",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "faceConvertedManaCost",
+              "target_name": "faceConvertedManaCost",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "faceName",
+              "target_name": "faceName",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "flavorName",
+              "target_name": "flavorName",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "flavorText",
+              "target_name": "flavorText",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "frameEffects",
+              "target_name": "frameEffects",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "frameVersion",
+              "target_name": "frameVersion",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "hand",
+              "target_name": "hand",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "hasAlternativeDeckLimit",
+              "target_name": "hasAlternativeDeckLimit",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "hasContentWarning",
+              "target_name": "hasContentWarning",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "hasFoil",
+              "target_name": "hasFoil",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "hasNonFoil",
+              "target_name": "hasNonFoil",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isAlternative",
+              "target_name": "isAlternative",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isFullArt",
+              "target_name": "isFullArt",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isOnlineOnly",
+              "target_name": "isOnlineOnly",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isOversized",
+              "target_name": "isOversized",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isPromo",
+              "target_name": "isPromo",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isReprint",
+              "target_name": "isReprint",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isReserved",
+              "target_name": "isReserved",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isStarter",
+              "target_name": "isStarter",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isStorySpotlight",
+              "target_name": "isStorySpotlight",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isTextless",
+              "target_name": "isTextless",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isTimeshifted",
+              "target_name": "isTimeshifted",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "keywords",
+              "target_name": "keywords",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "layout",
+              "target_name": "layout",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "leadershipSkills",
+              "target_name": "leadershipSkills",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "life",
+              "target_name": "life",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "loyalty",
+              "target_name": "loyalty",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "manaCost",
+              "target_name": "manaCost",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "mcmId",
+              "target_name": "mcmId",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "mcmMetaId",
+              "target_name": "mcmMetaId",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "mtgArenaId",
+              "target_name": "mtgArenaId",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "mtgjsonV4Id",
+              "target_name": "mtgjsonV4Id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "mtgoFoilId",
+              "target_name": "mtgoFoilId",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "mtgoId",
+              "target_name": "mtgoId",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "multiverseId",
+              "target_name": "multiverseId",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "name",
+              "target_name": "name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "number",
+              "target_name": "number",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "originalReleaseDate",
+              "target_name": "originalReleaseDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "originalText",
+              "target_name": "originalText",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "originalType",
+              "target_name": "originalType",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "otherFaceIds",
+              "target_name": "otherFaceIds",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "power",
+              "target_name": "power",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "printings",
+              "target_name": "printings",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "promoTypes",
+              "target_name": "promoTypes",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "purchaseUrls",
+              "target_name": "purchaseUrls",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "rarity",
+              "target_name": "rarity",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "scryfallId",
+              "target_name": "scryfallId",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "scryfallIllustrationId",
+              "target_name": "scryfallIllustrationId",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "scryfallOracleId",
+              "target_name": "scryfallOracleId",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "setCode",
+              "target_name": "setCode",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "side",
+              "target_name": "side",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "subtypes",
+              "target_name": "subtypes",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "supertypes",
+              "target_name": "supertypes",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "tcgplayerProductId",
+              "target_name": "tcgplayerProductId",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "text",
+              "target_name": "text",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "toughness",
+              "target_name": "toughness",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "type",
+              "target_name": "type",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "types",
+              "target_name": "types",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "uuid",
+              "target_name": "uuid",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "variations",
+              "target_name": "variations",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "watermark",
+              "target_name": "watermark",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "foreign_data",
+          "target_name": "foreign_data",
+          "rows": 229186,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "flavorText",
+              "target_name": "flavorText",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "language",
+              "target_name": "language",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "multiverseid",
+              "target_name": "multiverseid",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "name",
+              "target_name": "name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "text",
+              "target_name": "text",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "type",
+              "target_name": "type",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "uuid",
+              "target_name": "uuid",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "legalities",
+          "target_name": "legalities",
+          "rows": 427907,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "format",
+              "target_name": "format",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "status",
+              "target_name": "status",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "uuid",
+              "target_name": "uuid",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "rulings",
+          "target_name": "rulings",
+          "rows": 87769,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "date",
+              "target_name": "date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "text",
+              "target_name": "text",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "uuid",
+              "target_name": "uuid",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "set_translations",
+          "target_name": "set_translations",
+          "rows": 1210,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "language",
+              "target_name": "language",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "setCode",
+              "target_name": "setCode",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "translation",
+              "target_name": "translation",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "sets",
+          "target_name": "sets",
+          "rows": 551,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "baseSetSize",
+              "target_name": "baseSetSize",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "block",
+              "target_name": "block",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "booster",
+              "target_name": "booster",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "code",
+              "target_name": "code",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "isFoilOnly",
+              "target_name": "isFoilOnly",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isForeignOnly",
+              "target_name": "isForeignOnly",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isNonFoilOnly",
+              "target_name": "isNonFoilOnly",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isOnlineOnly",
+              "target_name": "isOnlineOnly",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "isPartialPreview",
+              "target_name": "isPartialPreview",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "keyruneCode",
+              "target_name": "keyruneCode",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "mcmId",
+              "target_name": "mcmId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "mcmIdExtras",
+              "target_name": "mcmIdExtras",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "mcmName",
+              "target_name": "mcmName",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "mtgoCode",
+              "target_name": "mtgoCode",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "name",
+              "target_name": "name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "parentCode",
+              "target_name": "parentCode",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "releaseDate",
+              "target_name": "releaseDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "tcgplayerGroupId",
+              "target_name": "tcgplayerGroupId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "totalSetSize",
+              "target_name": "totalSetSize",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "type",
+              "target_name": "type",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        }
+      ]
+    },
+    "codebase_community": {
+      "source_sha256": "92101be6d2a9f6adceea59d38f6d1c556087f9eea1432432a21268cb1348036d",
+      "tables": [
+        {
+          "name": "badges",
+          "target_name": "badges",
+          "rows": 79851,
+          "columns": [
+            {
+              "name": "Id",
+              "target_name": "Id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "UserId",
+              "target_name": "UserId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Name",
+              "target_name": "Name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Date",
+              "target_name": "Date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "comments",
+          "target_name": "comments",
+          "rows": 174285,
+          "columns": [
+            {
+              "name": "Id",
+              "target_name": "Id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "PostId",
+              "target_name": "PostId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Score",
+              "target_name": "Score",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Text",
+              "target_name": "Text",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "CreationDate",
+              "target_name": "CreationDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "UserId",
+              "target_name": "UserId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "UserDisplayName",
+              "target_name": "UserDisplayName",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "postHistory",
+          "target_name": "postHistory",
+          "rows": 303155,
+          "columns": [
+            {
+              "name": "Id",
+              "target_name": "Id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "PostHistoryTypeId",
+              "target_name": "PostHistoryTypeId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "PostId",
+              "target_name": "PostId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "RevisionGUID",
+              "target_name": "RevisionGUID",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "CreationDate",
+              "target_name": "CreationDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "UserId",
+              "target_name": "UserId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Text",
+              "target_name": "Text",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "Comment",
+              "target_name": "Comment",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "UserDisplayName",
+              "target_name": "UserDisplayName",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "postLinks",
+          "target_name": "postLinks",
+          "rows": 11102,
+          "columns": [
+            {
+              "name": "Id",
+              "target_name": "Id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "CreationDate",
+              "target_name": "CreationDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "PostId",
+              "target_name": "PostId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "RelatedPostId",
+              "target_name": "RelatedPostId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "LinkTypeId",
+              "target_name": "LinkTypeId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "posts",
+          "target_name": "posts",
+          "rows": 91966,
+          "columns": [
+            {
+              "name": "Id",
+              "target_name": "Id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "PostTypeId",
+              "target_name": "PostTypeId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "AcceptedAnswerId",
+              "target_name": "AcceptedAnswerId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "CreaionDate",
+              "target_name": "CreaionDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Score",
+              "target_name": "Score",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "ViewCount",
+              "target_name": "ViewCount",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Body",
+              "target_name": "Body",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "OwnerUserId",
+              "target_name": "OwnerUserId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "LasActivityDate",
+              "target_name": "LasActivityDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Title",
+              "target_name": "Title",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Tags",
+              "target_name": "Tags",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "AnswerCount",
+              "target_name": "AnswerCount",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "CommentCount",
+              "target_name": "CommentCount",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "FavoriteCount",
+              "target_name": "FavoriteCount",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "LastEditorUserId",
+              "target_name": "LastEditorUserId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "LastEditDate",
+              "target_name": "LastEditDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "CommunityOwnedDate",
+              "target_name": "CommunityOwnedDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "ParentId",
+              "target_name": "ParentId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "ClosedDate",
+              "target_name": "ClosedDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "OwnerDisplayName",
+              "target_name": "OwnerDisplayName",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "LastEditorDisplayName",
+              "target_name": "LastEditorDisplayName",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "tags",
+          "target_name": "tags",
+          "rows": 1032,
+          "columns": [
+            {
+              "name": "Id",
+              "target_name": "Id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "TagName",
+              "target_name": "TagName",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Count",
+              "target_name": "Count",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "ExcerptPostId",
+              "target_name": "ExcerptPostId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "WikiPostId",
+              "target_name": "WikiPostId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "users",
+          "target_name": "users",
+          "rows": 40325,
+          "columns": [
+            {
+              "name": "Id",
+              "target_name": "Id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "Reputation",
+              "target_name": "Reputation",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "CreationDate",
+              "target_name": "CreationDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "DisplayName",
+              "target_name": "DisplayName",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "LastAccessDate",
+              "target_name": "LastAccessDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "WebsiteUrl",
+              "target_name": "WebsiteUrl",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Location",
+              "target_name": "Location",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "AboutMe",
+              "target_name": "AboutMe",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Views",
+              "target_name": "Views",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "UpVotes",
+              "target_name": "UpVotes",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "DownVotes",
+              "target_name": "DownVotes",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "AccountId",
+              "target_name": "AccountId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Age",
+              "target_name": "Age",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "ProfileImageUrl",
+              "target_name": "ProfileImageUrl",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "votes",
+          "target_name": "votes",
+          "rows": 38930,
+          "columns": [
+            {
+              "name": "Id",
+              "target_name": "Id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "PostId",
+              "target_name": "PostId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "VoteTypeId",
+              "target_name": "VoteTypeId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "CreationDate",
+              "target_name": "CreationDate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "UserId",
+              "target_name": "UserId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "BountyAmount",
+              "target_name": "BountyAmount",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        }
+      ]
+    },
+    "debit_card_specializing": {
+      "source_sha256": "b3d149ad05746dbbe5116e229e17e18f09c39db43cf117d9ef3441753608b691",
+      "tables": [
+        {
+          "name": "customers",
+          "target_name": "customers",
+          "rows": 32461,
+          "columns": [
+            {
+              "name": "CustomerID",
+              "target_name": "CustomerID",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "Segment",
+              "target_name": "Segment",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Currency",
+              "target_name": "Currency",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "gasstations",
+          "target_name": "gasstations",
+          "rows": 5716,
+          "columns": [
+            {
+              "name": "GasStationID",
+              "target_name": "GasStationID",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "ChainID",
+              "target_name": "ChainID",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Country",
+              "target_name": "Country",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Segment",
+              "target_name": "Segment",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "products",
+          "target_name": "products",
+          "rows": 591,
+          "columns": [
+            {
+              "name": "ProductID",
+              "target_name": "ProductID",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "Description",
+              "target_name": "Description",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "transactions_1k",
+          "target_name": "transactions_1k",
+          "rows": 1000,
+          "columns": [
+            {
+              "name": "TransactionID",
+              "target_name": "TransactionID",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "Date",
+              "target_name": "Date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Time",
+              "target_name": "Time",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "CustomerID",
+              "target_name": "CustomerID",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "CardID",
+              "target_name": "CardID",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "GasStationID",
+              "target_name": "GasStationID",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "ProductID",
+              "target_name": "ProductID",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Amount",
+              "target_name": "Amount",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Price",
+              "target_name": "Price",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "yearmonth",
+          "target_name": "yearmonth",
+          "rows": 383282,
+          "columns": [
+            {
+              "name": "CustomerID",
+              "target_name": "CustomerID",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 2
+            },
+            {
+              "name": "Date",
+              "target_name": "Date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "Consumption",
+              "target_name": "Consumption",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            }
+          ]
+        }
+      ]
+    },
+    "european_football_2": {
+      "source_sha256": "e4d361dbeec6591a4b315877c0c481da05c8ff5a3d389b34d6e17b6f15bee4e0",
+      "tables": [
+        {
+          "name": "Country",
+          "target_name": "Country",
+          "rows": 11,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "name",
+              "target_name": "name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "League",
+          "target_name": "League",
+          "rows": 11,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "country_id",
+              "target_name": "country_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "name",
+              "target_name": "name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "Match",
+          "target_name": "Match",
+          "rows": 25979,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "country_id",
+              "target_name": "country_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "league_id",
+              "target_name": "league_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "season",
+              "target_name": "season",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "stage",
+              "target_name": "stage",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "date",
+              "target_name": "date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "match_api_id",
+              "target_name": "match_api_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_team_api_id",
+              "target_name": "home_team_api_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_team_api_id",
+              "target_name": "away_team_api_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_team_goal",
+              "target_name": "home_team_goal",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_team_goal",
+              "target_name": "away_team_goal",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_X1",
+              "target_name": "home_player_X1",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_X2",
+              "target_name": "home_player_X2",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_X3",
+              "target_name": "home_player_X3",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_X4",
+              "target_name": "home_player_X4",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_X5",
+              "target_name": "home_player_X5",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_X6",
+              "target_name": "home_player_X6",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_X7",
+              "target_name": "home_player_X7",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_X8",
+              "target_name": "home_player_X8",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_X9",
+              "target_name": "home_player_X9",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_X10",
+              "target_name": "home_player_X10",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_X11",
+              "target_name": "home_player_X11",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_X1",
+              "target_name": "away_player_X1",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_X2",
+              "target_name": "away_player_X2",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_X3",
+              "target_name": "away_player_X3",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_X4",
+              "target_name": "away_player_X4",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_X5",
+              "target_name": "away_player_X5",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_X6",
+              "target_name": "away_player_X6",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_X7",
+              "target_name": "away_player_X7",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_X8",
+              "target_name": "away_player_X8",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_X9",
+              "target_name": "away_player_X9",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_X10",
+              "target_name": "away_player_X10",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_X11",
+              "target_name": "away_player_X11",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_Y1",
+              "target_name": "home_player_Y1",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_Y2",
+              "target_name": "home_player_Y2",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_Y3",
+              "target_name": "home_player_Y3",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_Y4",
+              "target_name": "home_player_Y4",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_Y5",
+              "target_name": "home_player_Y5",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_Y6",
+              "target_name": "home_player_Y6",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_Y7",
+              "target_name": "home_player_Y7",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_Y8",
+              "target_name": "home_player_Y8",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_Y9",
+              "target_name": "home_player_Y9",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_Y10",
+              "target_name": "home_player_Y10",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_Y11",
+              "target_name": "home_player_Y11",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_Y1",
+              "target_name": "away_player_Y1",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_Y2",
+              "target_name": "away_player_Y2",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_Y3",
+              "target_name": "away_player_Y3",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_Y4",
+              "target_name": "away_player_Y4",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_Y5",
+              "target_name": "away_player_Y5",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_Y6",
+              "target_name": "away_player_Y6",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_Y7",
+              "target_name": "away_player_Y7",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_Y8",
+              "target_name": "away_player_Y8",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_Y9",
+              "target_name": "away_player_Y9",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_Y10",
+              "target_name": "away_player_Y10",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_Y11",
+              "target_name": "away_player_Y11",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_1",
+              "target_name": "home_player_1",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_2",
+              "target_name": "home_player_2",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_3",
+              "target_name": "home_player_3",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_4",
+              "target_name": "home_player_4",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_5",
+              "target_name": "home_player_5",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_6",
+              "target_name": "home_player_6",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_7",
+              "target_name": "home_player_7",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_8",
+              "target_name": "home_player_8",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_9",
+              "target_name": "home_player_9",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_10",
+              "target_name": "home_player_10",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "home_player_11",
+              "target_name": "home_player_11",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_1",
+              "target_name": "away_player_1",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_2",
+              "target_name": "away_player_2",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_3",
+              "target_name": "away_player_3",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_4",
+              "target_name": "away_player_4",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_5",
+              "target_name": "away_player_5",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_6",
+              "target_name": "away_player_6",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_7",
+              "target_name": "away_player_7",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_8",
+              "target_name": "away_player_8",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_9",
+              "target_name": "away_player_9",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_10",
+              "target_name": "away_player_10",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "away_player_11",
+              "target_name": "away_player_11",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "goal",
+              "target_name": "goal",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "shoton",
+              "target_name": "shoton",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "shotoff",
+              "target_name": "shotoff",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "foulcommit",
+              "target_name": "foulcommit",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "card",
+              "target_name": "card",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "cross",
+              "target_name": "cross",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "corner",
+              "target_name": "corner",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "possession",
+              "target_name": "possession",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "B365H",
+              "target_name": "B365H",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "B365D",
+              "target_name": "B365D",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "B365A",
+              "target_name": "B365A",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "BWH",
+              "target_name": "BWH",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "BWD",
+              "target_name": "BWD",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "BWA",
+              "target_name": "BWA",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "IWH",
+              "target_name": "IWH",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "IWD",
+              "target_name": "IWD",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "IWA",
+              "target_name": "IWA",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "LBH",
+              "target_name": "LBH",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "LBD",
+              "target_name": "LBD",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "LBA",
+              "target_name": "LBA",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "PSH",
+              "target_name": "PSH",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "PSD",
+              "target_name": "PSD",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "PSA",
+              "target_name": "PSA",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "WHH",
+              "target_name": "WHH",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "WHD",
+              "target_name": "WHD",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "WHA",
+              "target_name": "WHA",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "SJH",
+              "target_name": "SJH",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "SJD",
+              "target_name": "SJD",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "SJA",
+              "target_name": "SJA",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "VCH",
+              "target_name": "VCH",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "VCD",
+              "target_name": "VCD",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "VCA",
+              "target_name": "VCA",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "GBH",
+              "target_name": "GBH",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "GBD",
+              "target_name": "GBD",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "GBA",
+              "target_name": "GBA",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "BSH",
+              "target_name": "BSH",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "BSD",
+              "target_name": "BSD",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "BSA",
+              "target_name": "BSA",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "Player",
+          "target_name": "Player",
+          "rows": 11060,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "player_api_id",
+              "target_name": "player_api_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "player_name",
+              "target_name": "player_name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "player_fifa_api_id",
+              "target_name": "player_fifa_api_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "birthday",
+              "target_name": "birthday",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "height",
+              "target_name": "height",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "weight",
+              "target_name": "weight",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "Player_Attributes",
+          "target_name": "Player_Attributes",
+          "rows": 183978,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "player_fifa_api_id",
+              "target_name": "player_fifa_api_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "player_api_id",
+              "target_name": "player_api_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "date",
+              "target_name": "date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "overall_rating",
+              "target_name": "overall_rating",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "potential",
+              "target_name": "potential",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "preferred_foot",
+              "target_name": "preferred_foot",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "attacking_work_rate",
+              "target_name": "attacking_work_rate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "defensive_work_rate",
+              "target_name": "defensive_work_rate",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "crossing",
+              "target_name": "crossing",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "finishing",
+              "target_name": "finishing",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "heading_accuracy",
+              "target_name": "heading_accuracy",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "short_passing",
+              "target_name": "short_passing",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "volleys",
+              "target_name": "volleys",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "dribbling",
+              "target_name": "dribbling",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "curve",
+              "target_name": "curve",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "free_kick_accuracy",
+              "target_name": "free_kick_accuracy",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "long_passing",
+              "target_name": "long_passing",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "ball_control",
+              "target_name": "ball_control",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "acceleration",
+              "target_name": "acceleration",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "sprint_speed",
+              "target_name": "sprint_speed",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "agility",
+              "target_name": "agility",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "reactions",
+              "target_name": "reactions",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "balance",
+              "target_name": "balance",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "shot_power",
+              "target_name": "shot_power",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "jumping",
+              "target_name": "jumping",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "stamina",
+              "target_name": "stamina",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "strength",
+              "target_name": "strength",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "long_shots",
+              "target_name": "long_shots",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "aggression",
+              "target_name": "aggression",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "interceptions",
+              "target_name": "interceptions",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "positioning",
+              "target_name": "positioning",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "vision",
+              "target_name": "vision",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "penalties",
+              "target_name": "penalties",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "marking",
+              "target_name": "marking",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "standing_tackle",
+              "target_name": "standing_tackle",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "sliding_tackle",
+              "target_name": "sliding_tackle",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "gk_diving",
+              "target_name": "gk_diving",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "gk_handling",
+              "target_name": "gk_handling",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "gk_kicking",
+              "target_name": "gk_kicking",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "gk_positioning",
+              "target_name": "gk_positioning",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "gk_reflexes",
+              "target_name": "gk_reflexes",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "Team",
+          "target_name": "Team",
+          "rows": 299,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "team_api_id",
+              "target_name": "team_api_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "team_fifa_api_id",
+              "target_name": "team_fifa_api_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "team_long_name",
+              "target_name": "team_long_name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "team_short_name",
+              "target_name": "team_short_name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "Team_Attributes",
+          "target_name": "Team_Attributes",
+          "rows": 1458,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "team_fifa_api_id",
+              "target_name": "team_fifa_api_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "team_api_id",
+              "target_name": "team_api_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "date",
+              "target_name": "date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "buildUpPlaySpeed",
+              "target_name": "buildUpPlaySpeed",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "buildUpPlaySpeedClass",
+              "target_name": "buildUpPlaySpeedClass",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "buildUpPlayDribbling",
+              "target_name": "buildUpPlayDribbling",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "buildUpPlayDribblingClass",
+              "target_name": "buildUpPlayDribblingClass",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "buildUpPlayPassing",
+              "target_name": "buildUpPlayPassing",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "buildUpPlayPassingClass",
+              "target_name": "buildUpPlayPassingClass",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "buildUpPlayPositioningClass",
+              "target_name": "buildUpPlayPositioningClass",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "chanceCreationPassing",
+              "target_name": "chanceCreationPassing",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "chanceCreationPassingClass",
+              "target_name": "chanceCreationPassingClass",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "chanceCreationCrossing",
+              "target_name": "chanceCreationCrossing",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "chanceCreationCrossingClass",
+              "target_name": "chanceCreationCrossingClass",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "chanceCreationShooting",
+              "target_name": "chanceCreationShooting",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "chanceCreationShootingClass",
+              "target_name": "chanceCreationShootingClass",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "chanceCreationPositioningClass",
+              "target_name": "chanceCreationPositioningClass",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "defencePressure",
+              "target_name": "defencePressure",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "defencePressureClass",
+              "target_name": "defencePressureClass",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "defenceAggression",
+              "target_name": "defenceAggression",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "defenceAggressionClass",
+              "target_name": "defenceAggressionClass",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "defenceTeamWidth",
+              "target_name": "defenceTeamWidth",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "defenceTeamWidthClass",
+              "target_name": "defenceTeamWidthClass",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "defenceDefenderLineClass",
+              "target_name": "defenceDefenderLineClass",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        }
+      ]
+    },
+    "financial": {
+      "source_sha256": "d15d89cdb068a202b6f2b99342af44dffc1d52545b39ceaf62efdc0ba570101e",
+      "tables": [
+        {
+          "name": "account",
+          "target_name": "account",
+          "rows": 4500,
+          "columns": [
+            {
+              "name": "account_id",
+              "target_name": "account_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "district_id",
+              "target_name": "district_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "frequency",
+              "target_name": "frequency",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "date",
+              "target_name": "date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "card",
+          "target_name": "card",
+          "rows": 892,
+          "columns": [
+            {
+              "name": "card_id",
+              "target_name": "card_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "disp_id",
+              "target_name": "disp_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "type",
+              "target_name": "type",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "issued",
+              "target_name": "issued",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "client",
+          "target_name": "client",
+          "rows": 5369,
+          "columns": [
+            {
+              "name": "client_id",
+              "target_name": "client_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "gender",
+              "target_name": "gender",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "birth_date",
+              "target_name": "birth_date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "district_id",
+              "target_name": "district_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "disp",
+          "target_name": "disp",
+          "rows": 5369,
+          "columns": [
+            {
+              "name": "disp_id",
+              "target_name": "disp_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "client_id",
+              "target_name": "client_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "account_id",
+              "target_name": "account_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "type",
+              "target_name": "type",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "district",
+          "target_name": "district",
+          "rows": 77,
+          "columns": [
+            {
+              "name": "district_id",
+              "target_name": "district_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "A2",
+              "target_name": "A2",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "A3",
+              "target_name": "A3",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "A4",
+              "target_name": "A4",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "A5",
+              "target_name": "A5",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "A6",
+              "target_name": "A6",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "A7",
+              "target_name": "A7",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "A8",
+              "target_name": "A8",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "A9",
+              "target_name": "A9",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "A10",
+              "target_name": "A10",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "A11",
+              "target_name": "A11",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "A12",
+              "target_name": "A12",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "A13",
+              "target_name": "A13",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "A14",
+              "target_name": "A14",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "A15",
+              "target_name": "A15",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "A16",
+              "target_name": "A16",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "loan",
+          "target_name": "loan",
+          "rows": 682,
+          "columns": [
+            {
+              "name": "loan_id",
+              "target_name": "loan_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "account_id",
+              "target_name": "account_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "date",
+              "target_name": "date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "amount",
+              "target_name": "amount",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "duration",
+              "target_name": "duration",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "payments",
+              "target_name": "payments",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "status",
+              "target_name": "status",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "order",
+          "target_name": "order",
+          "rows": 6471,
+          "columns": [
+            {
+              "name": "order_id",
+              "target_name": "order_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "account_id",
+              "target_name": "account_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "bank_to",
+              "target_name": "bank_to",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "account_to",
+              "target_name": "account_to",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "amount",
+              "target_name": "amount",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "k_symbol",
+              "target_name": "k_symbol",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "trans",
+          "target_name": "trans",
+          "rows": 1056320,
+          "columns": [
+            {
+              "name": "trans_id",
+              "target_name": "trans_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "account_id",
+              "target_name": "account_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "date",
+              "target_name": "date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "type",
+              "target_name": "type",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "operation",
+              "target_name": "operation",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "amount",
+              "target_name": "amount",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "balance",
+              "target_name": "balance",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "k_symbol",
+              "target_name": "k_symbol",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "bank",
+              "target_name": "bank",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "account",
+              "target_name": "account",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        }
+      ]
+    },
+    "formula_1": {
+      "source_sha256": "17185981cd747f6cdc374cb02a6096db3130e6ec2ddc582fe1686a28fb4c4c8a",
+      "tables": [
+        {
+          "name": "circuits",
+          "target_name": "circuits",
+          "rows": 72,
+          "columns": [
+            {
+              "name": "circuitId",
+              "target_name": "circuitId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "circuitRef",
+              "target_name": "circuitRef",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "name",
+              "target_name": "name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "location",
+              "target_name": "location",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "country",
+              "target_name": "country",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "lat",
+              "target_name": "lat",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "lng",
+              "target_name": "lng",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "alt",
+              "target_name": "alt",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "url",
+              "target_name": "url",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "constructorResults",
+          "target_name": "constructorResults",
+          "rows": 11082,
+          "columns": [
+            {
+              "name": "constructorResultsId",
+              "target_name": "constructorResultsId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "raceId",
+              "target_name": "raceId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "constructorId",
+              "target_name": "constructorId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "points",
+              "target_name": "points",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "status",
+              "target_name": "status",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "constructorStandings",
+          "target_name": "constructorStandings",
+          "rows": 11836,
+          "columns": [
+            {
+              "name": "constructorStandingsId",
+              "target_name": "constructorStandingsId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "raceId",
+              "target_name": "raceId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "constructorId",
+              "target_name": "constructorId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "points",
+              "target_name": "points",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "position",
+              "target_name": "position",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "positionText",
+              "target_name": "positionText",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "wins",
+              "target_name": "wins",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "constructors",
+          "target_name": "constructors",
+          "rows": 208,
+          "columns": [
+            {
+              "name": "constructorId",
+              "target_name": "constructorId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "constructorRef",
+              "target_name": "constructorRef",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "name",
+              "target_name": "name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "nationality",
+              "target_name": "nationality",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "url",
+              "target_name": "url",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "driverStandings",
+          "target_name": "driverStandings",
+          "rows": 31578,
+          "columns": [
+            {
+              "name": "driverStandingsId",
+              "target_name": "driverStandingsId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "raceId",
+              "target_name": "raceId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "driverId",
+              "target_name": "driverId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "points",
+              "target_name": "points",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "position",
+              "target_name": "position",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "positionText",
+              "target_name": "positionText",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "wins",
+              "target_name": "wins",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "drivers",
+          "target_name": "drivers",
+          "rows": 840,
+          "columns": [
+            {
+              "name": "driverId",
+              "target_name": "driverId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "driverRef",
+              "target_name": "driverRef",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "number",
+              "target_name": "number",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "code",
+              "target_name": "code",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "forename",
+              "target_name": "forename",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "surname",
+              "target_name": "surname",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "dob",
+              "target_name": "dob",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "nationality",
+              "target_name": "nationality",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "url",
+              "target_name": "url",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "lapTimes",
+          "target_name": "lapTimes",
+          "rows": 420369,
+          "columns": [
+            {
+              "name": "raceId",
+              "target_name": "raceId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "driverId",
+              "target_name": "driverId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 2
+            },
+            {
+              "name": "lap",
+              "target_name": "lap",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 3
+            },
+            {
+              "name": "position",
+              "target_name": "position",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "time",
+              "target_name": "time",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "milliseconds",
+              "target_name": "milliseconds",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "pitStops",
+          "target_name": "pitStops",
+          "rows": 6070,
+          "columns": [
+            {
+              "name": "raceId",
+              "target_name": "raceId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "driverId",
+              "target_name": "driverId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 2
+            },
+            {
+              "name": "stop",
+              "target_name": "stop",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 3
+            },
+            {
+              "name": "lap",
+              "target_name": "lap",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "time",
+              "target_name": "time",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "duration",
+              "target_name": "duration",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "milliseconds",
+              "target_name": "milliseconds",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "qualifying",
+          "target_name": "qualifying",
+          "rows": 7397,
+          "columns": [
+            {
+              "name": "qualifyId",
+              "target_name": "qualifyId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "raceId",
+              "target_name": "raceId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "driverId",
+              "target_name": "driverId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "constructorId",
+              "target_name": "constructorId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "number",
+              "target_name": "number",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "position",
+              "target_name": "position",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "q1",
+              "target_name": "q1",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "q2",
+              "target_name": "q2",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "q3",
+              "target_name": "q3",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "races",
+          "target_name": "races",
+          "rows": 976,
+          "columns": [
+            {
+              "name": "raceId",
+              "target_name": "raceId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "year",
+              "target_name": "year",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "round",
+              "target_name": "round",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "circuitId",
+              "target_name": "circuitId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "name",
+              "target_name": "name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "date",
+              "target_name": "date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "time",
+              "target_name": "time",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "url",
+              "target_name": "url",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "results",
+          "target_name": "results",
+          "rows": 23657,
+          "columns": [
+            {
+              "name": "resultId",
+              "target_name": "resultId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "raceId",
+              "target_name": "raceId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "driverId",
+              "target_name": "driverId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "constructorId",
+              "target_name": "constructorId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "number",
+              "target_name": "number",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "grid",
+              "target_name": "grid",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "position",
+              "target_name": "position",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "positionText",
+              "target_name": "positionText",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "positionOrder",
+              "target_name": "positionOrder",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "points",
+              "target_name": "points",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "laps",
+              "target_name": "laps",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "time",
+              "target_name": "time",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "milliseconds",
+              "target_name": "milliseconds",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "fastestLap",
+              "target_name": "fastestLap",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "rank",
+              "target_name": "rank",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "fastestLapTime",
+              "target_name": "fastestLapTime",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "fastestLapSpeed",
+              "target_name": "fastestLapSpeed",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "statusId",
+              "target_name": "statusId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "seasons",
+          "target_name": "seasons",
+          "rows": 68,
+          "columns": [
+            {
+              "name": "year",
+              "target_name": "year",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "url",
+              "target_name": "url",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "target_name": "status",
+          "rows": 134,
+          "columns": [
+            {
+              "name": "statusId",
+              "target_name": "statusId",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "status",
+              "target_name": "status",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        }
+      ]
+    },
+    "student_club": {
+      "source_sha256": "eb89bcfe97eefa386a27904ec5aa15159811a7eac894ec659a36e48fa9f76b77",
+      "tables": [
+        {
+          "name": "attendance",
+          "target_name": "attendance",
+          "rows": 326,
+          "columns": [
+            {
+              "name": "link_to_event",
+              "target_name": "link_to_event",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "link_to_member",
+              "target_name": "link_to_member",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 2
+            }
+          ]
+        },
+        {
+          "name": "budget",
+          "target_name": "budget",
+          "rows": 52,
+          "columns": [
+            {
+              "name": "budget_id",
+              "target_name": "budget_id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "category",
+              "target_name": "category",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "spent",
+              "target_name": "spent",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "remaining",
+              "target_name": "remaining",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "amount",
+              "target_name": "amount",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "event_status",
+              "target_name": "event_status",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "link_to_event",
+              "target_name": "link_to_event",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "event",
+          "target_name": "event",
+          "rows": 42,
+          "columns": [
+            {
+              "name": "event_id",
+              "target_name": "event_id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "event_name",
+              "target_name": "event_name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "event_date",
+              "target_name": "event_date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "type",
+              "target_name": "type",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "notes",
+              "target_name": "notes",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "location",
+              "target_name": "location",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "status",
+              "target_name": "status",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "expense",
+          "target_name": "expense",
+          "rows": 32,
+          "columns": [
+            {
+              "name": "expense_id",
+              "target_name": "expense_id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "expense_description",
+              "target_name": "expense_description",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "expense_date",
+              "target_name": "expense_date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "cost",
+              "target_name": "cost",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "approved",
+              "target_name": "approved",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "link_to_member",
+              "target_name": "link_to_member",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "link_to_budget",
+              "target_name": "link_to_budget",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "income",
+          "target_name": "income",
+          "rows": 36,
+          "columns": [
+            {
+              "name": "income_id",
+              "target_name": "income_id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "date_received",
+              "target_name": "date_received",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "amount",
+              "target_name": "amount",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "source",
+              "target_name": "source",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "notes",
+              "target_name": "notes",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "link_to_member",
+              "target_name": "link_to_member",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "major",
+          "target_name": "major",
+          "rows": 113,
+          "columns": [
+            {
+              "name": "major_id",
+              "target_name": "major_id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "major_name",
+              "target_name": "major_name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "department",
+              "target_name": "department",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "college",
+              "target_name": "college",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "member",
+          "target_name": "member",
+          "rows": 33,
+          "columns": [
+            {
+              "name": "member_id",
+              "target_name": "member_id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "first_name",
+              "target_name": "first_name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "last_name",
+              "target_name": "last_name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "email",
+              "target_name": "email",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "position",
+              "target_name": "position",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "t_shirt_size",
+              "target_name": "t_shirt_size",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "phone",
+              "target_name": "phone",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "zip",
+              "target_name": "zip",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "link_to_major",
+              "target_name": "link_to_major",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "zip_code",
+          "target_name": "zip_code",
+          "rows": 41877,
+          "columns": [
+            {
+              "name": "zip_code",
+              "target_name": "zip_code",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "type",
+              "target_name": "type",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "city",
+              "target_name": "city",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "county",
+              "target_name": "county",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "state",
+              "target_name": "state",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "short_state",
+              "target_name": "short_state",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        }
+      ]
+    },
+    "superhero": {
+      "source_sha256": "75e94a2c3236ee3bb2c01fb97a1c4b4c1c269bcefd4eab1d04be323d2d0825b1",
+      "tables": [
+        {
+          "name": "alignment",
+          "target_name": "alignment",
+          "rows": 4,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "alignment",
+              "target_name": "alignment",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "attribute",
+          "target_name": "attribute",
+          "rows": 6,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "attribute_name",
+              "target_name": "attribute_name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "colour",
+          "target_name": "colour",
+          "rows": 35,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "colour",
+              "target_name": "colour",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "gender",
+          "target_name": "gender",
+          "rows": 3,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "gender",
+              "target_name": "gender",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "hero_attribute",
+          "target_name": "hero_attribute",
+          "rows": 3738,
+          "columns": [
+            {
+              "name": "hero_id",
+              "target_name": "hero_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "attribute_id",
+              "target_name": "attribute_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "attribute_value",
+              "target_name": "attribute_value",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "hero_power",
+          "target_name": "hero_power",
+          "rows": 5825,
+          "columns": [
+            {
+              "name": "hero_id",
+              "target_name": "hero_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "power_id",
+              "target_name": "power_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "publisher",
+          "target_name": "publisher",
+          "rows": 25,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "publisher_name",
+              "target_name": "publisher_name",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "race",
+          "target_name": "race",
+          "rows": 61,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "race",
+              "target_name": "race",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "superhero",
+          "target_name": "superhero",
+          "rows": 750,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "superhero_name",
+              "target_name": "superhero_name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "full_name",
+              "target_name": "full_name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "gender_id",
+              "target_name": "gender_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "eye_colour_id",
+              "target_name": "eye_colour_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "hair_colour_id",
+              "target_name": "hair_colour_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "skin_colour_id",
+              "target_name": "skin_colour_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "race_id",
+              "target_name": "race_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "publisher_id",
+              "target_name": "publisher_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "alignment_id",
+              "target_name": "alignment_id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "height_cm",
+              "target_name": "height_cm",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "weight_kg",
+              "target_name": "weight_kg",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "superpower",
+          "target_name": "superpower",
+          "rows": 167,
+          "columns": [
+            {
+              "name": "id",
+              "target_name": "id",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "power_name",
+              "target_name": "power_name",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        }
+      ]
+    },
+    "thrombosis_prediction": {
+      "source_sha256": "e7e16d74b4731b4b8d33fdbe8c29cd5622620788ce8d1f335631f65fc7cf1db9",
+      "tables": [
+        {
+          "name": "Examination",
+          "target_name": "Examination",
+          "rows": 806,
+          "columns": [
+            {
+              "name": "ID",
+              "target_name": "ID",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Examination Date",
+              "target_name": "Examination Date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "aCL IgG",
+              "target_name": "aCL IgG",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "aCL IgM",
+              "target_name": "aCL IgM",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "ANA",
+              "target_name": "ANA",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "ANA Pattern",
+              "target_name": "ANA Pattern",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "aCL IgA",
+              "target_name": "aCL IgA",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "Diagnosis",
+              "target_name": "Diagnosis",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "KCT",
+              "target_name": "KCT",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "RVVT",
+              "target_name": "RVVT",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "LAC",
+              "target_name": "LAC",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Symptoms",
+              "target_name": "Symptoms",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Thrombosis",
+              "target_name": "Thrombosis",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "Laboratory",
+          "target_name": "Laboratory",
+          "rows": 13908,
+          "columns": [
+            {
+              "name": "ID",
+              "target_name": "ID",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "Date",
+              "target_name": "Date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 2
+            },
+            {
+              "name": "GOT",
+              "target_name": "GOT",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "GPT",
+              "target_name": "GPT",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "LDH",
+              "target_name": "LDH",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "ALP",
+              "target_name": "ALP",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "TP",
+              "target_name": "TP",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "ALB",
+              "target_name": "ALB",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "UA",
+              "target_name": "UA",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "UN",
+              "target_name": "UN",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "CRE",
+              "target_name": "CRE",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "T-BIL",
+              "target_name": "T-BIL",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "T-CHO",
+              "target_name": "T-CHO",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "TG",
+              "target_name": "TG",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "CPK",
+              "target_name": "CPK",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "GLU",
+              "target_name": "GLU",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "WBC",
+              "target_name": "WBC",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "RBC",
+              "target_name": "RBC",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "HGB",
+              "target_name": "HGB",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "HCT",
+              "target_name": "HCT",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "PLT",
+              "target_name": "PLT",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "PT",
+              "target_name": "PT",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "APTT",
+              "target_name": "APTT",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "FG",
+              "target_name": "FG",
+              "logical_type": "DOUBLE",
+              "physical_type": "BINARY_DOUBLE",
+              "pk": 0
+            },
+            {
+              "name": "PIC",
+              "target_name": "PIC",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "TAT",
+              "target_name": "TAT",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "TAT2",
+              "target_name": "TAT2",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "U-PRO",
+              "target_name": "U-PRO",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "IGG",
+              "target_name": "IGG",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "IGA",
+              "target_name": "IGA",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "IGM",
+              "target_name": "IGM",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "CRP",
+              "target_name": "CRP",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "RA",
+              "target_name": "RA",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "RF",
+              "target_name": "RF",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "C3",
+              "target_name": "C3",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "C4",
+              "target_name": "C4",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            },
+            {
+              "name": "RNP",
+              "target_name": "RNP",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "SM",
+              "target_name": "SM",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "SC170",
+              "target_name": "SC170",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "SSA",
+              "target_name": "SSA",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "SSB",
+              "target_name": "SSB",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "CENTROMEA",
+              "target_name": "CENTROMEA",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "DNA",
+              "target_name": "DNA",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "DNA-II",
+              "target_name": "DNA-II",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "Patient",
+          "target_name": "Patient",
+          "rows": 1238,
+          "columns": [
+            {
+              "name": "ID",
+              "target_name": "ID",
+              "logical_type": "BIGINT",
+              "physical_type": "NUMBER(19,0)",
+              "pk": 1
+            },
+            {
+              "name": "SEX",
+              "target_name": "SEX",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "Birthday",
+              "target_name": "Birthday",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Description",
+              "target_name": "Description",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "First Date",
+              "target_name": "First Date",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "Admission",
+              "target_name": "Admission",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            },
+            {
+              "name": "Diagnosis",
+              "target_name": "Diagnosis",
+              "logical_type": "VARCHAR",
+              "physical_type": "CLOB",
+              "pk": 0
+            }
+          ]
+        }
+      ]
+    },
+    "toxicology": {
+      "source_sha256": "f5fa7f21af1ad878ff8fef1b0582b8cb2d7ed63dbac65ff16d2ba05667650c5b",
+      "tables": [
+        {
+          "name": "atom",
+          "target_name": "atom",
+          "rows": 12333,
+          "columns": [
+            {
+              "name": "atom_id",
+              "target_name": "atom_id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "molecule_id",
+              "target_name": "molecule_id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "element",
+              "target_name": "element",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "bond",
+          "target_name": "bond",
+          "rows": 12379,
+          "columns": [
+            {
+              "name": "bond_id",
+              "target_name": "bond_id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "molecule_id",
+              "target_name": "molecule_id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            },
+            {
+              "name": "bond_type",
+              "target_name": "bond_type",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "connected",
+          "target_name": "connected",
+          "rows": 24758,
+          "columns": [
+            {
+              "name": "atom_id",
+              "target_name": "atom_id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "atom_id2",
+              "target_name": "atom_id2",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 2
+            },
+            {
+              "name": "bond_id",
+              "target_name": "bond_id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        },
+        {
+          "name": "molecule",
+          "target_name": "molecule",
+          "rows": 343,
+          "columns": [
+            {
+              "name": "molecule_id",
+              "target_name": "molecule_id",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 1
+            },
+            {
+              "name": "label",
+              "target_name": "label",
+              "logical_type": "VARCHAR",
+              "physical_type": "VARCHAR2(4000 BYTE)",
+              "pk": 0
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

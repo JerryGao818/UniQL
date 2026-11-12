@@ -725,9 +725,9 @@
     "question": "Please list the Italian names of the cards in the set Coldsnap with the highest converted mana cost.",
     "evidence": "card set Coldsnap refers to name = 'Coldsnap'; Italian refers to language = 'Italian'; highest converted mana cost refers to MAX(convertedManaCost)",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT T2.name FROM foreign_data AS T1 INNER JOIN cards AS T2 ON T2.uuid = T1.uuid INNER JOIN sets AS T3 ON T3.code = T2.setCode WHERE T3.name = 'Coldsnap' AND T1.language = 'Italian' ORDER BY T2.convertedManaCost DESC",
-    "SQL-PostgreSQL": "SELECT t2.name FROM foreign_data AS t1 INNER JOIN cards AS t2 ON t2.uuid = t1.uuid INNER JOIN sets AS t3 ON t3.code = t2.setcode WHERE t3.name = 'Coldsnap' AND t1.language = 'Italian' ORDER BY t2.convertedmanacost DESC NULLS LAST, t2.id ASC;",
-    "annotation_source": "LLM-rule"
+    "SQL-sqlite": "WITH eligible AS (SELECT f.name AS italian_name,c.convertedManaCost AS cost FROM foreign_data f JOIN cards c ON c.uuid=f.uuid JOIN sets s ON s.code=c.setCode WHERE s.name='Coldsnap' AND f.language='Italian') SELECT DISTINCT italian_name FROM eligible WHERE cost=(SELECT MAX(cost) FROM eligible)",
+    "SQL-PostgreSQL": "WITH \"eligible\" AS (SELECT \"f\".\"name\" AS \"italian_name\", \"c\".\"convertedmanacost\" AS \"cost\" FROM \"foreign_data\" AS \"f\" JOIN \"cards\" AS \"c\" ON \"c\".\"uuid\" = \"f\".\"uuid\" JOIN \"sets\" AS \"s\" ON \"s\".\"code\" = \"c\".\"setcode\" WHERE \"s\".\"name\" = 'Coldsnap' AND \"f\".\"language\" = 'Italian') SELECT DISTINCT \"eligible\".\"italian_name\" FROM \"eligible\" WHERE \"eligible\".\"cost\" = (SELECT MAX(\"eligible\".\"cost\") FROM \"eligible\")",
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 518,
@@ -1535,9 +1535,9 @@
     "question": "List down top 3 German drivers who has the shortest average pit stop duration and were born between 1980-1985.",
     "evidence": "Full name of the driver refers to drivers.forename and drivers.surname; born between 1980-1985 refers to 1980< year(dob)>1985; Average pitstop duration refers to Divide(SUM(duration),COUNT(duration)); shortest average refers to Min(avg(duration));",
     "difficulty": "challenging",
-    "SQL-sqlite": "SELECT T2.forename, T2.surname FROM pitStops AS T1 INNER JOIN drivers AS T2 on T1.driverId = T2.driverId WHERE T2.nationality = 'German' AND STRFTIME('%Y', T2.dob) BETWEEN '1980' AND '1985' GROUP BY T2.forename, T2.surname ORDER BY AVG(T1.duration) LIMIT 3",
-    "SQL-PostgreSQL": "SELECT t2.forename, t2.surname FROM pitstops AS t1 INNER JOIN drivers AS t2 ON t1.driverid = t2.driverid WHERE t2.nationality = 'German' AND EXTRACT(YEAR FROM t2.dob) BETWEEN 1980 AND 1985 GROUP BY t2.forename, t2.surname ORDER BY AVG(t1.milliseconds) DESC LIMIT 3;",
-    "annotation_source": "LLM-retry"
+    "SQL-sqlite": "SELECT T2.forename, T2.surname FROM pitStops AS T1 INNER JOIN drivers AS T2 ON T1.driverId = T2.driverId WHERE T2.nationality = 'German' AND STRFTIME('%Y', T2.dob) BETWEEN '1980' AND '1985' GROUP BY T2.forename, T2.surname ORDER BY AVG(T1.milliseconds) LIMIT 3",
+    "SQL-PostgreSQL": "SELECT \"T2\".\"forename\", \"T2\".\"surname\" FROM \"pitstops\" AS \"T1\" INNER JOIN \"drivers\" AS \"T2\" ON \"T1\".\"driverid\" = \"T2\".\"driverid\" WHERE \"T2\".\"nationality\" = 'German' AND TO_CHAR(CAST(\"T2\".\"dob\" AS TIMESTAMP), 'YYYY') BETWEEN '1980' AND '1985' GROUP BY \"T2\".\"forename\", \"T2\".\"surname\" ORDER BY AVG(\"T1\".\"milliseconds\") NULLS FIRST LIMIT 3",
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 989,
@@ -1855,9 +1855,9 @@
     "question": "Please provide top five football players' IDs who are among the lowest potential players and prefer to use the right foot when attacking.",
     "evidence": "lowest potential players refers to MIN(potential); prefer to use the right foot when attacking refers to preferred_foot = 'right'",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT id FROM Player_Attributes WHERE preferred_foot = 'right' ORDER BY potential DESC LIMIT 5",
-    "SQL-PostgreSQL": "SELECT id FROM player_attributes WHERE preferred_foot = 'right' ORDER BY potential DESC, id ASC LIMIT 5;",
-    "annotation_source": "LLM-retry"
+    "SQL-sqlite": "SELECT id FROM Player_Attributes WHERE preferred_foot = 'right' ORDER BY potential LIMIT 5",
+    "SQL-PostgreSQL": "SELECT \"player_attributes\".\"id\" FROM \"player_attributes\" WHERE \"player_attributes\".\"preferred_foot\" = 'right' ORDER BY \"player_attributes\".\"potential\" NULLS FIRST LIMIT 5",
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1136,

@@ -155,7 +155,9 @@ Dialect-specific evaluators live in `evaluation/*_eval.py`. They handle connecti
 
 The [`sft/`](sft/README.md) directory provides the Qwen3-8B LoRA experiment with a fixed intent-disjoint split: 1,227 training intents and 307 test intents (seed 42). It includes SQLite-only, Balanced-16, and Full-16 supervision, together with a matched base-model inference protocol. See the SFT README for data preparation, training, inference, and executable evaluation.
 
-Reference annotations in both the full benchmark and Clean-256 subset incorporate the latest reviewed corrections. The published `annotation_source` labels retain the same five-stage vocabulary.
+The [November 2026 dev-reference audit](data/reports/dev_gold_20261112/README.md) updates all Oracle identifier bindings and 26 reviewed SQLite references while preserving the original UniQL question/evidence fields. The corresponding DuckDB, PostgreSQL and MySQL patches are native-verified. Other dialect files retain their previous references pending native validation. Clean-256 uses the same published references as each dialect's full file. Audited Oracle rows use `annotation_source=dev-gold-audit-20261112`; reviewed target corrections use `dev-reference-repair-20261112`, alongside the historical construction-stage labels.
+
+For Oracle, migrate with the updated gold and schema together. The new loader creates ordinary PDB users and preserves quoted table/column names. See the [migration and evaluation instructions](data/reports/dev_gold_20261112/README.md); use `--num_cpus 1` for Oracle Free.
 
 ## Database Migration and Construction
 
