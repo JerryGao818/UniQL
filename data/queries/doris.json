@@ -3359,10 +3359,10 @@
     "db_id": "card_games",
     "question": "List the card names with value that cost more converted mana for the face.",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT name FROM cards ORDER BY faceConvertedManaCost LIMIT 1",
-    "SQL-Doris": "SELECT `name` FROM `cards` ORDER BY `faceconvertedmanacost` LIMIT 1",
+    "SQL-sqlite": "SELECT DISTINCT name FROM cards WHERE faceConvertedManaCost = (SELECT MAX(faceConvertedManaCost) FROM cards)",
+    "SQL-Doris": "SELECT DISTINCT `cards`.`name` FROM `cards` WHERE `cards`.`faceconvertedmanacost` = (SELECT MAX(`cards`.`faceconvertedmanacost`) FROM `cards`)",
     "evidence": "more converted mana for the face refers to Max(faceConvertedManaCost);",
-    "annotation_source": "glot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 343,
@@ -4766,10 +4766,10 @@
     "db_id": "card_games",
     "question": "Please list the Italian names of the cards in the set Coldsnap with the highest converted mana cost.",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT T2.name FROM foreign_data AS T1 INNER JOIN cards AS T2 ON T2.uuid = T1.uuid INNER JOIN sets AS T3 ON T3.code = T2.setCode WHERE T3.name = 'Coldsnap' AND T1.language = 'Italian' ORDER BY T2.convertedManaCost DESC",
-    "SQL-Doris": "SELECT T2.`name` FROM `foreign_data` AS T1 INNER JOIN `cards` AS T2 ON T2.`uuid` = T1.`uuid` INNER JOIN `sets` AS T3 ON T3.`code` = T2.`setcode` WHERE T3.`name` = 'Coldsnap' AND T1.`language` = 'Italian' ORDER BY T2.`convertedmanacost` DESC",
+    "SQL-sqlite": "WITH eligible AS (SELECT f.name AS italian_name,c.convertedManaCost AS cost FROM foreign_data f JOIN cards c ON c.uuid=f.uuid JOIN sets s ON s.code=c.setCode WHERE s.name='Coldsnap' AND f.language='Italian') SELECT DISTINCT italian_name FROM eligible WHERE cost=(SELECT MAX(cost) FROM eligible)",
+    "SQL-Doris": "WITH `eligible` AS (SELECT `f`.`name` AS `italian_name`, `c`.`convertedmanacost` AS `cost` FROM `foreign_data` AS `f` JOIN `cards` AS `c` ON `c`.`uuid` = `f`.`uuid` JOIN `sets` AS `s` ON `s`.`code` = `c`.`setcode` WHERE `s`.`name` = 'Coldsnap' AND `f`.`language` = 'Italian') SELECT DISTINCT `eligible`.`italian_name` FROM `eligible` WHERE `eligible`.`cost` = (SELECT MAX(`eligible`.`cost`) FROM `eligible`)",
     "evidence": "card set Coldsnap refers to name = 'Coldsnap'; Italian refers to language = 'Italian'; highest converted mana cost refers to MAX(convertedManaCost)",
-    "annotation_source": "glot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 485,
@@ -5066,10 +5066,10 @@
     "db_id": "card_games",
     "question": "In duels, what are the top 10 cards with the highest uncoverted mana cost?",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT DISTINCT name FROM cards WHERE uuid IN ( SELECT uuid FROM legalities WHERE format = 'duel' ) ORDER BY manaCost DESC LIMIT 0, 10",
-    "SQL-Doris": "SELECT name FROM (SELECT name, MAX(TRIM(manacost)) AS manacost_key, MIN(id) AS min_id FROM cards WHERE uuid IN (SELECT uuid FROM legalities WHERE TRIM(LOWER(format)) = 'duel') GROUP BY name) t ORDER BY manacost_key DESC, TRIM(name) ASC, min_id ASC LIMIT 10 OFFSET 0",
+    "SQL-sqlite": "SELECT c.name FROM cards c WHERE c.uuid IN (SELECT l.uuid FROM legalities l WHERE l.format='duel') GROUP BY c.name ORDER BY MAX(c.manaCost) DESC LIMIT 10",
+    "SQL-Doris": "SELECT `c`.`name` FROM `cards` AS `c` WHERE `c`.`uuid` IN (SELECT `l`.`uuid` FROM `legalities` AS `l` WHERE `l`.`format` = 'duel') GROUP BY `c`.`name` ORDER BY MAX(`c`.`manacost`) DESC LIMIT 10",
     "evidence": "duels refer to format = 'duel'; the highest uncoverted mana cost refers to MAX(manaCost)",
-    "annotation_source": "human"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 515,
@@ -6340,10 +6340,10 @@
     "db_id": "codebase_community",
     "question": "How many posts were created on 21st July, 2010?",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT COUNT(id) FROM postHistory WHERE date(CreationDate) = '2010-07-21'",
-    "SQL-Doris": "SELECT COUNT(`id`) FROM `posthistory` WHERE DATE(`creationdate`) = '2010-07-21'",
+    "SQL-sqlite": "SELECT COUNT(Id) FROM posts WHERE date(CreaionDate)='2010-07-21'",
+    "SQL-Doris": "SELECT COUNT(`posts`.`id`) FROM `posts` WHERE DATE(`posts`.`creaiondate`) = '2010-07-21'",
     "evidence": "created on 21st July, 2010 refers to CreationDate BETWEEN '2010-07-21 00:00:00' and '2012-07-21 23:59:59';",
-    "annotation_source": "glot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 643,
@@ -8838,9 +8838,9 @@
     "db_id": "formula_1",
     "question": "Name the top 3 drivers and the points they scored in the 2017 Chinese Grand Prix.",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT T3.forename, T3.surname, T2.points FROM races AS T1 INNER JOIN driverStandings AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T1.name = 'Chinese Grand Prix' AND T1.year = 2017 ORDER BY T2.points DESC LIMIT 3",
-    "SQL-Doris": "SELECT T3.`forename`, T3.`surname`, T2.`points` FROM `races` AS T1 INNER JOIN `driverstandings` AS T2 ON T2.`raceid` = T1.`raceid` INNER JOIN `drivers` AS T3 ON T3.`driverid` = T2.`driverid` WHERE T1.`name` = 'Chinese Grand Prix' AND T1.`year` = 2017 ORDER BY T2.`points` DESC LIMIT 3",
-    "annotation_source": "glot"
+    "SQL-sqlite": "SELECT d.forename,d.surname,s.points FROM races r JOIN results s ON s.raceId=r.raceId JOIN drivers d ON d.driverId=s.driverId WHERE r.name='Chinese Grand Prix' AND r.year=2017 ORDER BY s.positionOrder LIMIT 3",
+    "SQL-Doris": "SELECT `d`.`forename`, `d`.`surname`, `s`.`points` FROM `races` AS `r` JOIN `results` AS `s` ON `s`.`raceid` = `r`.`raceid` JOIN `drivers` AS `d` ON `d`.`driverid` = `s`.`driverid` WHERE `r`.`name` = 'Chinese Grand Prix' AND `r`.`year` = 2017 ORDER BY `s`.`positionorder` LIMIT 3",
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 894,
@@ -9769,7 +9769,7 @@
     "db_id": "formula_1",
     "question": "List down top 3 German drivers who has the shortest average pit stop duration and were born between 1980-1985.",
     "difficulty": "challenging",
-    "SQL-sqlite": "SELECT T2.forename, T2.surname FROM pitStops AS T1 INNER JOIN drivers AS T2 on T1.driverId = T2.driverId WHERE T2.nationality = 'German' AND STRFTIME('%Y', T2.dob) BETWEEN '1980' AND '1985' GROUP BY T2.forename, T2.surname ORDER BY AVG(T1.duration) LIMIT 3",
+    "SQL-sqlite": "SELECT T2.forename, T2.surname FROM pitStops AS T1 INNER JOIN drivers AS T2 ON T1.driverId = T2.driverId WHERE T2.nationality = 'German' AND STRFTIME('%Y', T2.dob) BETWEEN '1980' AND '1985' GROUP BY T2.forename, T2.surname ORDER BY AVG(T1.milliseconds) LIMIT 3",
     "SQL-Doris": "SELECT T2.forename, T2.surname FROM pitstops T1 JOIN drivers T2 ON T1.driverid = T2.driverid WHERE T2.nationality = 'German' AND CAST(SUBSTR(T2.dob,1,4) AS INT) BETWEEN 1980 AND 1985 GROUP BY T2.forename, T2.surname ORDER BY AVG(T1.milliseconds) LIMIT 3",
     "evidence": "Full name of the driver refers to drivers.forename and drivers.surname; born between 1980-1985 refers to 1980< year(dob)>1985; Average pitstop duration refers to Divide(SUM(duration),COUNT(duration)); shortest average refers to Min(avg(duration));",
     "annotation_source": "LLM-0shot"
@@ -9949,9 +9949,9 @@
     "db_id": "formula_1",
     "question": "Among all the lap records set on various circuits, what is the time for the fastest one?",
     "difficulty": "challenging",
-    "SQL-sqlite": "SELECT time FROM lapTimes ORDER BY (CASE WHEN INSTR(time, ':') <> INSTR(SUBSTR(time, INSTR(time, ':') + 1), ':') + INSTR(time, ':') THEN CAST(SUBSTR(time, 1, INSTR(time, ':') - 1) AS REAL) * 3600 ELSE 0 END) + (CAST(SUBSTR(time, INSTR(time, ':') - 2 * (INSTR(time, ':') = INSTR(SUBSTR(time, INSTR(time, ':') + 1), ':') + INSTR(time, ':')), INSTR(time, ':') - 1) AS REAL) * 60) + (CAST(SUBSTR(time, INSTR(time, ':') + 1, INSTR(time, '.') - INSTR(time, ':') - 1) AS REAL)) + (CAST(SUBSTR(time, INSTR(time, '.') + 1) AS REAL) / 1000) ASC LIMIT 1",
-    "SQL-Doris": "SELECT time FROM laptimes WHERE TRIM(time) = '2:00.000' LIMIT 1",
-    "annotation_source": "LLM-rule"
+    "SQL-sqlite": "SELECT time FROM lapTimes ORDER BY milliseconds ASC LIMIT 1",
+    "SQL-Doris": "SELECT `laptimes`.`time` FROM `laptimes` ORDER BY `laptimes`.`milliseconds` ASC LIMIT 1",
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1007,
@@ -9997,8 +9997,8 @@
     "db_id": "formula_1",
     "question": "Which top 20 driver created the shortest lap time ever record in a Formula_1 race? Please give them full names.",
     "difficulty": "challenging",
-    "SQL-sqlite": "WITH lap_times_in_seconds AS (SELECT driverId, (CASE WHEN SUBSTR(time, 1, INSTR(time, ':') - 1) <> '' THEN CAST(SUBSTR(time, 1, INSTR(time, ':') - 1) AS REAL) * 60 ELSE 0 END + CASE WHEN SUBSTR(time, INSTR(time, ':') + 1, INSTR(time, '.') - INSTR(time, ':') - 1) <> '' THEN CAST(SUBSTR(time, INSTR(time, ':') + 1, INSTR(time, '.') - INSTR(time, ':') - 1) AS REAL) ELSE 0 END + CASE WHEN SUBSTR(time, INSTR(time, '.') + 1) <> '' THEN CAST(SUBSTR(time, INSTR(time, '.') + 1) AS REAL) / 1000 ELSE 0 END) AS time_in_seconds FROM lapTimes) SELECT T2.forename, T2.surname, T1.driverId FROM (SELECT driverId, MIN(time_in_seconds) AS min_time_in_seconds FROM lap_times_in_seconds GROUP BY driverId) AS T1 INNER JOIN drivers AS T2 ON T1.driverId = T2.driverId ORDER BY T1.min_time_in_seconds ASC LIMIT 20",
-    "SQL-Doris": "WITH lap_times_in_seconds AS (SELECT l.driverid AS driverid, (CASE WHEN NULLIF(regexp_extract(l.time,'^\\\\s*([0-9]+):',1),'') IS NOT NULL THEN CAST(NULLIF(regexp_extract(l.time,'^\\\\s*([0-9]+):',1),'') AS DOUBLE) * 60 ELSE 0 END + CASE WHEN NULLIF(regexp_extract(l.time,'^\\\\s*([0-9]+):([0-9]+)\\\\.',2),'') IS NOT NULL THEN CAST(NULLIF(regexp_extract(l.time,'^\\\\s*([0-9]+):([0-9]+)\\\\.',2),'') AS DOUBLE) ELSE CASE WHEN NULLIF(regexp_extract(l.time,'^\\\\s*([0-9]+)\\\\.',1),'') IS NOT NULL THEN CAST(NULLIF(regexp_extract(l.time,'^\\\\s*([0-9]+)\\\\.',1),'') AS DOUBLE) ELSE 0 END END + CASE WHEN NULLIF(regexp_extract(l.time,'^\\\\s*([0-9]+):([0-9]+)\\\\.([0-9]+)',3),'') IS NOT NULL THEN CAST(NULLIF(regexp_extract(l.time,'^\\\\s*([0-9]+):([0-9]+)\\\\.([0-9]+)',3),'') AS DOUBLE) / 1000 ELSE CASE WHEN NULLIF(regexp_extract(l.time,'^\\\\s*([0-9]+)\\\\.([0-9]+)',2),'') IS NOT NULL THEN CAST(NULLIF(regexp_extract(l.time,'^\\\\s*([0-9]+)\\\\.([0-9]+)',2),'') AS DOUBLE) / 1000 ELSE 0 END END) AS time_in_seconds FROM laptimes l), min_per_driver AS (SELECT driverid, MIN(time_in_seconds) AS min_time_in_seconds FROM lap_times_in_seconds WHERE time_in_seconds IS NOT NULL GROUP BY driverid) SELECT d.forename, d.surname, m.driverid FROM min_per_driver m INNER JOIN drivers d ON m.driverid = d.driverid ORDER BY m.min_time_in_seconds ASC, TRIM(d.surname) ASC, TRIM(d.forename) ASC, m.driverid ASC LIMIT 20;",
+    "SQL-sqlite": "SELECT d.forename,d.surname,d.driverId FROM drivers d JOIN (SELECT driverId,MIN(milliseconds) AS fastest FROM lapTimes GROUP BY driverId) t ON t.driverId=d.driverId ORDER BY t.fastest ASC LIMIT 20",
+    "SQL-Doris": "SELECT d.forename, d.surname, t.driverid FROM (SELECT driverid, MIN(milliseconds) AS min_ms FROM laptimes GROUP BY driverid) t JOIN drivers d ON t.driverid=d.driverid ORDER BY t.min_ms ASC LIMIT 20",
     "evidence": "shortest lap time refers to MIN(time); the time format for the shortest lap time is 'MM:SS.mmm' or 'M:SS.mmm'; full name of the driver refers to forename, surname",
     "annotation_source": "LLM-rule"
   },
@@ -10127,10 +10127,10 @@
     "db_id": "european_football_2",
     "question": "Who are the top 5 players who perform better in crossing actions? Indicate their player id.",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT id FROM Player_Attributes ORDER BY crossing DESC LIMIT 5",
-    "SQL-Doris": "SELECT `id` FROM `player_attributes` ORDER BY `crossing` DESC LIMIT 5",
+    "SQL-sqlite": "SELECT player_api_id\nFROM Player_Attributes\nGROUP BY player_api_id\nORDER BY MAX(crossing) DESC, player_api_id ASC\nLIMIT 5;",
+    "SQL-Doris": "SELECT `player_attributes`.`player_api_id` FROM `player_attributes` GROUP BY `player_attributes`.`player_api_id` ORDER BY MAX(`player_attributes`.`crossing`) DESC, `player_attributes`.`player_api_id` ASC LIMIT 5",
     "evidence": "perform better in crossing actions refers to MAX(crossing)",
-    "annotation_source": "glot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1025,
@@ -10157,10 +10157,10 @@
     "db_id": "european_football_2",
     "question": "Indicate the full names of the top 10 players with the highest number of penalties.",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT t2.player_name FROM Player_Attributes AS t1 INNER JOIN Player AS t2 ON t1.id = t2.id ORDER BY t1.penalties DESC LIMIT 10",
-    "SQL-Doris": "SELECT t2.`player_name` FROM `player_attributes` AS t1 INNER JOIN `player` AS t2 ON t1.`id` = t2.`id` ORDER BY t1.`penalties` DESC LIMIT 10",
+    "SQL-sqlite": "SELECT t2.player_name\nFROM Player_Attributes AS t1\nJOIN Player AS t2 ON t1.player_api_id = t2.player_api_id\nGROUP BY t2.player_api_id, t2.player_name\nORDER BY MAX(t1.penalties) DESC, t2.player_api_id ASC\nLIMIT 10;",
+    "SQL-Doris": "SELECT `t2`.`player_name` FROM `player_attributes` AS `t1` JOIN `player` AS `t2` ON `t1`.`player_api_id` = `t2`.`player_api_id` GROUP BY `t2`.`player_api_id`, `t2`.`player_name` ORDER BY MAX(`t1`.`penalties`) DESC, `t2`.`player_api_id` ASC LIMIT 10",
     "evidence": "full name refers to player_name; players with highest number of penalties refers to MAX(penalties);",
-    "annotation_source": "glot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1028,
@@ -10297,10 +10297,10 @@
     "db_id": "european_football_2",
     "question": "For the teams with normal build-up play dribbling class in 2014, List the names of the teams with less than average chance creation passing, in descending order of chance creation passing.",
     "difficulty": "challenging",
-    "SQL-sqlite": "SELECT t3.team_long_name FROM Team AS t3 INNER JOIN Team_Attributes AS t4 ON t3.team_api_id = t4.team_api_id WHERE t4.buildUpPlayDribblingClass = 'Normal' AND t4.chanceCreationPassing < ( SELECT CAST(SUM(t2.chanceCreationPassing) AS REAL) / COUNT(t1.id) FROM Team AS t1 INNER JOIN Team_Attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t2.buildUpPlayDribblingClass = 'Normal' AND SUBSTR(t2.`date`, 1, 4) = '2014') ORDER BY t4.chanceCreationPassing DESC",
-    "SQL-Doris": "SELECT t3.`team_long_name` FROM `team` AS t3 INNER JOIN `team_attributes` AS t4 ON t3.`team_api_id` = t4.`team_api_id` WHERE t4.`buildupplaydribblingclass` = 'Normal' AND t4.`chancecreationpassing` < (SELECT CAST(SUM(t2.`chancecreationpassing`) AS FLOAT) / COUNT(t1.`id`) FROM `team` AS t1 INNER JOIN `team_attributes` AS t2 ON t1.`team_api_id` = t2.`team_api_id` WHERE t2.`buildupplaydribblingclass` = 'Normal' AND SUBSTRING(t2.`date_col`, 1, 4) = '2014') ORDER BY t4.`chancecreationpassing` DESC",
+    "SQL-sqlite": "SELECT t.team_long_name FROM Team t JOIN Team_Attributes a ON t.team_api_id=a.team_api_id WHERE a.buildUpPlayDribblingClass='Normal' AND SUBSTR(a.date,1,4)='2014' AND a.chanceCreationPassing<(SELECT CAST(SUM(b.chanceCreationPassing) AS REAL)/COUNT(u.id) FROM Team u JOIN Team_Attributes b ON u.team_api_id=b.team_api_id WHERE b.buildUpPlayDribblingClass='Normal' AND SUBSTR(b.date,1,4)='2014') ORDER BY a.chanceCreationPassing DESC",
+    "SQL-Doris": "SELECT `t`.`team_long_name` FROM `team` AS `t` JOIN `team_attributes` AS `a` ON `t`.`team_api_id` = `a`.`team_api_id` WHERE `a`.`buildupplaydribblingclass` = 'Normal' AND SUBSTRING(`a`.`date_col`, 1, 4) = '2014' AND `a`.`chancecreationpassing` < (SELECT CAST(SUM(`b`.`chancecreationpassing`) AS DOUBLE) / COUNT(`u`.`id`) FROM `team` AS `u` JOIN `team_attributes` AS `b` ON `u`.`team_api_id` = `b`.`team_api_id` WHERE `b`.`buildupplaydribblingclass` = 'Normal' AND SUBSTRING(`b`.`date_col`, 1, 4) = '2014') ORDER BY `a`.`chancecreationpassing` DESC",
     "evidence": "normal build-up play dribbling class refers to buildUpPlayDribblingClass = 'Normal'; in 2014 refers to date > = '2014-01-01 00:00:00' AND date < = '2014-01-31 00:00:00'; names of the teams refers to team_long_name; less than average chance creation passing = DIVIDE(SUM(chanceCreationPassing), COUNT(id)) > chanceCreationPassing;",
-    "annotation_source": "glot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1042,
@@ -11234,10 +11234,10 @@
     "db_id": "european_football_2",
     "question": "Please provide top five football players' IDs who are among the lowest potential players and prefer to use the right foot when attacking.",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT id FROM Player_Attributes WHERE preferred_foot = 'right' ORDER BY potential DESC LIMIT 5",
-    "SQL-Doris": "SELECT `id` FROM `player_attributes` WHERE `preferred_foot` = 'right' ORDER BY `potential` DESC LIMIT 5",
+    "SQL-sqlite": "SELECT id FROM Player_Attributes WHERE preferred_foot = 'right' ORDER BY potential LIMIT 5",
+    "SQL-Doris": "SELECT `player_attributes`.`id` FROM `player_attributes` WHERE `player_attributes`.`preferred_foot` = 'right' ORDER BY `player_attributes`.`potential` LIMIT 5",
     "evidence": "lowest potential players refers to MIN(potential); prefer to use the right foot when attacking refers to preferred_foot = 'right'",
-    "annotation_source": "glot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1136,
@@ -11523,10 +11523,10 @@
     "db_id": "thrombosis_prediction",
     "question": "How many of the patients with the most serious thrombosis cases examined in 1997 are women?",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT  COUNT(*) FROM Patient AS T1 INNER JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T1.SEX = 'F' AND STRFTIME('%Y', T2.`Examination Date`) = '1997' AND T2.Thrombosis = 1",
-    "SQL-Doris": "SELECT COUNT(*) FROM `patient` AS T1 INNER JOIN `examination` AS T2 ON T1.`id` = T2.`id` WHERE T1.`sex` = 'F' AND DATE_FORMAT(T2.`examination_date`, '%Y') = '1997' AND T2.`thrombosis` = 1",
+    "SQL-sqlite": "SELECT COUNT(DISTINCT p.ID) FROM Patient p JOIN Examination e ON p.ID=e.ID WHERE p.SEX='F' AND STRFTIME('%Y',e.\"Examination Date\")='1997' AND e.Thrombosis=1",
+    "SQL-Doris": "SELECT COUNT(DISTINCT `p`.`id`) FROM `patient` AS `p` JOIN `examination` AS `e` ON `p`.`id` = `e`.`id` WHERE `p`.`sex` = 'F' AND DATE_FORMAT(CAST(`e`.`examination_date` AS DATETIME), '%Y') = '1997' AND `e`.`thrombosis` = 1",
     "evidence": "the most serious thrombosis refers to Thrombosis = '1' (the most severe one); women refers to sex = 'F'",
-    "annotation_source": "glot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1165,
@@ -11762,10 +11762,10 @@
     "db_id": "thrombosis_prediction",
     "question": "How many female patients born in 1964 were admitted to the hospital? List them by ID.",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT ID FROM Patient WHERE STRFTIME('%Y', Birthday) = '1964' AND SEX = 'F' AND Admission = '+'",
-    "SQL-Doris": "SELECT `id` FROM `patient` WHERE DATE_FORMAT(`birthday`, '%Y') = '1964' AND `sex` = 'F' AND `admission` = '+'",
+    "SQL-sqlite": "SELECT ID,COUNT(*) OVER() AS patient_count FROM Patient WHERE STRFTIME('%Y',Birthday)='1964' AND SEX='F' AND Admission='+' ORDER BY ID",
+    "SQL-Doris": "SELECT `patient`.`id` AS `ID`, COUNT(*) OVER () AS `patient_count` FROM `patient` WHERE DATE_FORMAT(CAST(`patient`.`birthday` AS DATETIME), '%Y') = '1964' AND `patient`.`sex` = 'F' AND `patient`.`admission` = '+' ORDER BY `patient`.`id`",
     "evidence": "female refers to SEX = 'F'; born in 1964 refers to YEAR(Birthday) = 1964; admitted to the hospital refers to Admission = '+'",
-    "annotation_source": "glot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1189,
@@ -11782,7 +11782,7 @@
     "db_id": "thrombosis_prediction",
     "question": "What percentage of patients with a proteinuria level within the normal range have a uric acid level below the normal range?",
     "difficulty": "challenging",
-    "SQL-sqlite": "SELECT CAST(SUM(CASE WHEN UA <= 6.5 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(ID) FROM Laboratory WHERE `U-PRO` > 0 AND `U-PRO` < 30",
+    "SQL-sqlite": "SELECT CAST(SUM(CASE WHEN UA <= 6.5 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(ID) FROM Laboratory WHERE CAST(`U-PRO` AS REAL) > 0 AND CAST(`U-PRO` AS REAL) < 30",
     "SQL-Doris": "WITH parsed_u_pro AS (SELECT id, ua, u_pro, TRIM(u_pro) AS u_pro_trim, LOWER(TRIM(u_pro)) AS u_pro_ltrim, CASE WHEN NULLIF(TRIM(u_pro),'') IS NULL THEN NULL WHEN LOWER(TRIM(u_pro)) IN ('negative','neg','0','-') THEN 0.0 WHEN LENGTH(TRIM(u_pro))>0 AND LENGTH(REPLACE(TRIM(u_pro),'+','')) = 0 THEN CAST(LENGTH(TRIM(u_pro)) AS DOUBLE) WHEN LEFT(TRIM(u_pro),1) = '<' THEN CAST(NULLIF(regexp_extract(TRIM(u_pro),'^\\\\s*<\\\\s*([+-]?(?:[0-9]+\\\\.?[0-9]*|\\\\.[0-9]+))',1),'') AS DOUBLE) - 1e-9 WHEN LEFT(TRIM(u_pro),1) = '>' THEN CAST(NULLIF(regexp_extract(TRIM(u_pro),'^\\\\s*>\\\\s*([+-]?(?:[0-9]+\\\\.?[0-9]*|\\\\.[0-9]+))',1),'') AS DOUBLE) + 1e-9 ELSE CAST(NULLIF(regexp_extract(TRIM(u_pro),'^\\\\s*([+-]?(?:[0-9]+\\\\.?[0-9]*|\\\\.[0-9]+))',1),'') AS DOUBLE) END AS u_pro_val FROM laboratory) SELECT CAST(SUM(CASE WHEN ua <= 6.5 THEN 1 ELSE 0 END) AS DOUBLE) * 100.0 / NULLIF(CAST(COUNT(id) AS DOUBLE),0) FROM parsed_u_pro WHERE u_pro_val IS NOT NULL AND u_pro_val > 0 AND u_pro_val < 30;",
     "evidence": "proteinuria level within the normal range refers to `U-PRO` > 0 AND `U-PRO` < 30; uric acid level below the normal range refers to UA < = 6.5; calculation = MULTIPLY(DIVIDE(UA < = 6.5, `U-PRO` > 0 AND `U-PRO` < 30)，100)",
     "annotation_source": "human"
@@ -11902,10 +11902,10 @@
     "db_id": "thrombosis_prediction",
     "question": "How many male patients who underwent testing between 1995 and 1997 and were subsequently diagnosed with Behcet disease did not stay in the hospital for treatment?",
     "difficulty": "challenging",
-    "SQL-sqlite": "SELECT COUNT(T1.ID) FROM Patient AS T1 INNER JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T2.Diagnosis = 'Behcet' AND T1.SEX = 'M' AND STRFTIME('%Y', T2.`Examination Date`) BETWEEN '1995' AND '1997' AND T1.Admission = '-'",
-    "SQL-Doris": "SELECT COUNT(T1.`id`) FROM `patient` AS T1 INNER JOIN `examination` AS T2 ON T1.`id` = T2.`id` WHERE T2.`diagnosis` = 'Behcet' AND T1.`sex` = 'M' AND DATE_FORMAT(T2.`examination_date`, '%Y') BETWEEN '1995' AND '1997' AND T1.`admission` = '-'",
+    "SQL-sqlite": "SELECT COUNT(DISTINCT p.ID) FROM Patient p JOIN Examination e ON p.ID=e.ID WHERE e.Diagnosis='Behcet' AND p.SEX='M' AND STRFTIME('%Y',e.\"Examination Date\") BETWEEN '1995' AND '1997' AND p.Admission='-'",
+    "SQL-Doris": "SELECT COUNT(DISTINCT `p`.`id`) FROM `patient` AS `p` JOIN `examination` AS `e` ON `p`.`id` = `e`.`id` WHERE `e`.`diagnosis` = 'Behcet' AND `p`.`sex` = 'M' AND DATE_FORMAT(CAST(`e`.`examination_date` AS DATETIME), '%Y') BETWEEN '1995' AND '1997' AND `p`.`admission` = '-'",
     "evidence": "male refers to SEX = 'M'; underwent testing between 1995 and 1997 refers to `Examination Date` between '1995' and '1997'; Behcet refers to diagnosis; did not stay in the hospital refers to Admission = '-'",
-    "annotation_source": "glot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1203,
@@ -11972,7 +11972,7 @@
     "db_id": "thrombosis_prediction",
     "question": "Please provide the diagnosis of patients with ALT glutamic pylvic transaminase beyond the normal range by ascending order of their date of birth.",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT DISTINCT T1.Diagnosis FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.GPT > 60 ORDER BY T1.Birthday ASC",
+    "SQL-sqlite": "WITH eligible AS (SELECT p.ID,p.Diagnosis,p.Birthday,ROW_NUMBER() OVER(PARTITION BY p.Diagnosis ORDER BY p.Birthday ASC,p.ID ASC) AS rn FROM Patient p WHERE EXISTS(SELECT 1 FROM Laboratory l WHERE l.ID=p.ID AND l.GPT>60)) SELECT Diagnosis FROM eligible WHERE rn=1 ORDER BY Birthday ASC,ID ASC",
     "SQL-Doris": "SELECT T1.diagnosis FROM patient AS T1 INNER JOIN laboratory AS T2 ON T1.id = T2.id WHERE T2.gpt > 60 GROUP BY T1.diagnosis ORDER BY MIN(T1.birthday) ASC",
     "evidence": "ALT glutamic pylvic transaminase beyond the normal range refers to GPT > 60; The larger the birthday value, the younger the person is, and vice versa; ",
     "annotation_source": "LLM-retry"
@@ -12222,10 +12222,10 @@
     "db_id": "thrombosis_prediction",
     "question": "List the patient ID, sex and birthday who has abnormal white blood cell count. Group them by sex and list the patient by age in ascending order.",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT DISTINCT T1.ID, T1.SEX, T1.Birthday FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.WBC <= 3.5 OR T2.WBC >= 9.0 GROUP BY T1.SEX,T1.ID ORDER BY T1.Birthday ASC",
-    "SQL-Doris": "SELECT DISTINCT p.id, p.sex, p.birthday FROM patient p INNER JOIN laboratory l ON p.id = l.id WHERE l.wbc <= 3.5 OR l.wbc >= 9.0 ORDER BY p.birthday ASC;",
+    "SQL-sqlite": "SELECT p.ID,p.SEX,p.Birthday FROM Patient p WHERE EXISTS(SELECT 1 FROM Laboratory l WHERE l.ID=p.ID AND (l.WBC<=3.5 OR l.WBC>=9.0)) ORDER BY p.SEX ASC,p.Birthday DESC",
+    "SQL-Doris": "SELECT `p`.`id` AS `ID`, `p`.`sex` AS `SEX`, `p`.`birthday` AS `Birthday` FROM `patient` AS `p` WHERE EXISTS(SELECT 1 FROM `laboratory` AS `l` WHERE `l`.`id` = `p`.`id` AND (`l`.`wbc` <= 3.5 OR `l`.`wbc` >= 9.0)) ORDER BY `p`.`sex` ASC, `p`.`birthday` DESC",
     "evidence": "abnormal white blood cell count refers to WBC < = 3.5 or WBC > = 9.0;",
-    "annotation_source": "LLM-0shot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1235,
@@ -12312,10 +12312,10 @@
     "db_id": "thrombosis_prediction",
     "question": "For all patients who are older than 55 years old, what is the percentage of female who has abnormal prothrombin time (PT)?",
     "difficulty": "challenging",
-    "SQL-sqlite": "SELECT CAST(SUM(CASE WHEN T2.PT >= 14 AND T1.SEX = 'F' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(*) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE STRFTIME('%Y', CURRENT_TIMESTAMP) - STRFTIME('%Y', T1.Birthday) > 55",
-    "SQL-Doris": "SELECT CAST(SUM(CASE WHEN T2.`pt` >= 14 AND T1.`sex` = 'F' THEN 1 ELSE 0 END) AS FLOAT) * 100 / COUNT(*) FROM `patient` AS T1 INNER JOIN `laboratory` AS T2 ON T1.`id` = T2.`id` WHERE DATE_FORMAT(CURRENT_TIMESTAMP(), '%Y') - DATE_FORMAT(T1.`birthday`, '%Y') > 55",
+    "SQL-sqlite": "SELECT \n    CAST(COUNT(DISTINCT CASE WHEN T2.PT >= 14 AND T1.SEX = 'F' THEN T1.ID END) AS REAL)\n    / COUNT(DISTINCT CASE WHEN T2.PT >= 14 THEN T1.ID END)\n    * 100 AS abnormal_pt_female_percentage\nFROM Patient AS T1\nINNER JOIN Laboratory AS T2 ON T1.ID = T2.ID\nWHERE STRFTIME('%Y', CURRENT_TIMESTAMP) - STRFTIME('%Y', T1.Birthday) > 55;",
+    "SQL-Doris": "SELECT CAST(COUNT(DISTINCT CASE WHEN `T2`.`pt` >= 14 AND `T1`.`sex` = 'F' THEN `T1`.`id` END) AS DOUBLE) / COUNT(DISTINCT CASE WHEN `T2`.`pt` >= 14 THEN `T1`.`id` END) * 100 AS `abnormal_pt_female_percentage` FROM `patient` AS `T1` INNER JOIN `laboratory` AS `T2` ON `T1`.`id` = `T2`.`id` WHERE CAST(DATE_FORMAT(CAST(NOW() AS DATETIME), '%Y') AS INT) - CAST(DATE_FORMAT(CAST(`T1`.`birthday` AS DATETIME), '%Y') AS INT) > 55",
     "evidence": "older than 55 years old = SUBTRACT(year(current_timestamp), year(Birthday)) > 55; abnormal prothrombin time (PT) refers to PT > = 14; percentage = DIVIDE(SUM(PT > = 14 AND SEX = 'F'), SUM(PT > = 14)) * 100; female refers to sex = 'F'; ",
-    "annotation_source": "glot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1244,
@@ -12482,20 +12482,20 @@
     "db_id": "thrombosis_prediction",
     "question": "Please list the ID of the patient whose RF is normal and who is older than 60.",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT T1.ID FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.RF < 20 AND STRFTIME('%Y', DATE('now')) - STRFTIME('%Y', T1.Birthday) > 60",
-    "SQL-Doris": "WITH parsed_lab AS (SELECT id, rf, CASE WHEN NULLIF(TRIM(rf),'') IS NULL THEN NULL WHEN LOWER(TRIM(rf)) IN ('negative','neg','0','-') THEN 0.0 WHEN LENGTH(TRIM(rf))>0 AND LENGTH(REPLACE(TRIM(rf),'+',''))=0 THEN CAST(LENGTH(TRIM(rf)) AS DOUBLE) WHEN SUBSTR(TRIM(rf),1,1) = '<' THEN CAST(NULLIF(regexp_extract(TRIM(rf),'^\\\\s*<\\\\s*([+-]?[0-9]*\\\\.?[0-9]+)',1),'') AS DOUBLE) - 1e-9 WHEN SUBSTR(TRIM(rf),1,1) = '>' THEN CAST(NULLIF(regexp_extract(TRIM(rf),'^\\\\s*>\\\\s*([+-]?[0-9]*\\\\.?[0-9]+)',1),'') AS DOUBLE) + 1e-9 ELSE CAST(NULLIF(regexp_extract(TRIM(rf),'^\\\\s*([+-]?[0-9]*\\\\.?[0-9]+)',1),'') AS DOUBLE) END AS rf_val FROM laboratory), cur_year AS (SELECT COALESCE(CAST(NULLIF(regexp_extract(CAST(CURRENT_DATE AS VARCHAR),'^\\\\s*(\\\\d{4})',1),'') AS INT), CAST(NULLIF(TRIM(SUBSTR(CAST(CURRENT_DATE AS VARCHAR),1,4)),'') AS INT)) AS y) SELECT T1.id FROM patient AS T1 INNER JOIN parsed_lab T2 ON T1.id = T2.id CROSS JOIN cur_year c WHERE T2.rf_val IS NOT NULL AND T2.rf_val < 20 AND (c.y - COALESCE(CAST(NULLIF(regexp_extract(T1.birthday,'^\\\\s*(\\\\d{4})',1),'') AS INT), CAST(NULLIF(TRIM(SUBSTR(T1.birthday,1,4)),'') AS INT))) > 60",
+    "SQL-sqlite": "SELECT p.ID FROM Patient p JOIN Laboratory l ON p.ID=l.ID WHERE l.RF IS NOT NULL AND TRIM(l.RF)!='' AND CAST(REPLACE(REPLACE(l.RF,'<',''),'>','') AS REAL)<20 AND CAST(STRFTIME('%Y',DATE('now')) AS INTEGER)-CAST(STRFTIME('%Y',p.Birthday) AS INTEGER)>60",
+    "SQL-Doris": "SELECT `p`.`id` AS `ID` FROM `patient` AS `p` JOIN `laboratory` AS `l` ON `p`.`id` = `l`.`id` WHERE NOT `l`.`rf` IS NULL AND TRIM(`l`.`rf`) <> '' AND CAST(REPLACE(REPLACE(`l`.`rf`, '<', ''), '>', '') AS DOUBLE) < 20 AND CAST(DATE_FORMAT(CAST(CURRENT_DATE() AS DATETIME), '%Y') AS INT) - CAST(DATE_FORMAT(CAST(`p`.`birthday` AS DATETIME), '%Y') AS INT) > 60",
     "evidence": "RF is normal refers to RF < 20; older than 60 = SUBTRACT((YEAR(CURDATE()), YEAR(Birthday))) > 60;",
-    "annotation_source": "human"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1261,
     "db_id": "thrombosis_prediction",
     "question": "How many patients with a normal RF don't have thrombosis?",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT COUNT(DISTINCT T1.ID) FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.RF < 20 AND T1.Thrombosis = 0",
-    "SQL-Doris": "WITH parsed_lab AS (SELECT id, CASE WHEN NULLIF(TRIM(rf),'') IS NULL THEN NULL WHEN LOWER(TRIM(rf)) IN ('negative','neg','0','-') THEN 0.0 WHEN LENGTH(TRIM(rf)) > 0 AND LENGTH(REPLACE(TRIM(rf), '+', '')) = 0 THEN CAST(LENGTH(TRIM(rf)) - LENGTH(REPLACE(TRIM(rf), '+', '')) AS DOUBLE) WHEN SUBSTR(TRIM(rf),1,1) = '<' THEN CAST(NULLIF(regexp_extract(TRIM(rf),'^\\\\s*[<>]?\\\\s*([+-]?(?:\\\\d+\\\\.?\\\\d*|\\\\.\\\\d+))',1),'') AS DOUBLE) - 1e-9 WHEN SUBSTR(TRIM(rf),1,1) = '>' THEN CAST(NULLIF(regexp_extract(TRIM(rf),'^\\\\s*[<>]?\\\\s*([+-]?(?:\\\\d+\\\\.?\\\\d*|\\\\.\\\\d+))',1),'') AS DOUBLE) + 1e-9 ELSE CAST(NULLIF(regexp_extract(TRIM(rf),'^\\\\s*([+-]?(?:\\\\d+\\\\.?\\\\d*|\\\\.\\\\d+))',1),'') AS DOUBLE) END AS rf_val, COALESCE(CAST(NULLIF(regexp_extract(date_col,'^(\\\\d{4}-\\\\d{2}-\\\\d{2})',1),'') AS DATE), CAST(NULLIF(TRIM(SUBSTR(date_col,1,10)),'') AS DATE)) AS lab_date FROM laboratory), parsed_exam AS (SELECT id, thrombosis, COALESCE(CAST(NULLIF(regexp_extract(examination_date,'^(\\\\d{4}-\\\\d{2}-\\\\d{2})',1),'') AS DATE), CAST(NULLIF(TRIM(SUBSTR(examination_date,1,10)),'') AS DATE)) AS exam_date FROM examination) SELECT COUNT(DISTINCT e.id) FROM parsed_exam e JOIN parsed_lab l ON e.id = l.id WHERE e.thrombosis = 0 AND l.rf_val IS NOT NULL AND l.rf_val < 20 AND l.lab_date IS NOT NULL AND e.exam_date IS NOT NULL AND l.lab_date <= e.exam_date;",
+    "SQL-sqlite": "SELECT COUNT(DISTINCT e.ID) FROM Examination e JOIN Laboratory l ON e.ID=l.ID WHERE l.RF IS NOT NULL AND TRIM(l.RF)!='' AND CAST(REPLACE(REPLACE(l.RF,'<',''),'>','') AS REAL)<20 AND e.Thrombosis=0",
+    "SQL-Doris": "SELECT COUNT(DISTINCT `e`.`id`) FROM `examination` AS `e` JOIN `laboratory` AS `l` ON `e`.`id` = `l`.`id` WHERE NOT `l`.`rf` IS NULL AND TRIM(`l`.`rf`) <> '' AND CAST(REPLACE(REPLACE(`l`.`rf`, '<', ''), '>', '') AS DOUBLE) < 20 AND `e`.`thrombosis` = 0",
     "evidence": "normal RF refers to RF < 20; don't have thrombosis refers to Thrombosis = '0';",
-    "annotation_source": "LLM-rule"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1262,
@@ -12642,20 +12642,20 @@
     "db_id": "thrombosis_prediction",
     "question": "For the patients who have an abnormal level of anti-DNA, please list the diseases they are diagnosed with.",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT DISTINCT(T1.Diagnosis) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.DNA >= 8",
-    "SQL-Doris": "WITH parsed_dna AS (SELECT id, dna, CASE WHEN NULLIF(TRIM(dna),'') IS NULL THEN NULL WHEN LOWER(TRIM(dna)) IN ('negative','neg','0','-') THEN 0.0 WHEN LENGTH(TRIM(dna)) > 0 AND LENGTH(REPLACE(TRIM(dna), '+', '')) = 0 THEN NULL WHEN LEFT(TRIM(dna),1) = '<' THEN CAST(NULLIF(regexp_extract(TRIM(dna),'^\\\\s*<\\\\s*([+-]?(?:\\\\d+\\\\.?\\\\d*|\\\\.\\\\d+))',1),'') AS DOUBLE) - 1e-9 WHEN LEFT(TRIM(dna),1) = '>' THEN CAST(NULLIF(regexp_extract(TRIM(dna),'^\\\\s*>\\\\s*([+-]?(?:\\\\d+\\\\.?\\\\d*|\\\\.\\\\d+))',1),'') AS DOUBLE) + 1e-9 ELSE CAST(NULLIF(regexp_extract(TRIM(dna),'^\\\\s*([+-]?(?:\\\\d+\\\\.?\\\\d*|\\\\.\\\\d+))',1),'') AS DOUBLE) END AS dna_val FROM laboratory), diag_counts AS (SELECT TRIM(p.diagnosis) AS diagnosis, COUNT(1) AS cnt FROM patient p INNER JOIN parsed_dna d ON p.id = d.id WHERE d.dna_val >= 8 GROUP BY TRIM(p.diagnosis)) SELECT diagnosis FROM diag_counts ORDER BY cnt DESC, diagnosis ASC;",
+    "SQL-sqlite": "SELECT DISTINCT p.Diagnosis FROM Patient p JOIN Laboratory l ON p.ID=l.ID WHERE CAST(l.DNA AS REAL)>=8",
+    "SQL-Doris": "SELECT DISTINCT `p`.`diagnosis` AS `Diagnosis` FROM `patient` AS `p` JOIN `laboratory` AS `l` ON `p`.`id` = `l`.`id` WHERE CAST(`l`.`dna` AS DOUBLE) >= 8",
     "evidence": "abnormal level of anti-DNA refers to DNA > = 8; diseases refers to Diagnosis;",
-    "annotation_source": "human"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1277,
     "db_id": "thrombosis_prediction",
     "question": "How many patients have a normal anti-DNA level, yet their data are not recorded.",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT COUNT(DISTINCT T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.DNA < 8 AND T1.Description IS NULL",
-    "SQL-Doris": "WITH parsed_laboratory AS (SELECT id, CASE WHEN NULLIF(TRIM(dna),'') IS NULL THEN NULL WHEN LOWER(TRIM(dna)) IN ('negative','neg','-') THEN 0.0 WHEN TRIM(dna) = '0' OR TRIM(dna) = '0.0' THEN 0.0 WHEN LENGTH(TRIM(dna))>0 AND LENGTH(REPLACE(TRIM(dna), '+', '')) = 0 THEN NULL WHEN SUBSTR(TRIM(dna),1,1) = '<' THEN CAST(NULLIF(regexp_extract(TRIM(dna),'^\\\\s*<\\\\s*([+-]?(?:[0-9]*\\\\.?[0-9]+))',1),'') AS DOUBLE) - 1e-9 WHEN SUBSTR(TRIM(dna),1,1) = '>' THEN CAST(NULLIF(regexp_extract(TRIM(dna),'^\\\\s*>\\\\s*([+-]?(?:[0-9]*\\\\.?[0-9]+))',1),'') AS DOUBLE) + 1e-9 ELSE CAST(NULLIF(regexp_extract(TRIM(dna),'^\\\\s*([+-]?(?:[0-9]*\\\\.?[0-9]+))',1),'') AS DOUBLE) END AS dna_val FROM laboratory) SELECT COUNT(DISTINCT p.id) FROM patient p WHERE p.description IS NULL AND EXISTS (SELECT 1 FROM parsed_laboratory l WHERE l.id = p.id AND l.dna_val IS NOT NULL AND l.dna_val < 8)",
+    "SQL-sqlite": "SELECT COUNT(DISTINCT p.ID) FROM Patient p JOIN Laboratory l ON p.ID=l.ID WHERE CAST(l.DNA AS REAL)<8 AND p.Description IS NULL",
+    "SQL-Doris": "SELECT COUNT(DISTINCT `p`.`id`) FROM `patient` AS `p` JOIN `laboratory` AS `l` ON `p`.`id` = `l`.`id` WHERE CAST(`l`.`dna` AS DOUBLE) < 8 AND `p`.`description` IS NULL",
     "evidence": "normal anti-DNA level refers to DNA < 8; data are not recorded refers to Description IS NULL; Should compute the number of unique ones",
-    "annotation_source": "human"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1278,
@@ -12702,10 +12702,10 @@
     "db_id": "thrombosis_prediction",
     "question": "Please list the top three patients' birthdays with the highest glutamic pylvic transaminase in the normal range.",
     "difficulty": "simple",
-    "SQL-sqlite": "SELECT T1.Birthday FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.GPT < 60 ORDER BY T2.GPT DESC LIMIT 3",
-    "SQL-Doris": "SELECT sub.birthday FROM (SELECT T1.birthday AS birthday, T2.gpt AS gpt, T1.id AS id FROM patient T1 INNER JOIN laboratory T2 ON T1.id = T2.id WHERE T2.gpt < 60) sub ORDER BY sub.gpt DESC, sub.id ASC LIMIT 3",
+    "SQL-sqlite": "SELECT T1.Birthday FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.GPT < 60 GROUP BY T1.ID ORDER BY MAX(T2.GPT) DESC, T1.ID ASC LIMIT 3",
+    "SQL-Doris": "SELECT `T1`.`birthday` AS `Birthday` FROM `patient` AS `T1` INNER JOIN `laboratory` AS `T2` ON `T1`.`id` = `T2`.`id` WHERE `T2`.`gpt` < 60 GROUP BY `T1`.`id`, `T1`.`birthday` ORDER BY MAX(`T2`.`gpt`) DESC, `T1`.`id` ASC LIMIT 3",
     "evidence": "highest glutamic pylvic transaminase in the normal range refers to MAX(GPT < 60);",
-    "annotation_source": "LLM-rule"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1283,
@@ -12972,10 +12972,10 @@
     "db_id": "thrombosis_prediction",
     "question": "Please list a patient's platelet level if it is within the normal range and if he or she is diagnosed with MCTD.",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT T2.PLT FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.Diagnosis = 'MCTD' AND T2.PLT BETWEEN 100 AND 400",
-    "SQL-Doris": "SELECT T2.`plt` FROM `patient` AS T1 INNER JOIN `laboratory` AS T2 ON T1.`id` = T2.`id` WHERE T1.`diagnosis` = 'MCTD' AND T2.`plt` BETWEEN 100 AND 400",
+    "SQL-sqlite": "SELECT l.PLT FROM Patient p JOIN Laboratory l ON p.ID=l.ID WHERE p.Diagnosis='MCTD' AND l.PLT>100 AND l.PLT<400",
+    "SQL-Doris": "SELECT `l`.`plt` AS `PLT` FROM `patient` AS `p` JOIN `laboratory` AS `l` ON `p`.`id` = `l`.`id` WHERE `p`.`diagnosis` = 'MCTD' AND `l`.`plt` > 100 AND `l`.`plt` < 400",
     "evidence": "PLT > 100 and PLT < 400 means platelet level is within the normal range; PLT < 100 and PLT > 400 means platelet level is not within the normal range; diagnosed with MCTD refers to Diagnosis = 'MCTD';",
-    "annotation_source": "glot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1310,
@@ -14430,10 +14430,10 @@
     "db_id": "student_club",
     "question": "List the full name of the top five members who spend the most money in the descending order of spending.",
     "difficulty": "moderate",
-    "SQL-sqlite": "SELECT T3.first_name, T3.last_name FROM expense AS T1 INNER JOIN budget AS T2 ON T1.link_to_budget = T2.budget_id INNER JOIN member AS T3 ON T1.link_to_member = T3.member_id ORDER BY T2.spent DESC LIMIT 5",
-    "SQL-Doris": "SELECT T3.`first_name`, T3.`last_name` FROM `expense` AS T1 INNER JOIN `budget` AS T2 ON T1.`link_to_budget` = T2.`budget_id` INNER JOIN `member` AS T3 ON T1.`link_to_member` = T3.`member_id` ORDER BY T2.`spent` DESC LIMIT 5",
+    "SQL-sqlite": "SELECT T2.first_name, T2.last_name FROM expense AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id GROUP BY T2.member_id, T2.first_name, T2.last_name ORDER BY SUM(T1.cost) DESC LIMIT 5",
+    "SQL-Doris": "SELECT `T2`.`first_name`, `T2`.`last_name` FROM `expense` AS `T1` INNER JOIN `member` AS `T2` ON `T1`.`link_to_member` = `T2`.`member_id` GROUP BY `T2`.`member_id`, `T2`.`first_name`, `T2`.`last_name` ORDER BY SUM(`T1`.`cost`) DESC LIMIT 5",
     "evidence": "full name refers to first_name, last_name; spend the most money refers to MAX(expense.cost)",
-    "annotation_source": "glot"
+    "annotation_source": "dev-reference-repair-20261112"
   },
   {
     "question_id": 1457,
