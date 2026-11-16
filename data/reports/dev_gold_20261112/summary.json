@@ -39,7 +39,7 @@
   ],
   "dialects": {
     "oracle": {
-      "status": "native_verified_and_published",
+      "status": "native_verified",
       "validated_questions": 1534,
       "target_SQL_changed": 1534,
       "target_SQL_preserved": 0,
@@ -48,12 +48,15 @@
         "passed_tie_equivalent": 13
       },
       "engine_version": "23.0.0.0.0",
+      "evidence_runs": [
+        "native_validation_scoped_v3"
+      ],
       "cleanup_complete": true,
       "model_calls": 0,
       "binding_only_SQL_shape_equal": 1301
     },
     "duckdb": {
-      "status": "native_verified_and_published",
+      "status": "native_verified",
       "validated_questions": 26,
       "target_SQL_changed": 25,
       "target_SQL_preserved": 1509,
@@ -62,11 +65,14 @@
         "passed_tie_equivalent": 3
       },
       "engine_version": "1.4.5",
+      "evidence_runs": [
+        "native_validation_scoped_duckdb_v2"
+      ],
       "cleanup_complete": true,
       "model_calls": 0
     },
     "postgresql": {
-      "status": "native_verified_and_published",
+      "status": "native_verified",
       "validated_questions": 26,
       "target_SQL_changed": 21,
       "target_SQL_preserved": 1513,
@@ -75,11 +81,14 @@
         "passed_tie_equivalent": 4
       },
       "engine_version": "PostgreSQL 16.15 (Debian 16.15-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+      "evidence_runs": [
+        "native_validation_scoped_postgresql_v2"
+      ],
       "cleanup_complete": true,
       "model_calls": 0
     },
     "mysql": {
-      "status": "native_verified_and_published",
+      "status": "native_verified",
       "validated_questions": 26,
       "target_SQL_changed": 23,
       "target_SQL_preserved": 1511,
@@ -88,84 +97,211 @@
         "passed_tie_equivalent": 4
       },
       "engine_version": "8.0.46",
+      "evidence_runs": [
+        "native_validation_scoped_mysql_v3"
+      ],
       "cleanup_complete": true,
       "model_calls": 0
     },
-    "sqlite": {
-      "status": "reviewed_reference_repairs_published",
-      "source_SQL_changed": 26,
-      "reference_execution": "Native SQLite results used by target validation; inherited evidence checked by SQL AST and SHA."
-    },
     "clickhouse": {
-      "status": "original_public_file_preserved_pending_native_validation",
-      "target_SQL_changed": 0,
-      "published_reference_updates": 0
-    },
-    "doris": {
-      "status": "original_public_file_preserved_pending_native_validation",
-      "target_SQL_changed": 0,
-      "published_reference_updates": 0
-    },
-    "drill": {
-      "status": "original_public_file_preserved_pending_native_validation",
-      "target_SQL_changed": 0,
-      "published_reference_updates": 0
-    },
-    "druid": {
-      "status": "original_public_file_preserved_pending_native_validation",
-      "target_SQL_changed": 0,
-      "published_reference_updates": 0
-    },
-    "hive": {
-      "status": "original_public_file_preserved_pending_native_validation",
-      "target_SQL_changed": 0,
-      "published_reference_updates": 0
+      "status": "native_verified",
+      "validated_questions": 26,
+      "target_SQL_changed": 25,
+      "target_SQL_preserved": 1509,
+      "counts": {
+        "passed": 23,
+        "passed_tie_equivalent": 3
+      },
+      "engine_version": "25.8.33.6",
+      "evidence_runs": [
+        "native_validation_scoped_clickhouse_v5"
+      ],
+      "cleanup_complete": true,
+      "model_calls": 0
     },
     "mssql": {
-      "status": "original_public_file_preserved_pending_native_validation",
-      "target_SQL_changed": 0,
-      "published_reference_updates": 0
-    },
-    "presto": {
-      "status": "original_public_file_preserved_pending_native_validation",
-      "target_SQL_changed": 0,
-      "published_reference_updates": 0
+      "status": "native_verified",
+      "validated_questions": 26,
+      "target_SQL_changed": 21,
+      "target_SQL_preserved": 1513,
+      "counts": {
+        "passed": 23,
+        "passed_tie_equivalent": 3
+      },
+      "engine_version": "16.0.4305.5",
+      "evidence_runs": [
+        "native_validation_scoped_mssql_v2"
+      ],
+      "cleanup_complete": true,
+      "model_calls": 0
     },
     "spark": {
-      "status": "original_public_file_preserved_pending_native_validation",
-      "target_SQL_changed": 0,
-      "published_reference_updates": 0
-    },
-    "starrocks": {
-      "status": "original_public_file_preserved_pending_native_validation",
-      "target_SQL_changed": 0,
-      "published_reference_updates": 0
-    },
-    "teradata": {
-      "status": "original_public_file_preserved_pending_native_validation",
-      "target_SQL_changed": 0,
-      "published_reference_updates": 0
+      "status": "native_verified",
+      "validated_questions": 26,
+      "target_SQL_changed": 23,
+      "target_SQL_preserved": 1511,
+      "counts": {
+        "passed": 23,
+        "passed_tie_equivalent": 3
+      },
+      "engine_version": "4.0.1",
+      "evidence_runs": [
+        "native_validation_scoped_spark_v2"
+      ],
+      "cleanup_complete": true,
+      "model_calls": 0
     },
     "trino": {
-      "status": "original_public_file_preserved_pending_native_validation",
-      "target_SQL_changed": 0,
-      "published_reference_updates": 0
+      "status": "native_verified",
+      "validated_questions": 26,
+      "target_SQL_changed": 23,
+      "target_SQL_preserved": 1511,
+      "counts": {
+        "passed": 22,
+        "passed_tie_equivalent": 4
+      },
+      "engine_version": "480",
+      "evidence_runs": [
+        "native_validation_scoped_trino_v5"
+      ],
+      "cleanup_complete": true,
+      "model_calls": 0
+    },
+    "presto": {
+      "status": "native_verified",
+      "validated_questions": 26,
+      "target_SQL_changed": 23,
+      "target_SQL_preserved": 1511,
+      "counts": {
+        "passed": 23,
+        "passed_tie_equivalent": 3
+      },
+      "engine_version": "0.299-7d50721",
+      "evidence_runs": [
+        "native_validation_scoped_presto_v4"
+      ],
+      "cleanup_complete": true,
+      "model_calls": 0
+    },
+    "hive": {
+      "status": "native_verified",
+      "validated_questions": 26,
+      "target_SQL_changed": 24,
+      "target_SQL_preserved": 1510,
+      "counts": {
+        "passed": 23,
+        "passed_tie_equivalent": 3
+      },
+      "engine_version": "4.0.0 r183f8cb41d3dbed961ffd27999876468ff06690c",
+      "evidence_runs": [
+        "native_validation_scoped_hive_v4"
+      ],
+      "cleanup_complete": true,
+      "model_calls": 0
+    },
+    "doris": {
+      "status": "native_verified",
+      "validated_questions": 26,
+      "target_SQL_changed": 23,
+      "target_SQL_preserved": 1511,
+      "counts": {
+        "passed": 22,
+        "passed_tie_equivalent": 4
+      },
+      "engine_version": "doris-2.1.11-rc01-97b77e6cda",
+      "evidence_runs": [
+        "native_validation_scoped_doris_v4"
+      ],
+      "cleanup_complete": true,
+      "model_calls": 0
+    },
+    "drill": {
+      "status": "native_verified",
+      "validated_questions": 26,
+      "target_SQL_changed": 20,
+      "target_SQL_preserved": 1514,
+      "counts": {
+        "passed": 23,
+        "passed_tie_equivalent": 3
+      },
+      "engine_version": "1.22.0",
+      "evidence_runs": [
+        "native_validation_scoped_drill_v4"
+      ],
+      "cleanup_complete": true,
+      "model_calls": 0
+    },
+    "starrocks": {
+      "status": "native_verified",
+      "validated_questions": 26,
+      "target_SQL_changed": 24,
+      "target_SQL_preserved": 1510,
+      "counts": {
+        "passed": 21,
+        "passed_tie_equivalent": 5
+      },
+      "engine_version": "3.5.21-85fccf8",
+      "evidence_runs": [
+        "native_validation_scoped_starrocks_v4"
+      ],
+      "cleanup_complete": true,
+      "model_calls": 0
+    },
+    "druid": {
+      "status": "native_verified",
+      "validated_questions": 26,
+      "target_SQL_changed": 23,
+      "target_SQL_preserved": 1511,
+      "counts": {
+        "passed": 24,
+        "passed_tie_equivalent": 2
+      },
+      "engine_version": "35.0.1",
+      "evidence_runs": [
+        "native_validation_scoped_druid_v3",
+        "native_validation_scoped_druid_v5"
+      ],
+      "cleanup_complete": true,
+      "model_calls": 0,
+      "native_query_context": {
+        "useApproximateCountDistinct": false,
+        "maxSubqueryBytes": "auto"
+      },
+      "native_resources": {
+        "merge_buffers": 4,
+        "processing_buffer_size": "32MiB",
+        "service_direct_memory_limit": "384MiB"
+      }
+    },
+    "teradata": {
+      "status": "native_verified",
+      "validated_questions": 26,
+      "target_SQL_changed": 24,
+      "target_SQL_preserved": 1510,
+      "counts": {
+        "passed": 23,
+        "passed_tie_equivalent": 3
+      },
+      "engine_version": "17.10.02.01",
+      "evidence_runs": [
+        "native_validation_scoped_teradata_v2",
+        "native_validation_scoped_teradata_v4"
+      ],
+      "cleanup_complete": true,
+      "model_calls": 0,
+      "native_resources": {
+        "guest_cpus": 2,
+        "guest_memory_mib": 6144
+      }
+    },
+    "sqlite": {
+      "status": "reviewed_reference_repairs",
+      "source_SQL_changed": 26,
+      "reference_execution": "Native SQLite results used by target validation; inherited evidence checked by SQL AST and SHA."
     }
   },
-  "pending_native_dialects": [
-    "clickhouse",
-    "doris",
-    "drill",
-    "druid",
-    "hive",
-    "mssql",
-    "presto",
-    "spark",
-    "starrocks",
-    "teradata",
-    "trino"
-  ],
-  "all_16_dialects_updated": false,
+  "pending_native_dialects": [],
+  "all_16_dialects_updated": true,
   "new_model_calls": 0,
   "comparison": {
     "policy": "oracle-ex-bag-finite-float-v1",
@@ -234,11 +370,33 @@
     "data/queries/duckdb.json": "c03cacea0b62fa3af83a784ae98df5c8eaba8263e7cd93db54a9dd6d0d04a782",
     "data/queries/postgresql.json": "34f960bc3c8b93cb57d490a94a32c56c9ea51e8b152de28f8ce20867e3ca5290",
     "data/queries/mysql.json": "cb826c212a5925f99d44183cc04dec9b426408d5593ec30ddafde4f5aaf42299",
+    "data/queries/clickhouse.json": "86d8fd3147a0be5ee5581655db5e504bd2f6efbdc3d1ad445d2006c61c912963",
+    "data/queries/mssql.json": "32478a9f6b5d8799374148c8b391f2e5b2fcfcbb0f3622b1e6d4e9bf41be58df",
+    "data/queries/spark.json": "64cb629d095222e293b36024eb948bc54a733220364b048fef7cd79cff581bc0",
+    "data/queries/trino.json": "0366bd2fba76254e1201025df6bcf44afd87ffa365f935cef5c22a22f656b2e2",
+    "data/queries/presto.json": "a0ff2e998ceb5b4cdaff5619ec70442793d6c03afb2901f90f31dcbe971cd60f",
+    "data/queries/hive.json": "ba2da7f094a86f77412f8498d63c0b86c501cedc83f92ae04c91ae40a193e5e4",
+    "data/queries/doris.json": "a84ef57ccc24a01ead730f6c7d417d8ce4a445e1624184c75d3156d244cd03b6",
+    "data/queries/drill.json": "7abe52c214061de77a8f8899397ab872b84e38f4c8a5c067af81470253786a24",
+    "data/queries/starrocks.json": "87ba5624445a8cc6052a834f14a8e174bc7bda2ebedfb81d0d2924ce0212fa41",
+    "data/queries/druid.json": "744e98fc5bd66d0ddf94fbce635c6341891d60559f8c52140695f0c410f6f2c2",
+    "data/queries/teradata.json": "1fc81c4bb280be1b2eec1bcc37f1d27cf0712e7c05f6141061a15b8a11f6534c",
     "data/subsets/clean_256/queries/sqlite.json": "5da937e4ec6063b4c6a76947f67d84e62b3485f8129ab002f812b6e5c326fbcb",
     "data/subsets/clean_256/queries/oracle.json": "f9378bb4d442cd86ee45740bc29da1199f1174e2648cce6656f0c0e4dbd77902",
     "data/subsets/clean_256/queries/duckdb.json": "eaaecb1682b95e39e49677062c4adf9cf3cf83942b67b2ebe19aa708531eb6fd",
     "data/subsets/clean_256/queries/postgresql.json": "975dc3cde59b4ba96a06f8032dea5f2dbc4f7017008747069e4453592f801b37",
     "data/subsets/clean_256/queries/mysql.json": "bbed5a9b01e27757fc65042b2fe0983dbbb01839bbeed71dc470cff53c16607e",
+    "data/subsets/clean_256/queries/clickhouse.json": "a70302f1a7c49d08c335c6dc0c84b73772d392c697e72dd5ae5d6ba8ec6de2cc",
+    "data/subsets/clean_256/queries/mssql.json": "db6beffa081ff8fd561cbd4e109fe1a5136027a82785ff8bef49f0ab69963e23",
+    "data/subsets/clean_256/queries/spark.json": "1891f7e8c205a29249e40210015f03c321afbdab656a1cd30b4428efd36ad4dd",
+    "data/subsets/clean_256/queries/trino.json": "87964c49641dfedd826f61551cddbaae076790a027792f09375d0bf4354201ae",
+    "data/subsets/clean_256/queries/presto.json": "44036dfbc791c5b23e3501a06f50f945ad7620234f7ecafea5eb27415a767941",
+    "data/subsets/clean_256/queries/hive.json": "ac1ff5790f6ad81c1b1d1493119bc1ccfa84e1e1d683a1e86f7d49bbd37e84ac",
+    "data/subsets/clean_256/queries/doris.json": "5e90923e6d8aa58d0de990afa56ea14018d005beb91767114c20693b61ca0bc0",
+    "data/subsets/clean_256/queries/drill.json": "65aa35ed3b7b537e3a9b77dc85f3257a4de0ad0c391ce6f2eb7f14f756d7dc1a",
+    "data/subsets/clean_256/queries/starrocks.json": "fbab28eb9ab52fdbb02456e53a783cec793dcb752f8d855d15c84cab0b733e67",
+    "data/subsets/clean_256/queries/druid.json": "2377d7de6af19792187642e00d1cbd851b3f9e028183b6a73ff8360c808f1f83",
+    "data/subsets/clean_256/queries/teradata.json": "495764247529b932ee3f577a210f9c5673477589eed87a0a9bd3096e12e655e6",
     "data/schemas/oracle_schema.json": "0fc8d53338d773139e1bdd34944d5ff9e5a5766a3658f9d99b3d593a2740819a",
     "data/schemas/oracle_storage.json": "b2912e84db489ae785af3f1ee0ae390e88ec3fb7d89cd991b3fde6c00c8e86a5",
     "evaluation/oracle_eval.py": "9145ae6f487d23603ad5994418b9498770ef72977a15deb5993aa2fb072dacd1",

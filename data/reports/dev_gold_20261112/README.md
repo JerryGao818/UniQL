@@ -1,4 +1,4 @@
-# Dev reference repair — November 12, 2026
+# Dev reference repair and native validation — November 12–13, 2026
 
 Oracle's 1,534 public gold queries now use the exact quoted table and column names in the updated schema. All 1,534 pass native Oracle reference validation (1,521 directly and 13 with reviewed tie-equivalence evidence). This includes questions 514, 1123, 1125 and 1263, previously failing with `ORA-01791`.
 
@@ -6,15 +6,26 @@ After normalizing identifier case and quoting, 1,301 Oracle SQL ASTs retain the 
 
 The original UniQL question IDs, questions, evidence and difficulty fields are retained. We adopt 26 individually reviewed reference repairs after checking the latest official BIRD dev SQL and available correction material. We do not replace the original tasks with the broader wording/output revisions in newer BIRD releases. The audit does not claim to resolve every BIRD annotation issue.
 
-| Published dialect | Native validation | Target SQL changed |
-| --- | --- | --- |
-| Oracle | 1,534 / 1,534 | 1,534, primarily identifier binding |
-| DuckDB | 26 / 26 | 25 |
-| PostgreSQL | 26 / 26 | 21 |
-| MySQL | 26 / 26 | 23 |
-| SQLite | Reference execution for the repaired queries | 26 |
+| Dialect | Native validation | Direct matches / reviewed ties | Target SQL changed |
+| --- | --- | --- | --- |
+| Oracle | 1,534 / 1,534 | 1,521 / 13 | 1,534, primarily identifier binding |
+| DuckDB | 26 / 26 | 23 / 3 | 25 |
+| PostgreSQL | 26 / 26 | 22 / 4 | 21 |
+| MySQL | 26 / 26 | 22 / 4 | 23 |
+| ClickHouse | 26 / 26 | 23 / 3 | 25 |
+| T-SQL (MSSQL) | 26 / 26 | 23 / 3 | 21 |
+| Spark | 26 / 26 | 23 / 3 | 23 |
+| Trino | 26 / 26 | 22 / 4 | 23 |
+| Presto | 26 / 26 | 23 / 3 | 23 |
+| Hive | 26 / 26 | 23 / 3 | 24 |
+| Doris | 26 / 26 | 22 / 4 | 23 |
+| Drill | 26 / 26 | 23 / 3 | 20 |
+| StarRocks | 26 / 26 | 21 / 5 | 24 |
+| Druid | 26 / 26 | 24 / 2 | 23 |
+| Teradata | 26 / 26 | 23 / 3 | 24 |
+| SQLite | Native reference execution for the repaired queries | — | 26 reference queries |
 
-The other 11 target dialects retain their original published files while their scoped candidates await native validation. Correct existing translations are preserved. The preliminary whole-release drafts are excluded from this release.
+All 14 target dialects other than Oracle pass native validation of the 26 reference-repair questions. This scope does not establish validation of all 1,534 queries in those dialects. Correct existing translations and SQL outside the repaired question set are preserved. The preliminary whole-release drafts are excluded from this release.
 
 Clean-256 retains its 256 IDs. Oracle's full subset is rebound, and the verified dialects' subset files are filtered from their corresponding full files. The subset contains repaired questions 484, 988 and 1135.
 
@@ -24,11 +35,19 @@ Clean-256 retains its 256 IDs. Oracle's full subset is rebound, and the verified
 - `native_validation.json`: per-question SQL hashes, native evidence hashes, comparison outcomes and supplemental semantic proofs.
 - `summary.json`: source database hashes, release file hashes, validation counts and pending dialects.
 
+Historical `annotation_source` construction labels can be retained for native adaptations of existing translations. `native_validation.json` identifies the final source/target SQL and its native evidence through SHA-256 hashes.
+
 The 11 Oracle databases comprise 75 tables and 3,932,735 rows. Migration uses full typed multiset fingerprints, including NULLs and duplicate multiplicity. Oracle full-strict data verification and the final SQL validation are recorded separately; unchanged successful query evidence can be inherited only with equal Oracle SQL bytes and equivalent normalized SQLite AST. Each inherited evidence file is checked by SHA-256.
+
+The additional native engines use the retained Platinum build and migration recipes in a separate verification environment, running one engine at a time through cleanup. Every referenced table is loaded in full and checked against the source typed multiset fingerprint. Scoped follow-up evidence can be combined only when the source and target SQL bytes, source database hashes, table fingerprints, physical mappings, engine version and semantic query context agree. Engine versions and per-query evidence provenance are recorded in the JSON reports.
 
 Validation uses project EX (`oracle-ex-bag-finite-float-v1`), preserving exact integer/text/binary/NULL identity and applying finite float tolerance (`abs_tol=1e-8`, `rel_tol=1e-9`). Ordered differences require SQL review and evidence for the full eligible multiset, exact source sorting keys and Top-K boundary. Question 1209 orders diagnosis representatives by earliest eligible Birthday; its reference ID tie-breaker only makes equal birthdays deterministic and is not part of the requested order.
 
 RF comparisons follow the reviewed official policy: remove `<` and `>` and compare the boundary number. Censored observations do not establish the actual measurement. U-PRO uses the official SQLite numeric-prefix conversion (`+1(30)` → 1, `+2(100)` → 2). These are explicit benchmark policies, not clinical interpretations.
+
+Druid validation disables approximate distinct counts (`useApproximateCountDistinct=false`), matching the evaluator. Question 1243 retains its SQL and passes with four merge buffers of 32 MiB and a 384 MiB service direct-memory limit. Question 514 selects the maximum string-valued mana cost per eligible card name through a null-safe self-join, preserving the reference's text comparison and Top-10 semantics.
+
+The restored Teradata 17.10.02.01 instance returned incorrect global row counts for some outer `TOP` and inline global `QUALIFY` queries. Scoped capped queries use a derived-table `ROW_NUMBER` filter and outer ordering by that row number; the rewritten queries pass native verification. Question 1243 filters abnormal PT and age before deduplicating patients, and its complete eligible cohort matches SQLite. The final Teradata follow-up uses two guest CPUs, 6 GiB memory and the retained four-AMP initialized snapshot.
 
 This validation used no new model calls. Historical prediction outputs and baseline CSV scores have not been rerun or rescored; these results are reference checks, not model leaderboard scores.
 

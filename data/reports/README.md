@@ -2,7 +2,7 @@
 
 The full `data/queries/` files and `data/subsets/clean_256/queries/` files use the same current references for shared question IDs. Each full dialect file contains 1,534 aligned intents; each clean-subset file contains the existing 256 selected intents.
 
-The [November 12 dev-gold audit](dev_gold_20261112/README.md) adds native-verified Oracle, SQLite, DuckDB, PostgreSQL and MySQL reference updates. Remaining dialect files preserve their previous references pending native verification. The CSV scores below describe historical evaluation snapshots and have not been recomputed with these November references or the new Oracle evaluator.
+The [November dev-gold audit](dev_gold_20261112/README.md) records full native validation of Oracle's 1,534 queries and successful scoped native validation of the 26 repaired questions in all other 14 target dialects. Correct existing translations and target SQL outside the repaired question set are preserved. The CSV scores below describe historical evaluation snapshots and have not been recomputed with these November references or the new Oracle evaluator.
 
 The October 2026 revision synchronizes reviewed question/evidence corrections, SQLite references, and target SQL corrections, including fixes for Drill and Teradata. Construction-stage aliases used internally are normalized to the public `annotation_source` vocabulary: `glot`, `LLM-0shot`, `LLM-retry`, `LLM-rule`, and `human`.
 
