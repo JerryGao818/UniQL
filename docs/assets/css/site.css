@@ -430,6 +430,107 @@ output {
   color: #555;
 }
 
+[hidden] {
+  display: none !important;
+}
+
+.leaderboard-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 4px 0 14px;
+}
+
+.view-switch {
+  display: inline-flex;
+  border: 1px solid #b9cdd2;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.view-button {
+  padding: 8px 12px;
+  border: 0;
+  background: #fff;
+  color: #31515d;
+  font: inherit;
+  cursor: pointer;
+}
+
+.view-button.active {
+  background: #31515d;
+  color: #fff;
+}
+
+.view-button:focus-visible,
+.dialect-picker select:focus-visible {
+  outline: 3px solid #17a2b8;
+  outline-offset: 2px;
+}
+
+.dialect-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #52666e;
+}
+
+.dialect-picker select {
+  min-width: 138px;
+  padding: 8px;
+  border: 1px solid #b9cdd2;
+  border-radius: 5px;
+  background: #fff;
+  color: #212529;
+  font: inherit;
+}
+
+.dialect-table-wrapper {
+  padding: 0;
+}
+
+.table.dialect-table {
+  width: 100%;
+  min-width: 0;
+  table-layout: auto;
+  margin-top: 8px;
+}
+
+.table.dialect-table td,
+.table.dialect-table th {
+  min-width: 0;
+  padding: 10px 8px;
+  white-space: normal;
+}
+
+.dialect-table .model-cell {
+  text-align: left;
+  width: 58%;
+  overflow-wrap: anywhere;
+}
+
+.dialect-table .rank-cell {
+  width: 42px;
+}
+
+.dialect-table .score-cell {
+  color: #155e95;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dialect-table .cell-detail {
+  line-height: 1.35;
+}
+
+.empty-results {
+  padding: 20px 8px !important;
+  color: #66757c;
+  text-align: left !important;
+}
+
 .table-wrapper {
   display: block;
   width: 100%;

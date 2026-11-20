@@ -93,6 +93,10 @@ UniQL currently provides two leaderboard tracks:
 
 `data/subsets/clean_256/question_ids.txt` lists the selected original BIRD question identifiers.
 
+The [leaderboard](https://jerrygao818.github.io/UniQL/) supports an overall view and separate rankings for each of the 16 dialects. Single-dialect submissions appear alongside the baseline models in the corresponding dialect table; overall ranking requires all 16 dialects. See [leaderboard data and submission details](docs/README.md).
+
+Inference may retry SQL using target-database error messages. Gold SQL, gold results, and evaluator correctness feedback must not be used to generate or repair predictions. Submissions must report their inference setup and reference/evaluator versions.
+
 ## Installation
 
 Create a Python environment and install the packages required by the inference and evaluation scripts. Exact database drivers depend on which dialects you evaluate.

@@ -1,10 +1,15 @@
 {
   "model_name": "ExampleSQL-7B",
+  "model_url": "https://example.org/project",
   "organization": "Example Lab",
   "contact": "maintainer@example.edu",
   "track": "UniQL-Clean-256",
   "date": "2026-06-04",
   "description": "Single-generation inference-only run with temperature 0.",
+  "gold_commit": "<UniQL gold commit>",
+  "evaluator_commit": "<UniQL evaluator commit>",
+  "database_error_feedback": false,
+  "gold_correctness_feedback": false,
   "dialects_submitted": [
     "clickhouse",
     "doris",

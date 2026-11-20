@@ -1,4 +1,4 @@
-const RESULTS_VERSION = "4cd35fca808c";
+const RESULTS_VERSION = "20261120-paper-v3";
 const EMBEDDED_CSV = {
   "assets/data/full_1534_baseline_results.csv": String.raw`Model,ClickHouse,Doris,Drill,Druid,DuckDB,Hive,MySQL,Oracle,PostgreSQL,Presto,Spark,SQLite,StarRocks,T-SQL,Teradata,Trino,Avg.,Avg. N
 GPT-3.5-Turbo,35.14,38.40,29.20,22.75,37.16,36.18,40.87,32.59,36.51,36.38,39.44,41.13,39.24,37.74,23.92,35.92,35.16,16
@@ -30,20 +30,57 @@ DeepSeek-Coder-16B,24.61,20.70,23.83,9.77,25.39,30.47,30.86,18.75,25.00,9.77,26.
 DeepSeek-v4-flash,42.58,42.97,40.62,24.22,46.88,52.73,51.17,41.41,45.31,44.53,51.17,52.34,49.61,49.61,23.05,42.97,43.82,16`,
 };
 
-async function loadLeaderboard() {
-  await renderLeaderboard("leaderboard-full", "assets/data/full_1534_baseline_results.csv", "UniQL-Full");
-  await renderLeaderboard("leaderboard-clean", "assets/data/clean_256_baseline_results.csv", "UniQL-Minidev");
+const DIALECTS = [
+  "ClickHouse", "Doris", "Drill", "Druid", "DuckDB", "Hive", "MySQL", "Oracle",
+  "PostgreSQL", "Presto", "Spark", "SQLite", "StarRocks", "T-SQL", "Teradata", "Trino",
+];
+const TRACKS = [
+  { id: "full", name: "UniQL-1534", title: "UniQL-Full", total: 1534, csv: "assets/data/full_1534_baseline_results.csv" },
+  { id: "clean", name: "UniQL-Clean-256", title: "UniQL-Minidev", total: 256, csv: "assets/data/clean_256_baseline_results.csv" },
+];
+const baselineData = new Map();
+const failedBaselineTracks = new Set();
+
+function scoreNumber(value) {
+  if (value === null || value === undefined || String(value).trim() === "") return null;
+  const number = Number(value);
+  return Number.isFinite(number) && number >= 0 && number <= 100 ? number : null;
 }
 
-async function renderLeaderboard(tableId, csvPath, trackName) {
+function rankedRows(rows, score) {
+  const selected = rows.filter((row) => score(row) !== null).slice().sort((a, b) => score(b) - score(a));
+  let previous = null;
+  let rank = 0;
+  return selected.map((row, index) => {
+    const value = score(row);
+    if (value !== previous) rank = index + 1;
+    previous = value;
+    return { row, rank, score: value };
+  });
+}
+
+async function loadLeaderboard() {
+  const loaded = await Promise.allSettled(TRACKS.map((track) => loadCsvText(track.csv)));
+  loaded.forEach((result, index) => {
+    const track = TRACKS[index];
+    if (result.status === "fulfilled") {
+      baselineData.set(track.id, parseCsv(result.value));
+    } else {
+      failedBaselineTracks.add(track.id);
+      baselineData.set(track.id, []);
+    }
+    renderLeaderboard(`leaderboard-${track.id}`, baselineData.get(track.id), track.title);
+  });
+  renderDialectLeaderboards();
+}
+
+function renderLeaderboard(tableId, rows, trackName) {
   const table = document.querySelector(`#${tableId}`);
   const tableHead = table?.querySelector("thead");
   const tableBody = table?.querySelector("tbody");
   if (!table || !tableHead || !tableBody) return;
 
   try {
-    const text = await loadCsvText(csvPath);
-    const rows = parseCsv(text);
     const headers = [
       "Model",
       "Avg.",
@@ -64,9 +101,8 @@ async function renderLeaderboard(tableId, csvPath, trackName) {
       "Teradata",
       "Trino",
     ];
-    const selected = rows
-      .filter((row) => row.Model)
-      .sort((a, b) => Number.parseFloat(b["Avg."]) - Number.parseFloat(a["Avg."]));
+    const selected = rankedRows(rows.filter((row) => row.Model && Number(row["Avg. N"]) === 16
+      && DIALECTS.every((dialect) => scoreNumber(row[dialect]) !== null)), (row) => scoreNumber(row["Avg."]));
 
     tableHead.innerHTML = "";
     const headRow = document.createElement("tr");
@@ -81,16 +117,16 @@ async function renderLeaderboard(tableId, csvPath, trackName) {
     tableHead.appendChild(headRow);
 
     tableBody.innerHTML = "";
-    selected.forEach((row, rank) => {
+    selected.forEach(({ row, rank }) => {
       const tr = document.createElement("tr");
-      if (rank < 3) tr.classList.add(`rank-${rank + 1}`);
+      if (rank <= 3) tr.classList.add(`rank-${rank}`);
       const rowHeaders = ["Rank", ...headers];
       rowHeaders.forEach((header, index) => {
         const cell = document.createElement(index === 1 ? "th" : "td");
         if (header === "Avg.") cell.classList.add("avg-cell");
         if (header === "Rank") cell.classList.add("rank-cell");
         if (header === "Model") cell.classList.add("model-cell");
-        fillLeaderboardCell(cell, row, header, rank, trackName);
+        fillLeaderboardCell(cell, row, header, rank - 1, trackName);
         tr.appendChild(cell);
       });
       tableBody.appendChild(tr);
@@ -98,6 +134,132 @@ async function renderLeaderboard(tableId, csvPath, trackName) {
   } catch (error) {
     tableBody.innerHTML = `<tr><td>Could not load leaderboard data.</td></tr>`;
   }
+}
+
+function validSubmissions(track, dialect) {
+  const latest = new Map();
+  const submissions = typeof DIALECT_SUBMISSIONS === "undefined" ? [] : DIALECT_SUBMISSIONS;
+  for (const row of submissions) {
+    if (row.track !== track.name || row.dialect !== dialect) continue;
+    if (typeof row.model !== "string" || !row.model.trim() || !Number.isInteger(row.correct)
+      || row.correct < 0 || row.correct > row.total || row.total !== track.total
+      || row.gold_correctness_feedback !== false || !/^[a-f0-9]{40}$/.test(row.gold_commit)
+      || !/^[a-f0-9]{40}$/.test(row.evaluator_commit) || !/^\d{4}-\d{2}-\d{2}$/.test(row.submitted_date)) continue;
+    const previous = latest.get(row.model);
+    if (!previous || row.submitted_date > previous.submitted_date) latest.set(row.model, row);
+  }
+  return Array.from(latest.values());
+}
+
+function addModelName(cell, row) {
+  let link;
+  try {
+    const url = new URL(row.model_url);
+    if (["https:", "http:"].includes(url.protocol)) {
+      link = document.createElement("a");
+      link.href = url.href;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    }
+  } catch (error) {
+    // Models without a project URL are still valid leaderboard entries.
+  }
+  const name = link || document.createElement("span");
+  name.textContent = row.model;
+  cell.appendChild(name);
+  if (row.submitted_date) {
+    const detail = document.createElement("span");
+    detail.className = "cell-detail";
+    detail.textContent = row.submitted_date;
+    cell.appendChild(detail);
+  }
+}
+
+function renderDialectTable(tableId, ranked, emptyMessage) {
+  const table = document.getElementById(tableId);
+  if (!table) return;
+  const head = table.querySelector("thead");
+  const body = table.querySelector("tbody");
+  head.replaceChildren();
+  body.replaceChildren();
+  const headers = ["Rank", "Model / system", "EX (%)"];
+  const header = document.createElement("tr");
+  headers.forEach((label, index) => {
+    const cell = document.createElement("th");
+    cell.scope = "col";
+    cell.textContent = label;
+    cell.className = index === 1 ? "model-cell" : index === 0 ? "rank-cell" : "";
+    header.appendChild(cell);
+  });
+  head.appendChild(header);
+  if (!ranked.length) {
+    const row = document.createElement("tr");
+    const cell = document.createElement("td");
+    cell.colSpan = headers.length;
+    cell.className = "empty-results";
+    cell.textContent = emptyMessage;
+    row.appendChild(cell);
+    body.appendChild(row);
+    return;
+  }
+  for (const { row, rank, score } of ranked) {
+    const entry = document.createElement("tr");
+    if (rank <= 3) entry.classList.add(`rank-${rank}`);
+    const position = document.createElement("td");
+    position.className = "rank-cell";
+    position.textContent = String(rank);
+    entry.appendChild(position);
+    const model = document.createElement("th");
+    model.scope = "row";
+    model.className = "model-cell";
+    addModelName(model, row);
+    entry.appendChild(model);
+    const accuracy = document.createElement("td");
+    accuracy.className = "score-cell";
+    accuracy.textContent = score.toFixed(2);
+    if (Number.isInteger(row.correct) && Number.isInteger(row.total)) {
+      const count = document.createElement("span");
+      count.className = "cell-detail";
+      count.textContent = `${row.correct} / ${row.total}`;
+      accuracy.appendChild(count);
+      accuracy.title = `Gold and evaluator: ${row.gold_commit.slice(0, 7)}`;
+    }
+    entry.appendChild(accuracy);
+    body.appendChild(entry);
+  }
+}
+
+function renderDialectLeaderboards() {
+  const dialect = document.getElementById("dialect-select")?.value || "Oracle";
+  for (const label of document.querySelectorAll("[data-selected-dialect]")) label.textContent = dialect;
+  for (const track of TRACKS) {
+    const entries = new Map((baselineData.get(track.id) || []).filter((row) => row.Model).map((row) => [row.Model, {
+      model: row.Model, score: scoreNumber(row[dialect]), submitted_date: "",
+    }]));
+    for (const row of validSubmissions(track, dialect)) entries.set(row.model, { ...row, score: 100 * row.correct / row.total });
+    const ranked = rankedRows(Array.from(entries.values()), (row) => row.score);
+    renderDialectTable(`leaderboard-${track.id}-dialect`, ranked,
+      failedBaselineTracks.has(track.id) ? "Could not load baseline results." : `No published ${dialect} results.`);
+  }
+}
+
+function setupLeaderboardControls() {
+  for (const button of document.querySelectorAll("[data-leaderboard-view]")) {
+    button.addEventListener("click", () => {
+      const view = button.dataset.leaderboardView;
+      for (const control of document.querySelectorAll("[data-leaderboard-view]")) {
+        const selected = control.dataset.leaderboardView === view;
+        control.classList.toggle("active", selected);
+        control.setAttribute("aria-pressed", String(selected));
+      }
+      for (const panel of document.querySelectorAll("[data-leaderboard-content]")) {
+        panel.hidden = panel.dataset.leaderboardContent !== view;
+      }
+      const picker = document.querySelector(".dialect-picker");
+      if (picker) picker.hidden = view !== "dialect";
+    });
+  }
+  document.getElementById("dialect-select")?.addEventListener("change", renderDialectLeaderboards);
 }
 
 function fillLeaderboardCell(cell, row, header, rank, trackName) {
@@ -243,6 +405,7 @@ function inferGitHubRepo() {
 }
 
 loadLeaderboard();
+setupLeaderboardControls();
 setupValidator();
 setupIssueLink();
 setupRepoLinks();

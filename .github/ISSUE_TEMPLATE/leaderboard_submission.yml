@@ -7,11 +7,17 @@ body:
   - type: input
     id: model
     attributes:
-      label: Model name
-      description: Public model name to display on the leaderboard.
+      label: Model or system name
+      description: Public model or system name to display on the leaderboard.
       placeholder: ExampleSQL-7B
     validations:
       required: true
+  - type: input
+    id: model_url
+    attributes:
+      label: Project page
+      description: Optional project URL linked from your model or system name.
+      placeholder: https://...
   - type: dropdown
     id: track
     attributes:
@@ -23,10 +29,26 @@ body:
     validations:
       required: true
   - type: textarea
+    id: dialects
+    attributes:
+      label: Dialects evaluated
+      description: List the dialects included in this submission. Each dialect receives its own ranking; overall ranking requires all 16.
+      placeholder: Oracle
+    validations:
+      required: true
+  - type: textarea
+    id: versions
+    attributes:
+      label: Reference and evaluator versions
+      description: Include the UniQL commits used for gold SQL and evaluation so the submission's setup can be reproduced.
+      placeholder: Gold and evaluator commit dec96c9
+    validations:
+      required: true
+  - type: textarea
     id: setup
     attributes:
       label: Inference setup
-      description: Include decoding settings, prompt changes, model checkpoint, and whether any task-specific training was used.
+      description: Include decoding settings, prompt changes, model checkpoint, task-specific training, and any execution-error retries or generation re-prompts.
       placeholder: Temperature 0, single generation, no task-specific training.
     validations:
       required: true
@@ -43,6 +65,8 @@ body:
     attributes:
       label: Confirmation
       options:
+        - label: Gold SQL, gold results and evaluator correctness feedback were not used to generate or repair predictions. Database error feedback retries are allowed.
+          required: true
         - label: The submitted JSON files are produced by UniQL evaluation or preserve the same per-example result format.
           required: true
         - label: I agree that maintainers may recompute aggregate metrics before posting the result.
