@@ -97,6 +97,12 @@ The [leaderboard](https://jerrygao818.github.io/UniQL/) supports an overall view
 
 Inference may retry SQL using target-database error messages. Gold SQL, gold results, and evaluator correctness feedback must not be used to generate or repair predictions. Submissions must report their inference setup and reference/evaluator versions.
 
+## Source Databases
+
+Both UniQL-1534 and UniQL-Clean-256 use the SQLite databases from BIRD's official [dev.zip](https://bird-bench.oss-cn-beijing.aliyuncs.com/dev.zip), release `dev_20240627`. Clean-256 selects questions from the full development split and uses the same databases. The database files distributed with BIRD mini-dev can have different SHA-256 hashes and fail the Oracle loader's source check.
+
+After extracting the archive, point the Oracle loader's `--root` to `/path/to/dev_20240627/dev_databases`. The loader checks each SQLite file against [the published source hashes](data/schemas/oracle_storage.json) before connecting to Oracle, then verifies full target content after migration. A source mismatch reports the file path, expected and actual hashes, and the required archive.
+
 ## Installation
 
 Create a Python environment and install the packages required by the inference and evaluation scripts. Exact database drivers depend on which dialects you evaluate.

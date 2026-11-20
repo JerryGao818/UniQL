@@ -55,13 +55,15 @@ This validation used no new model calls. Historical prediction outputs and basel
 
 The new schema/gold requires migration with `migration/oracle/insert_to_oracle.py`. The loader rejects CDB root/seed connections, creates ordinary PDB users without `_ORACLE_SCRIPT`, verifies the source database hashes and checks full target content. Existing benchmark users are replaced only when `--recreate` is explicitly supplied.
 
+Use the SQLite databases from BIRD's official [dev.zip](https://bird-bench.oss-cn-beijing.aliyuncs.com/dev.zip), release `dev_20240627`, for both the full benchmark and Clean-256. BIRD mini-dev database copies can differ from the hashes bound in `data/schemas/oracle_storage.json`. All selected source files are checked before connecting to Oracle or creating/replacing users; a mismatch reports the required archive and the expected/actual hashes.
+
 Configure credentials locally through environment variables; use a writable PDB service such as `localhost:1521/FREEPDB1`:
 
 ```bash
 export UNIQL_ORACLE_DSN=localhost:1521/FREEPDB1
 export UNIQL_ORACLE_ADMIN_USER=SYSTEM
 # Set UNIQL_ORACLE_ADMIN_PASSWORD and UNIQL_ORACLE_USER_PASSWORD locally.
-python migration/oracle/insert_to_oracle.py --root /path/to/dev_databases
+python migration/oracle/insert_to_oracle.py --root /path/to/dev_20240627/dev_databases
 python evaluation/evaluate.py \
   --predicted_sql_path /path/to/oracle_predictions.json \
   --dialect oracle --model your_model \

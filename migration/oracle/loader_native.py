@@ -95,12 +95,25 @@ def source_digest(path):
             h.update(block)
     return h.hexdigest()
 
-def load_database(connection, source_path, db_id, *, policy_path=POLICY_PATH, progress=None):
-    policy = json.loads(Path(policy_path).read_text())['databases'][db_id]
+def validate_source(source_path, db_id, policy):
     source_path = Path(source_path).resolve(strict=True)
     digest = source_digest(source_path)
     if digest != policy['source_sha256']:
-        raise ValueError('Source database differs from the published storage manifest')
+        raise ValueError(
+            f'Source database SHA-256 mismatch for {db_id}: {source_path}\n'
+            f"Expected: {policy['source_sha256']}\n"
+            f'Actual: {digest}\n'
+            "Use the SQLite databases from BIRD's official dev.zip (dev_20240627): "
+            'https://bird-bench.oss-cn-beijing.aliyuncs.com/dev.zip\n'
+            'Set --root to the extracted dev_20240627/dev_databases directory. '
+            'UniQL-Full and UniQL-Clean-256 use the same source databases; '
+            'BIRD mini-dev copies may have different hashes.'
+        )
+    return source_path, digest
+
+def load_database(connection, source_path, db_id, *, policy_path=POLICY_PATH, progress=None):
+    policy = json.loads(Path(policy_path).read_text())['databases'][db_id]
+    source_path, digest = validate_source(source_path, db_id, policy)
     reports = []
     with sqlite3.connect(source_path.as_uri() + '?mode=ro&immutable=1', uri=True) as source:
         source.execute('PRAGMA query_only=ON')
@@ -192,14 +205,18 @@ def main():
     parser.add_argument('--recreate', action='store_true', help='Explicitly replace existing ordinary benchmark users and their data')
     args = parser.parse_args()
     policy = json.loads(POLICY_PATH.read_text())['databases']
+    databases = args.databases or list(policy)
+    sources = {}
+    for db in databases:
+        if db not in policy:
+            raise ValueError('Unknown BIRD dev database')
+        sources[db], _ = validate_source(Path(args.root) / db / (db + '.sqlite'), db, policy[db])
     with oracledb.connect(user=os.getenv('UNIQL_ORACLE_ADMIN_USER', 'SYSTEM'), password=os.getenv('UNIQL_ORACLE_ADMIN_PASSWORD', '<ORACLE_ADMIN_PASSWORD>'), dsn=ORACLE_DSN) as admin:
-        for db in args.databases or list(policy):
-            if db not in policy:
-                raise ValueError('Unknown BIRD dev database')
+        for db in databases:
             user = username_for(db)
             setup_oracle_user(admin, user, recreate=args.recreate)
             with oracledb.connect(user=user, password=DEFAULT_USER_PASS, dsn=ORACLE_DSN) as connection:
-                report = load_database(connection, Path(args.root) / db / (db + '.sqlite'), db)
+                report = load_database(connection, sources[db], db)
             print(json.dumps({'db_id': db, 'tables': len(report['tables']), 'content_verified': True}))
 
 if __name__ == '__main__':
